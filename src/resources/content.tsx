@@ -2,39 +2,32 @@ import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/
 import { Line, Logo, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  firstName: "Felipe",
+  lastName: "Espinosa",
+  name: `Felipe Espinosa`,
+  role: "AI Engineer",
+  avatar: "/me.jpg",
+  email: "felipeespinosa.13@outlook.com",
+  location: "Europe/Paris", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["Spanish (Native)", "English (C1)", "Portuguese (B2)", "French (B1)"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter: Newsletter = {
-  display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
+  display: false,
+  title: <>Newsletter</>,
+  description: <>Subscribe</>,
 };
 
 const social: Social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/Pipe1213",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://linkedin.com/in/felipe-espinosa13",
   },
   {
     name: "Email",
@@ -49,9 +42,9 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>LLM apps and speech systems</>,
   featured: {
-    display: true,
+    display: false,
     title: (
       <Row gap="12" vertical="center">
         <strong className="ml-4">Once UI</strong>{" "}
@@ -61,27 +54,16 @@ const home: Home = {
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/projects",
   },
-  subline: (
-    <>
-      I'm Selene, a design engineer at{" "}
-      <Logo
-        dark
-        icon="/trademarks/wordmark-dark.svg"
-        style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}
-      />
-      , where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
-    </>
-  ),
+  subline: (<>AI Engineer building LLM-powered applications. Built a production SQL Agent and the first Walloon TTS system.</>),
 };
 
 const about: About = {
   path: "/about",
   label: "About",
-  title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  title: `About - ${person.name}`,
+  description: `Meet ${person.name}, ${person.role} in Paris, France`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -97,15 +79,11 @@ const about: About = {
     display: true,
     title: "Introduction",
     description: (
-      <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
-      </>
+      <>AI Engineer with hands-on experience building LLM-powered applications. Developed a production-ready SQL Agent using LangChain and RAG, and pioneered the first TTS system for the Walloon language. Skilled in bridging advanced research with practical implementation.</>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: false, // moved to dedicated Experience page
     title: "Work Experience",
     experiences: [
       {
@@ -151,7 +129,7 @@ const about: About = {
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
+    display: false, // moved to dedicated Education page
     title: "Studies",
     institutions: [
       {
@@ -165,7 +143,7 @@ const about: About = {
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
+    display: false, // can be shown on About or Experience if needed
     title: "Technical skills",
     skills: [
       {
@@ -240,7 +218,7 @@ const blog: Blog = {
 const work: Work = {
   path: "/work",
   label: "Work",
-  title: `Projects – ${person.name}`,
+  title: `Projects - ${person.name}`,
   description: `Design and dev projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
@@ -249,7 +227,7 @@ const work: Work = {
 const gallery: Gallery = {
   path: "/gallery",
   label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
+  title: `Photo gallery - ${person.name}`,
   description: `A photo collection by ${person.name}`,
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
@@ -297,4 +275,40 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+// New page configs
+const experience = {
+  path: "/experience",
+  label: "Experience",
+  title: `Experience - ${person.name}`,
+  description: `Professional experience of ${person.name}`,
+};
+
+const education = {
+  path: "/education",
+  label: "Education",
+  title: `Education - ${person.name}`,
+  description: `Education history of ${person.name}`,
+};
+
+const publications = {
+  path: "/publications",
+  label: "Publications",
+  title: `Publications - ${person.name}`,
+  description: `Publications by ${person.name}`,
+};
+
+const projects = {
+  path: "/projects",
+  label: "Projects",
+  title: `Projects - ${person.name}`,
+  description: `Project portfolio by ${person.name}`,
+};
+
+const contact = {
+  path: "/contact",
+  label: "Contact",
+  title: `Contact - ${person.name}`,
+  description: `Get in touch with ${person.name}`,
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery, experience, education, publications, projects, contact };
