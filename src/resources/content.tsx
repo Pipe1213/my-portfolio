@@ -143,65 +143,33 @@ const about: About = {
     ],
   },
   technical: {
-    display: false, // can be shown on About or Experience if needed
-    title: "Technical skills",
+    display: true,
+    title: "Skills",
     skills: [
       {
-        title: "Figma",
+        title: "LLM Integration & Agents",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>LangChain, LangGraph; multi-step planning; evaluation and robustness.</>
         ),
-        tags: [
-          {
-            name: "Figma",
-            icon: "figma",
-          },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
       },
       {
-        title: "Next.js",
+        title: "RAG & Databases",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>RAG pipelines; Oracle SQL; vector stores (Chroma, Redis); schema enrichment.</>
         ),
-        tags: [
-          {
-            name: "JavaScript",
-            icon: "javascript",
-          },
-          {
-            name: "Next.js",
-            icon: "nextjs",
-          },
-          {
-            name: "Supabase",
-            icon: "supabase",
-          },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },  
+      },
+      {
+        title: "TTS & Speech",
+        description: (
+          <>Walloon TTS; CVAE; cross-lingual transfer; MOS/bootstrap analysis.</>
+        ),
+      },
+      {
+        title: "Frameworks & Tools",
+        description: (
+          <>PyTorch, Python; Docker, Git; Streamlit; AWS; Jupyter.</>
+        ),
+      },
     ],
   },
 };

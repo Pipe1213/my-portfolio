@@ -42,7 +42,8 @@ export default function Contact() {
           Resume
         </Button>
         {social
-          .filter((s) => !!s.link)
+          // Avoid duplicating email if main email button is shown
+          .filter((s) => !!s.link && !(emailLink && s.name.toLowerCase() === "email"))
           .map((s) => (
             <Button key={s.name} variant="secondary" prefixIcon={s.icon} href={s.link}>
               {s.name}
