@@ -190,6 +190,16 @@ export default function About() {
                       </React.Fragment>
                     ),
                 )}
+                <Row>
+                  <Button
+                    size="s"
+                    variant="secondary"
+                    prefixIcon="document"
+                    href="/resume.pdf"
+                  >
+                    Resume
+                  </Button>
+                </Row>
               </Row>
             )}
           </Column>

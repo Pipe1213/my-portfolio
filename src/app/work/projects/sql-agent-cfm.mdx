@@ -1,0 +1,28 @@
+---
+title: "SQL Agent for Enterprise Data (CFM)"
+publishedAt: "2025-09-01"
+tags: ["LangGraph", "RAG", "Oracle", "Agents"]
+links:
+  - { label: "Overview", href: "/#contact" }   # or replace later with a public case study
+summary: "Natural language → SQL for enterprise data teams, with plan/execute steps, schema + example retrieval, and a robust evaluation harness."
+images:
+  - "/images/sql-agent-cover.jpg"
+link: "/contact"
+---
+
+**Goal.** Help analysts query internal datasets using natural language, safely and efficiently.
+
+**What I built**
+- **Plan/Execute agent** (ReWoo-style planning) that decomposes requests and selects tools.
+- **RAG over Oracle schemas** with table summaries, column descriptions, and example rows (Chroma).
+- **Example retrieval** to guide few-shot SQL generation.
+- **Evaluation harness**: label-free production checks + bootstrap confidence intervals; trace analysis.
+
+**Stack**
+- LangGraph, LangChain, Oracle SQL, Python
+- ChromaDB (schema & example store), BM25 + embeddings
+- Streamlit UI; telemetry & traces
+
+**Takeaways**
+- Retrieval quality (schema + examples) drives SQL accuracy more than raw LLM size.
+- Divide-and-conquer + explicit reasoning steps reduce invalid SQL by a large margin.

@@ -8,6 +8,11 @@ export {
   blog,
   work,
   gallery,
+  experience,
+  education,
+  publications,
+  projects,
+  contact,
 } from "./content";
 
 export {
