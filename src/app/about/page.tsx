@@ -51,7 +51,7 @@ export default function About() {
     },
     {
       title: "Languages",
-      display: person.languages && person.languages.length > 0,
+      display: !!(person.languages && person.languages.length > 0),
       items: person.languages || [],
     },
   ];
