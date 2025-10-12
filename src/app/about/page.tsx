@@ -49,6 +49,11 @@ export default function About() {
       display: about.technical.display,
       items: about.technical.skills.map((skill) => skill.title),
     },
+    {
+      title: "Languages",
+      display: person.languages && person.languages.length > 0,
+      items: person.languages || [],
+    },
   ];
   return (
     <Column maxWidth="m">
@@ -99,7 +104,7 @@ export default function About() {
               {person.location}
             </Row>
             {person.languages && person.languages.length > 0 && (
-              <Row wrap gap="8">
+              <Row id="Languages" wrap gap="8">
                 {person.languages.map((language, index) => (
                   <Tag key={index} size="l">
                     {language}
