@@ -10,12 +10,60 @@ images:
 link: "https://www.isca-archive.org/ssw_2025/orjuela25_ssw.pdf"
 ---
 
-**Idea.** Build a Walloon text-to-speech system leveraging **cross-lingual pretraining**.
+## Overview
+First text-to-speech (TTS) system for Walloon, an under‑resourced minority language. Using a VITS‑based model and cross‑lingual transfer from French, the system produces intelligible, natural‑sounding speech despite limited data. Published at SSW13 (Interspeech workshop).
 
-**Highlights**
-- **VITS** model initialized with French pretraining; fine-tuned on Walloon data.
-- Evaluated with **objective metrics** + **MOS bootstrap** for uncertainty.
-- Error analysis on pauses and prosody; ablations on grapheme/phoneme pipelines.
+## Motivation & Challenges
+- Very little supervised Walloon speech exists, especially for female voices.
+- Orthography and phonology differ from French; naive transfer hurts quality.
+- Pauses/prosody vary across recordings, complicating alignment and evaluation.
 
-**Notes**
-- Future: better pause modeling and more robust prosody controls.
+## Data & Preparation
+- Speech: translation of “The Little Prince” read by one male speaker (~156 min) and (early chapters) one female speaker (~18 min).
+- Segmentation: sentence‑level splits with punctuation normalization; long sentences broken conservatively.
+- G2P: rule‑based grapheme‑to‑phoneme converter to enable a phoneme input variant alongside graphemes.
+- Splits: train/val/test with chapter‑aware partitioning to avoid leakage.
+
+## Method
+- Model: VITS (end‑to‑end TTS with adversarial training and variational inference).
+- Variants: grapheme vs. phoneme input; with and without cross‑lingual pretraining on French.
+- Training schedule: pretrain on French (~3,000 epochs), then fine‑tune on Walloon (~2,000 epochs) with separate runs for male/female.
+- Hardware: NVIDIA Tesla V100 (32 GB); ~1 day per 800–1,000 epochs depending on variant.
+
+### Text Processing & G2P
+- Normalize casing, punctuation, and whitespace; conservative sentence splitting.
+- Rule‑based G2P maps Walloon orthography to phonemes; reduces spelling variation and stabilizes alignment.
+- Both pipelines (grapheme and phoneme) are trained to compare robustness vs. simplicity.
+
+## Evaluation
+- Objective: PESQ, SECS, and MCD computed with DTW alignment; UTMOSv2 for automatic MOS prediction.
+- Perceptual: MOS listening tests with Walloon speakers.
+- Uncertainty: 95% confidence intervals via bootstrap resampling on held‑out test sets.
+
+## Results
+- Cross‑lingual pretraining is most beneficial for the small female dataset, improving perceived quality.
+- Male models are consistently strong; grapheme vs. phoneme differences are modest on the larger male set.
+- Objective metrics mirror perceptual trends, though intervals are wider for the small female set.
+- Limitations: pause timing and prosody control remain the main areas for improvement.
+
+## What I Did
+- Built the corpus pipeline (segmentation, normalization) and a rule‑based Walloon G2P.
+- Implemented training for all ablations (grapheme/phoneme; with/without French pretraining).
+- Ran objective metrics and designed MOS perceptual tests; analyzed errors (pauses, prosody).
+- Packaged inference and documentation for non‑research users; prepared the SSW13 paper.
+
+## Tech Stack
+- PyTorch; VITS
+- Python tooling for data prep and metrics; plotting for analysis
+- (Public artifacts per paper link)
+
+## What’s Next
+- Better pause/prosody modeling; light‑weight controls at inference.
+- Multi‑speaker extension and speaker adaptation.
+- Targeted data collection and alignment, especially for female voices.
+
+## Key Takeaways (Plain English)
+- Start from a related, high‑resource language (French), then adapt to Walloon.
+- When data is tiny, phonemization and pretraining help stabilize training.
+- Measure both automatic metrics and human ratings; report confidence intervals.
+

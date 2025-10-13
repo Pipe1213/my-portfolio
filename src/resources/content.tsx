@@ -40,9 +40,9 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>LLM apps and speech systems</>,
+  title: `${person.name} — LLMs, GenAI & Agents`,
+  description: `AI Engineer with hands-on experience building LLM-powered applications. Developed and delivered a production-ready SQL Agent using LangChain and RAG, and pioneered the first TTS system for the Walloon language. Skilled in bridging advanced research with practical implementation.`,
+  headline: <>LLMs • GenAI • Agents</>,
   featured: {
     display: false,
     title: (
@@ -56,7 +56,7 @@ const home: Home = {
     ),
     href: "/projects",
   },
-  subline: (<>AI Engineer building LLM-powered applications. Built a production SQL Agent and the first Walloon TTS system.</>),
+  subline: (<>AI Engineer with hands-on experience building LLM-powered applications. Developed and delivered a production-ready SQL Agent using LangChain and RAG, and pioneered the first TTS system for the Walloon language. Skilled in bridging advanced research with practical implementation.</>),
 };
 
 const about: About = {

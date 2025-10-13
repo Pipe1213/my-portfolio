@@ -10,19 +10,81 @@ images:
 link: "/contact"
 ---
 
-**Goal.** Help analysts query internal datasets using natural language, safely and efficiently.
+## Overview
+Analysts ask questions in plain language and receive correct, auditable answers backed by SQL. I designed and delivered a modular, planning‑first agent that turns requests into executable queries, validates and runs them against an Oracle data sandbox, and presents results as text, tables, or charts. The system favors reliability, traceability, and low latency over free‑form agent wandering.
 
-**What I built**
-- **Plan/Execute agent** (ReWoo-style planning) that decomposes requests and selects tools.
-- **RAG over Oracle schemas** with table summaries, column descriptions, and example rows (Chroma).
-- **Example retrieval** to guide few-shot SQL generation.
-- **Evaluation harness**: label-free production checks + bootstrap confidence intervals; trace analysis.
+## Problem
+Writing SQL requires deep schema knowledge and internal naming context. Comments are often sparse; identifiers can be cryptic, and examples live in scattered notebooks. This raises the barrier for non‑experts and slows everyone down. The goal was to enable safe, explainable NL→SQL without hand‑holding or static prompt hacks.
 
-**Stack**
-- LangGraph, LangChain, Oracle SQL, Python
-- ChromaDB (schema & example store), BM25 + embeddings
-- Streamlit UI; telemetry & traces
+## Approach in Brief
+- Planning‑centric agent: a single reasoning step creates a structured plan; deterministic tools execute it.
+- Retrieval‑augmented context: table selection + rich schema packs + real example rows.
+- Example grounding: pull previously validated NL/SQL pairs to regularize generations.
+- Tight feedback loop: validate SQL, catch execution errors, and synthesize concise answers.
+- Full traceability: every decision, tool input/output, and result is logged for review.
 
-**Takeaways**
-- Retrieval quality (schema + examples) drives SQL accuracy more than raw LLM size.
-- Divide-and-conquer + explicit reasoning steps reduce invalid SQL by a large margin.
+## Architecture
+### 1) Planner (ReWoo‑style)
+A reasoning‑capable model produces a typed plan describing which tools to call, with which parameters and in what order. The plan is Pydantic‑validated, making execution predictable and debuggable.
+
+### 2) Retrieval Tools
+- Table schema retriever (two‑stage):
+  - Short table summaries help select candidates despite sparse or noisy comments.
+  - For each candidate: full schema, comments, improved descriptions, and five sample rows are bundled into a compact “schema pack”.
+- Good‑known examples retriever: returns the top‑k vetted NL↔SQL pairs from a vector store to guide few‑shot SQL generation.
+- Data referential search: integrates a Redis‑backed internal service for fast, accurate product/entity lookups when queries involve tickers, codes, or aliases.
+
+### 3) SQL Generation and Safety
+The agent composes candidate SQL with explicit constraints (selected tables/columns only, consistent aliases, limit safeguards). It validates syntax and attempts dry‑runs where possible, surfacing errors early with actionable fixes.
+
+### 4) Execution and Answering
+Queries run against a developer‑safe Oracle environment. A dedicated “organizer” model composes the final user‑facing answer from only the relevant tool outputs, reducing token noise. Results are returned as text, tables, or Plotly charts when helpful.
+
+### 5) Telemetry and Evaluation
+All planner decisions, tool I/O, queries, and answers are logged for trace analysis. The evaluation harness exercises representative query types (simple lookups, joins, aggregations, time windows), measuring validity, latency, and cost. Failures are categorized (retrieval gaps, planner misuse, executor errors) to drive targeted fixes.
+
+## Technologies
+- LangGraph, LangChain, Python
+- Oracle SQL; Redis service for referential data; vector store for examples
+- Streamlit UI; LangSmith‑style tracing and metrics
+
+## Results
+- Robust on everyday analytics tasks: selection, joins, filters, date windows, and aggregates.
+- Lower latency and cost by consolidating reasoning into one plan step, then running deterministic tools.
+- Marked drop in invalid SQL after introducing schema packs and example retrieval; easier post‑hoc debugging thanks to typed plans and traces.
+
+## What I Did
+- Designed the planning‑first agent and implemented all core tools (schema/metadata retrieval, example retrieval, referential search, SQL generation/validation/execution, answer organizer).
+- Built the Streamlit UI and trace‑aware evaluation harness.
+- Tuned prompts and safety constraints; added fallbacks and error surfacing for faster iteration by data teams.
+
+## What’s Next
+- Expand vetted examples and add permission‑aware retrieval.
+- Introduce execution‑time feedback loops (e.g., automatic fix‑and‑retry with constraints).
+- Curate a fine‑tuning set from successful traces to improve controllability.
+
+## Recent Upgrades (Final Version)
+Drawing from the latest iteration, the system now includes these improvements:
+
+### Hybrid Table Search (BM25 + Semantic + RRF)
+- Query transformation produces two views of the question: a normalized NL form and a keyword‑oriented form.
+- Runs both BM25 keyword search and embedding‑based semantic search over table descriptions and schema notes.
+- Fuses rankings using Reciprocal Rank Fusion (RRF) to balance lexical and semantic relevance, improving recall on cryptic financial schemas.
+- Caches BM25 indices for speed and gracefully falls back to semantic‑only if needed.
+
+### Visualization Tool (Reliable Plotly Generation)
+- Analyzes returned data (columns, types, row counts) to suggest a suitable plot type (line, bar, scatter, histogram).
+- Uses specialized prompts per chart type to generate clean, minimal Plotly code.
+- Executes code in a controlled environment (no unsafe exec), validates figures, and falls back to safe defaults on errors.
+- Returns both the figure and the code so users can iterate.
+
+### Streamlit UI and SQL Query Sidebar
+- Modernized UI with clearer layout and responsive design.
+- Left sidebar tracks all generated SQL queries with timestamps and copy‑to‑clipboard.
+- Control panel for conversation management (new chat, examples toggle, basic stats), plus connection status indicators.
+- Dedicated management pages for table schemas, table descriptions, and example pairs with improved validation and feedback.
+
+### Why It Matters
+- Hybrid search finds the right tables even when names are opaque and comments are sparse.
+- Safer visualization yields professional charts consistently, without crashes from malformed code.
+- The UI makes SQL transparent: users see and reuse the exact queries behind answers.
