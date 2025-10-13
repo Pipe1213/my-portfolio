@@ -12,7 +12,7 @@ import {
   Schema,
   Row,
 } from "@once-ui-system/core";
-import { baseURL, about, person, social } from "@/resources";
+import { baseURL, about, person, social, projects, experience } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
@@ -49,11 +49,7 @@ export default function About() {
       display: about.technical.display,
       items: about.technical.skills.map((skill) => skill.title),
     },
-    {
-      title: "Languages",
-      display: !!(person.languages && person.languages.length > 0),
-      items: person.languages || [],
-    },
+    // Languages are shown under the avatar; omit from Table of Contents
   ];
   return (
     <Column maxWidth="m">
@@ -305,8 +301,8 @@ export default function About() {
                 {about.technical.title}
               </Heading>
               <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
+                {about.technical.skills.map((skill) => (
+                  <Column key={skill.title} fillWidth gap="4">
                     <Text id={skill.title} variant="heading-strong-l">
                       {skill.title}
                     </Text>
@@ -345,6 +341,15 @@ export default function About() {
                     )}
                   </Column>
                 ))}
+                {/* Quick links to projects and experience */}
+                <Row paddingTop="32" gap="8">
+                  <Button href={projects.path} prefixIcon="grid" variant="secondary" size="s">
+                    {projects.label}
+                  </Button>
+                  <Button href={experience.path} prefixIcon="rocket" variant="secondary" size="s">
+                    {experience.label}
+                  </Button>
+                </Row>
               </Column>
             </>
           )}
