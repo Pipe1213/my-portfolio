@@ -164,33 +164,34 @@ export default function About() {
                 fitWidth
                 data-border="rounded"
               >
-                {social.map(
-                  (item) =>
-                    item.link && (
-                      <React.Fragment key={item.name}>
-                        <Row s={{ hide: true }}>
-                          <Button
-                            key={item.name}
-                            href={item.link}
-                            prefixIcon={item.icon}
-                            label={item.name}
-                            size="s"
-                            weight="default"
-                            variant="secondary"
-                          />
-                        </Row>
-                        <Row hide s={{ hide: false }}>
-                          <IconButton
-                            size="l"
-                            key={`${item.name}-icon`}
-                            href={item.link}
-                            icon={item.icon}
-                            variant="secondary"
-                          />
-                        </Row>
-                      </React.Fragment>
-                    ),
-                )}
+                <Row s={{ hide: true }}>
+                  {social
+                    .filter((item) => !!item.link)
+                    .map((item) => (
+                      <Button
+                        key={`btn-${item.name}`}
+                        href={item.link}
+                        prefixIcon={item.icon}
+                        label={item.name}
+                        size="s"
+                        weight="default"
+                        variant="secondary"
+                      />
+                    ))}
+                </Row>
+                <Row hide s={{ hide: false }}>
+                  {social
+                    .filter((item) => !!item.link)
+                    .map((item) => (
+                      <IconButton
+                        key={`icon-${item.name}`}
+                        size="l"
+                        href={item.link}
+                        icon={item.icon}
+                        variant="secondary"
+                      />
+                    ))}
+                </Row>
                 <Row>
                   <Button
                     size="s"

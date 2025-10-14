@@ -41,6 +41,7 @@ First text-to-speech (TTS) system for Walloon, an under‑resourced minority lan
 - Uncertainty: 95% confidence intervals via bootstrap resampling on held‑out test sets.
 
 ## Results
+- Best configuration reached a **MOS of 4.22** (95% CI via bootstrap).
 - Cross‑lingual pretraining is most beneficial for the small female dataset, improving perceived quality.
 - Male models are consistently strong; grapheme vs. phoneme differences are modest on the larger male set.
 - Objective metrics mirror perceptual trends, though intervals are wider for the small female set.
@@ -57,6 +58,9 @@ First text-to-speech (TTS) system for Walloon, an under‑resourced minority lan
 - Python tooling for data prep and metrics; plotting for analysis
 - (Public artifacts per paper link)
 
+## Resources
+- Models, demos, and inference scripts released on Hugging Face.
+
 ## What’s Next
 - Better pause/prosody modeling; light‑weight controls at inference.
 - Multi‑speaker extension and speaker adaptation.
@@ -66,4 +70,3 @@ First text-to-speech (TTS) system for Walloon, an under‑resourced minority lan
 - Start from a related, high‑resource language (French), then adapt to Walloon.
 - When data is tiny, phonemization and pretraining help stabilize training.
 - Measure both automatic metrics and human ratings; report confidence intervals.
-

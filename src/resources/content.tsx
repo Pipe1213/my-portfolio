@@ -41,7 +41,7 @@ const home: Home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name} — LLMs, GenAI & Agents`,
-  description: `AI Engineer with hands-on experience building LLM-powered applications. Developed and delivered a production-ready SQL Agent using LangChain and RAG, and pioneered the first TTS system for the Walloon language. Skilled in bridging advanced research with practical implementation.`,
+  description: `AI Engineer with expertise in agentic, retrieval-augmented, and LLM-powered systems. Built a functional SQL Agent prototype at CFM (LangChain/LangGraph, hybrid retrieval) and developed the first Walloon TTS system published at SSW13.`,
   headline: <>LLMs • GenAI • Agents</>,
   featured: {
     display: false,
@@ -56,7 +56,7 @@ const home: Home = {
     ),
     href: "/projects",
   },
-  subline: (<>AI Engineer with hands-on experience building LLM-powered applications. Developed and delivered a production-ready SQL Agent using LangChain and RAG, and pioneered the first TTS system for the Walloon language. Skilled in bridging advanced research with practical implementation.</>),
+  subline: (<>AI Engineer with expertise in agentic, retrieval-augmented, and LLM-powered systems. Built a functional SQL Agent prototype at CFM (LangChain/LangGraph, hybrid retrieval) and developed the first Walloon TTS system published at SSW13.</>),
 };
 
 const about: About = {
@@ -79,7 +79,7 @@ const about: About = {
     display: true,
     title: "Introduction",
     description: (
-      <>AI Engineer with hands-on experience building LLM-powered applications. Developed a production-ready SQL Agent using LangChain and RAG, and pioneered the first TTS system for the Walloon language. Skilled in bridging advanced research with practical implementation.</>
+      <>AI Engineer with expertise in agentic, retrieval-augmented, and LLM-powered systems. Developed a functional SQL Agent prototype at CFM using LangChain and LangGraph for natural-language data querying. Also developed the first Walloon TTS system published at SSW 2025, applying generative AI to solve real data challenges.</>
     ),
   },
   work: {
@@ -147,28 +147,22 @@ const about: About = {
     title: "Skills",
     skills: [
       {
-        title: "LLM Integration & Agents",
+        title: "Programming & Databases",
+        description: (<>Python, SQL, Oracle, Redis, ChromaDB</>),
+      },
+      {
+        title: "AI & GenAI Frameworks",
         description: (
-          <>LangChain, LangGraph; multi-step planning; evaluation and robustness.</>
+          <>PyTorch, LangChain, LangGraph, Transformers, Hugging Face, Scikit-learn, Pandas, NumPy, Matplotlib, Deep Learning, Generative AI, Agent Architectures, RAG, Hybrid Search, Fine-tuning, Prompt Engineering, Vector Databases, Model Deployment</>
         ),
       },
       {
-        title: "RAG & Databases",
-        description: (
-          <>RAG pipelines; Oracle SQL; vector stores (Chroma, Redis); schema enrichment.</>
-        ),
+        title: "Tools & Platforms",
+        description: (<>Git, Docker, Slurm, AWS, Streamlit, Jupyter, Confluence, Jira</>),
       },
       {
-        title: "TTS & Speech",
-        description: (
-          <>Walloon TTS; CVAE; cross-lingual transfer; MOS/bootstrap analysis.</>
-        ),
-      },
-      {
-        title: "Frameworks & Tools",
-        description: (
-          <>PyTorch, Python; Docker, Git; Streamlit; AWS; Jupyter.</>
-        ),
+        title: "Soft Skills",
+        description: (<>Analytical Thinking, Problem Solving, Teamwork, Communication, Adaptability, Autonomy</>),
       },
     ],
   },
