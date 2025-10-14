@@ -53,6 +53,10 @@ All planner decisions, tool I/O, queries, and answers are logged for trace analy
 - Lower latency and cost by consolidating reasoning into one plan step, then running deterministic tools.
 - Marked drop in invalid SQL after introducing schema packs and example retrieval; easier post‑hoc debugging thanks to typed plans and traces.
 
+### Performance & Accuracy
+- Internal evaluation (co-designed with the data team) reached **88% answer accuracy**.
+- Table selection achieved **93% correct retrieval**, driven by hybrid BM25 + embeddings with **RRF** fusion.
+
 ## What I Did
 - Designed the planning‑first agent and implemented all core tools (schema/metadata retrieval, example retrieval, referential search, SQL generation/validation/execution, answer organizer).
 - Built the Streamlit UI and trace‑aware evaluation harness.
