@@ -1,0 +1,43 @@
+---
+title: "Structure-from-Motion (SfM) 3D Reconstruction"
+publishedAt: "2024-03-01"
+tags: ["Computer Vision", "3D", "SfM"]
+links:
+  - { label: "GitHub", href: "https://github.com/Biruk-Abere/3D-reconstruction-from-multi-view-images/tree/main" }
+  - { label: "Report (PDF)", href: "/sfm.pdf" }
+summary: "Built a full SfM pipeline from scratch using SIFT, FLANN, PnP, and bundle adjustment to reconstruct 3D scenes from 2D images. Gained hands-on experience with epipolar geometry, camera calibration, and 3D vision fundamentals. Tech: Python, OpenCV, NumPy, Matplotlib"
+images:
+  - "/images/sfm.jpg"
+link: "https://github.com/Biruk-Abere/3D-reconstruction-from-multi-view-images/tree/main"
+---
+
+## Goal
+Develop a complete Structure-from-Motion (SfM) pipeline capable of reconstructing accurate 3D scenes from multiple 2D RGB images. The project focused on understanding the geometry and optimization behind multi-view reconstruction without relying on pre-built libraries like COLMAP.
+
+## Overview
+This project implemented a full computer-vision workflow for 3D scene reconstruction, starting from keypoint detection and feature matching to camera pose estimation and 3D triangulation. The pipeline demonstrates the geometric principles that underlie modern 3D reconstruction systems used in robotics, AR/VR, and visual mapping.
+
+## Approach
+
+- Implemented SIFT feature detection and description to extract keypoints from multiple overlapping images.
+- Used FLANN (Fast Library for Approximate Nearest Neighbors) for robust feature matching between image pairs.
+- Estimated the Essential Matrix and recovered camera poses using RANSAC and Perspective-n-Point (PnP) algorithms.
+- Triangulated 3D points from matched 2D correspondences and optimized the reconstruction through bundle adjustment.
+- Visualized camera positions and reconstructed point clouds using OpenCV, Matplotlib, and NumPy.
+- Collaborated in a small research team, contributing to algorithm design, evaluation, and report documentation.
+
+## Results & Impact
+
+- Successfully reconstructed 3D structures from real-world image sequences.
+- Gained practical understanding of epipolar geometry, camera calibration, and multi-view optimization.
+- Provided a clear, reproducible example of a low-level SfM pipeline for educational and research purposes.
+
+## Tech Stack
+Python, OpenCV, NumPy, Matplotlib, FLANN, RANSAC, PnP, SIFT, Bundle Adjustment
+
+## Keywords
+Structure from Motion, 3D Reconstruction, Computer Vision, Epipolar Geometry, Camera Pose Estimation
+
+---
+
+[Download the project report (PDF)](/sfm.pdf)

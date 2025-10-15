@@ -1,19 +1,39 @@
 ---
-title: "VITS Tutorial"
+title: "VITS Training Tutorial"
 publishedAt: "2024-12-10"
 tags: ["VITS", "Tutorial", "TTS"]
 links:
   - { label: "GitHub", href: "https://github.com/Pipe1213/VITS_Tutorial" }
-summary: "Step-by-step guide to train VITS from scratch and run inference. Clear code and comments."
+summary: "Built a complete training pipeline for VITS, combining variational autoencoding, adversarial learning, and normalizing flows for high-quality speech synthesis. Published models and training guide on Hugging Face for open research. Tech: Python, PyTorch, Hugging Face, Cython, Jupyter"
 images:
   - "/images/vits-tutorial-cover.jpg"
 link: "https://github.com/Pipe1213/VITS_Tutorial"
 ---
 
-**What’s inside**
-- Dataset prep, config files, and training loop.
-- Inference scripts and audio generation examples.
-- Tips to avoid OOM and stabilize training on small GPUs.
+## Goal
+Train and document a full VITS (Variational Inference Text-to-Speech) model from scratch using custom datasets, enabling others to reproduce high-quality speech synthesis with minimal setup. The focus was on understanding and extending the VITS architecture to new datasets and languages.
 
-**Good for**
-- Students and newcomers who want a clean, minimal TTS starting point.
+## Overview
+This project provides a complete step-by-step training pipeline for VITS, a state-of-the-art end-to-end speech synthesis model that unifies variational autoencoding, adversarial training, and normalizing flows. It guides users through dataset preparation, model configuration, and training procedures — from preprocessing text and phonemes to generating final audio outputs.
+
+## Approach
+
+- Implemented a reproducible training workflow using Python and PyTorch, including custom preprocessing routines for dataset normalization, phoneme extraction, and alignment.
+- Built Monotonic Alignment Search with Cython to improve text-audio alignment efficiency and stability.
+- Configured training for both single-speaker (LJ Speech) and multi-speaker (VCTK) datasets, adapting configuration files and speaker embeddings.
+- Designed clear dataset-formatting rules, allowing easy adaptation to any language or corpus.
+- Integrated Hugging Face Transformers for tokenization and phoneme handling, enabling multilingual flexibility.
+- Provided inference scripts and notebooks to generate audio directly from text once models are trained.
+
+## Results & Impact
+
+- Trained multiple VITS configurations achieving natural and expressive TTS quality.
+- Released a public repository with clear documentation for training, evaluation, and inference, helping others reproduce or adapt VITS to their data.
+- Provided trained model checkpoints and inference demos on Hugging Face for open research access.
+
+## Tech Stack
+Python • PyTorch • Hugging Face Transformers • NumPy • Matplotlib • Cython • Jupyter
+
+## Keywords
+Text-to-Speech • VITS • Generative Models • Variational Autoencoding • Adversarial Training • Speech Synthesis • PyTorch
+
