@@ -30,6 +30,11 @@ const social: Social = [
     link: "https://linkedin.com/in/felipe-espinosa13",
   },
   {
+    name: "Hugging Face",
+    icon: "huggingface",
+    link: "https://huggingface.co/Pipe1213",
+  },
+  {
     name: "Email",
     icon: "email",
     link: `mailto:${person.email}`,
@@ -72,7 +77,7 @@ const about: About = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
   intro: {
@@ -81,18 +86,10 @@ const about: About = {
     description: (
       <>
         <p>
-          Hey 👋 I’m Felipe, an AI Engineer based in Paris, France, passionate about creating
-          intelligent systems that blend reasoning, retrieval, and generative capabilities. I’m
-          especially interested in how Generative AI and large language models can transform the way
-          we interact with data, making complex information easier to understand and use. I enjoy
-          connecting research with practical solutions and staying curious about the fast-evolving AI
-          landscape.
+          Hey  I’m Felipe, an AI Engineer based in Paris, France, passionate about creating intelligent systems that blend reasoning, retrieval, and generative capabilities. I’m especially interested in how Generative AI and large language models can make complex information easier to access and understand. I also have experience working on Text-to-Speech systems, exploring how generative models can bring new voices and languages to life.
         </p>
         <p>
-          Outside of work, I love traveling, exercising, and learning new things — whether that’s
-          exploring a new place, reading about the latest in AI, or picking up new tools to keep my
-          skills sharp. I’m always looking for ways to grow, stay inspired, and turn new ideas into
-          something meaningful.
+          Outside of work, I love traveling, exercising, music, and learning new things, whether that’s exploring a new place, reading about the latest in AI, or picking up new tools to keep my skills sharp. I’m always looking for ways to grow, stay inspired, and turn new ideas into something meaningful.
         </p>
       </>
     ),

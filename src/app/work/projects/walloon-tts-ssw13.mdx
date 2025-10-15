@@ -4,7 +4,7 @@ publishedAt: "2025-08-01"
 tags: ["VITS", "Speech", "Research"]
 links:
   - { label: "Paper", href: "https://www.isca-archive.org/ssw_2025/orjuela25_ssw.pdf" }
-summary: "VITS-based TTS for Walloon with cross-lingual transfer, objective metrics, and MOS bootstrap analysis. Accepted at SSW13."
+summary: "Developed the first Text-to-Speech system for the Walloon language using VITS and cross-lingual transfer learning from French. The model achieved natural speech quality (MOS 4.22) and was published at SSW 2025, advancing research on low-resource generative speech models. Tech: Python, PyTorch, VITS, Hugging Face, NumPy, Matplotlib"
 images:
   - "/images/tts-cover.jpg"
 link: "https://www.isca-archive.org/ssw_2025/orjuela25_ssw.pdf"
@@ -56,7 +56,7 @@ First text-to-speech (TTS) system for Walloon, an under‑resourced minority lan
 ## Tech Stack
 - PyTorch; VITS
 - Python tooling for data prep and metrics; plotting for analysis
-- (Public artifacts per paper link)
+ 
 
 ## Resources
 - Models, demos, and inference scripts released on Hugging Face.
@@ -66,7 +66,11 @@ First text-to-speech (TTS) system for Walloon, an under‑resourced minority lan
 - Multi‑speaker extension and speaker adaptation.
 - Targeted data collection and alignment, especially for female voices.
 
-## Key Takeaways (Plain English)
+## Key Takeaways
 - Start from a related, high‑resource language (French), then adapt to Walloon.
 - When data is tiny, phonemization and pretraining help stabilize training.
 - Measure both automatic metrics and human ratings; report confidence intervals.
+
+## Links
+- Paper: https://www.isca-archive.org/ssw_2025/orjuela25_ssw.pdf
+- Models: https://huggingface.co/Pipe1213

@@ -16,6 +16,9 @@ export function Projects({ range, exclude }: ProjectsProps) {
   }
 
   const sortedProjects = allProjects.sort((a, b) => {
+    const orderA = (a.metadata as any).order ?? 0;
+    const orderB = (b.metadata as any).order ?? 0;
+    if (orderA !== orderB) return orderA - orderB;
     return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
   });
 

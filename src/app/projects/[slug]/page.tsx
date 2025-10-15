@@ -4,15 +4,18 @@ import {
   Meta,
   Schema,
   AvatarGroup,
+  Button,
   Column,
+  Flex,
   Heading,
   Media,
   Text,
   SmartLink,
   Row,
+  Avatar,
   Line,
 } from "@once-ui-system/core";
-import { baseURL, about, person, projects as projectsConfig } from "@/resources";
+import { baseURL, about, person, projects } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
@@ -45,7 +48,7 @@ export async function generateMetadata({
     description: post.metadata.summary,
     baseURL: baseURL,
     image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
-    path: `${projectsConfig.path}/${post.slug}`,
+    path: `${projects.path}/${post.slug}`,
   });
 }
 
@@ -75,7 +78,7 @@ export default async function Project({
       <Schema
         as="blogPosting"
         baseURL={baseURL}
-        path={`${projectsConfig.path}/${post.slug}`}
+        path={`${projects.path}/${post.slug}`}
         title={post.metadata.title}
         description={post.metadata.summary}
         datePublished={post.metadata.publishedAt}
@@ -116,7 +119,16 @@ export default async function Project({
         </Row>
       </Row>
       {post.metadata.images.length > 0 && (
-        <Media priority aspectRatio="16 / 9" radius="m" alt="image" src={post.metadata.images[0]} />
+        <Column maxWidth="s" horizontal="center">
+          <Media
+            priority
+            aspectRatio="16 / 9"
+            radius="m"
+            alt="image"
+            sizes="(max-width: 800px) 100vw, 800px"
+            src={post.metadata.images[0]}
+          />
+        </Column>
       )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <CustomMDX source={post.content} />
@@ -132,4 +144,3 @@ export default async function Project({
     </Column>
   );
 }
-
