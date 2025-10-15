@@ -1,4 +1,4 @@
-import { Column, Heading, Meta, Schema, Text } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, Text, Row, Button } from "@once-ui-system/core";
 import { baseURL, person, experience as experienceConfig, about } from "@/resources";
 
 export async function generateMetadata() {
@@ -45,6 +45,11 @@ export default function Experience() {
             <Text as="li" variant="body-default-m">Delivered the complete solution: retrieval modules, validation tools, an <strong>evaluation pipeline</strong>, and a <strong>Streamlit</strong> interface adopted by internal analysts.</Text>
             <Text as="li" variant="body-default-m">Shipped a <strong>functional prototype</strong> that now serves as a foundation for future <strong>LLM-based</strong> automation tools.</Text>
           </Column>
+          <Row paddingTop="8">
+            <Button variant="secondary" prefixIcon="openLink" href="/projects/sql-agent-cfm">
+              View project
+            </Button>
+          </Row>
         </Column>
 
         <Column gap="8">
@@ -59,6 +64,11 @@ export default function Experience() {
             <Text as="li" variant="body-default-m">Published results at the <strong>13th Speech Synthesis Workshop (SSW 2025)</strong>, highlighting cross-lingual transfer strategies for low-resource <strong>TTS</strong>.</Text>
             <Text as="li" variant="body-default-m">Released trained models, demos, and inference scripts publicly on <strong>Hugging Face</strong> to support open research and community use.</Text>
           </Column>
+          <Row paddingTop="8">
+            <Button variant="secondary" prefixIcon="openLink" href="/projects/walloon-tts-ssw13">
+              View project
+            </Button>
+          </Row>
         </Column>
       </Column>
     </Column>
