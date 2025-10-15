@@ -79,7 +79,22 @@ const about: About = {
     display: true,
     title: "Introduction",
     description: (
-      <>AI Engineer with expertise in agentic, retrieval-augmented, and LLM-powered systems. Developed a functional SQL Agent prototype at CFM using LangChain and LangGraph for natural-language data querying. Also developed the first Walloon TTS system published at SSW 2025, applying generative AI to solve real data challenges.</>
+      <>
+        <p>
+          Hey 👋 I’m Felipe, an AI Engineer based in Paris, France, passionate about creating
+          intelligent systems that blend reasoning, retrieval, and generative capabilities. I’m
+          especially interested in how Generative AI and large language models can transform the way
+          we interact with data, making complex information easier to understand and use. I enjoy
+          connecting research with practical solutions and staying curious about the fast-evolving AI
+          landscape.
+        </p>
+        <p>
+          Outside of work, I love traveling, exercising, and learning new things — whether that’s
+          exploring a new place, reading about the latest in AI, or picking up new tools to keep my
+          skills sharp. I’m always looking for ways to grow, stay inspired, and turn new ideas into
+          something meaningful.
+        </p>
+      </>
     ),
   },
   work: {
@@ -151,9 +166,9 @@ const about: About = {
         description: (<>Python, SQL, Oracle, Redis, ChromaDB</>),
       },
       {
-        title: "AI & GenAI Frameworks",
+        title: "AI & ML Frameworks",
         description: (
-          <>PyTorch, LangChain, LangGraph, Transformers, Hugging Face, Scikit-learn, Pandas, NumPy, Matplotlib, Deep Learning, Generative AI, Agent Architectures, RAG, Hybrid Search, Fine-tuning, Prompt Engineering, Vector Databases, Model Deployment</>
+          <>PyTorch, LangChain, LangGraph, Transformers, Hugging Face, Scikit-learn, Pandas, OpenCV, NumPy, Matplotlib, Deep Learning, Generative AI, Agent Architectures, RAG, Hybrid Search, Fine-tuning, Prompt Engineering, Vector Databases, Model Deployment</>
         ),
       },
       {
@@ -164,6 +179,7 @@ const about: About = {
         title: "Soft Skills",
         description: (<>Analytical Thinking, Problem Solving, Teamwork, Communication, Adaptability, Autonomy</>),
       },
+
     ],
   },
 };
