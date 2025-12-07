@@ -47,7 +47,7 @@ const home: Home = {
   label: "Home",
   title: `${person.name} — LLMs, GenAI & Agents`,
   description: `AI Engineer with expertise in agentic, retrieval-augmented, and LLM-powered systems. Built a functional SQL Agent prototype at CFM (LangChain/LangGraph, hybrid retrieval) and developed the first Walloon TTS system published at SSW13.`,
-  headline: <>LLMs • GenAI • Agents</>,
+  headline: <>LLM Agents • RAG • Applied GenAI</>,
   featured: {
     display: false,
     title: (
@@ -61,7 +61,7 @@ const home: Home = {
     ),
     href: "/projects",
   },
-  subline: (<>AI/ML Engineer with expertise in agentic, retrieval-augmented, and LLM-powered systems. Built a functional SQL Agent prototype at CFM (LangChain/LangGraph, hybrid retrieval) and developed the first Walloon TTS system published at SSW13.</>),
+  subline: (<>I like turning research ideas into working systems: agents that can use tools and data, and generative models that create things like speech. Most of my work sits between engineering and applied research, shipping prototypes, measuring what works, and iterating fast. Take a look around.</>),
 };
 
 const about: About = {
@@ -159,24 +159,19 @@ const about: About = {
     title: "Skills",
     skills: [
       {
-        title: "Programming & Databases",
-        description: (<>Python, SQL, Oracle, Redis, ChromaDB</>),
+        title: "Programming",
+        description: (<>Python, SQL, Bash</>),
       },
       {
-        title: "AI & ML Frameworks",
+        title: "Machine Learning",
         description: (
-          <>PyTorch, LangChain, LangGraph, Transformers, Hugging Face, Scikit-learn, Pandas, OpenCV, NumPy, Matplotlib, Deep Learning, Generative AI, Agent Architectures, RAG, Hybrid Search, Fine-tuning, Prompt Engineering, Vector Databases, Model Deployment</>
+          <>PyTorch, TensorFlow, Scikit-learn, Pandas, Matplotlib, NumPy, Transformers (HF), Jupyter</>
         ),
       },
       {
         title: "Tools & Platforms",
-        description: (<>Git, Docker, Slurm, AWS, Streamlit, Jupyter, Confluence, Jira</>),
+        description: (<>LangChain, LangGraph, Docker, Git, Slurm, Linux, Streamlit, OpenCV, ChromaDB, Redis</>),
       },
-      {
-        title: "Soft Skills",
-        description: (<>Analytical Thinking, Problem Solving, Teamwork, Communication, Adaptability, Autonomy</>),
-      },
-
     ],
   },
 };

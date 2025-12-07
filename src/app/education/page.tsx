@@ -34,7 +34,7 @@ export default function Education() {
       <Column gap="24">
         <Column gap="8">
           <Heading as="h2" variant="heading-strong-l">Paris-Saclay University</Heading>
-          <Text variant="body-default-s" onBackground="neutral-weak">Master’s in Artificial Intelligence — Sep 2023 – Sep 2025</Text>
+          <Text variant="body-default-s" onBackground="neutral-weak">Master of Science in Computer Science- Artificial Intelligence Track — Sep 2023 – Sep 2025 — Grade: 16.2/20</Text>
         </Column>
         <Column gap="8">
           <Heading as="h2" variant="heading-strong-l">Lloyds International College</Heading>
@@ -42,7 +42,7 @@ export default function Education() {
         </Column>
         <Column gap="8">
           <Heading as="h2" variant="heading-strong-l">Universidad Industrial de Santander</Heading>
-          <Text variant="body-default-s" onBackground="neutral-weak">B.Sc. in Electronic Engineering — Apr 2010 – Dec 2016</Text>
+          <Text variant="body-default-s" onBackground="neutral-weak">Bachelor of Science (B.Sc.) in Electronic Engineering — Apr 2010 – Dec 2016 — Grade: 3.9/5.0</Text>
         </Column>
       </Column>
     </Column>
