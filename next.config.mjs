@@ -9,6 +9,7 @@ const withMDX = mdx({
 const nextConfig = {
   pageExtensions: ["ts", "tsx", "md", "mdx"],
   transpilePackages: ["next-mdx-remote"],
+  output: "standalone",
   eslint: {
     // Avoid blocking builds on ESLint configuration issues in CI
     ignoreDuringBuilds: true,
@@ -25,6 +26,9 @@ const nextConfig = {
   sassOptions: {
     compiler: "modern",
     silenceDeprecations: ["legacy-js-api"],
+  },
+  experimental: {
+    optimizePackageImports: ["react-icons"],
   },
 };
 

@@ -22,6 +22,7 @@ type Metadata = {
 };
 
 import { notFound } from "next/navigation";
+import { cache } from "react";
 
 function getMDXFiles(dir: string) {
   if (!fs.existsSync(dir)) {
@@ -68,7 +69,7 @@ function getMDXData(dir: string) {
   });
 }
 
-export function getPosts(customPath = ["", "", "", ""]) {
+export const getPosts = cache((customPath = ["", "", "", ""]) => {
   const postsDir = path.join(process.cwd(), ...customPath);
   return getMDXData(postsDir);
-}
+});
