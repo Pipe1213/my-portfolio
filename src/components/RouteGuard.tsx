@@ -18,6 +18,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
   const [loading, setLoading] = useState(true);
+  const hasProtectedRoutes = Object.keys(protectedRoutes).length > 0;
 
   useEffect(() => {
     const performChecks = async () => {
@@ -46,6 +47,11 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       const routeEnabled = checkRouteEnabled();
       setIsRouteEnabled(routeEnabled);
 
+      if (!hasProtectedRoutes) {
+        setLoading(false);
+        return;
+      }
+
       if (protectedRoutes[pathname as keyof typeof protectedRoutes]) {
         setIsPasswordRequired(true);
 
@@ -59,7 +65,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
     };
 
     performChecks();
-  }, [pathname]);
+  }, [hasProtectedRoutes, pathname]);
 
   const handlePasswordSubmit = async () => {
     const response = await fetch("/api/authenticate", {
