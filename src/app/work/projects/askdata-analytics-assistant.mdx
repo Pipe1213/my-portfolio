@@ -1,0 +1,48 @@
+---
+title: "AskData: Analytics Assistant"
+publishedAt: "2026-01-01"
+order: 1
+tags: ["FastAPI", "Next.js", "PostgreSQL", "RAG", "SQL Safety"]
+links:
+  - { label: "GitHub", href: "https://github.com/Pipe1213/AskData" }
+summary: "Built a full-stack analytics assistant for querying PostgreSQL data in plain English, combining FastAPI, Next.js, schema-aware retrieval, SQL validation, retry/repair handling, CI-backed tests, and benchmarked examples."
+images:
+  - "/images/portfolio-candidates/askdata-cover-v2.png"
+link: "https://github.com/Pipe1213/AskData"
+---
+
+## Overview
+
+AskData is a full-stack analytics assistant that lets users ask questions about PostgreSQL data in plain English and receive validated table or chart results.
+
+The project focuses on a practical problem: natural-language analytics often fails because the system does not understand the database schema, generates unsafe SQL, or stops after the first error. AskData is designed around schema-aware retrieval, SQL validation, retry/repair handling, and clear result presentation.
+
+## What It Does
+
+- Retrieves relevant schema context before generating SQL.
+- Translates plain-English questions into PostgreSQL queries.
+- Applies SQL safety checks before execution.
+- Repairs failed queries through constrained retry logic.
+- Returns results as tables or charts through a Next.js interface.
+- Uses benchmarked examples and CI-backed tests to make behavior easier to verify.
+
+## Architecture
+
+- FastAPI backend for query orchestration and API endpoints.
+- Next.js frontend for the user interface.
+- PostgreSQL as the target analytical database.
+- Schema-aware retrieval to ground SQL generation.
+- SQL validation and repair logic to reduce invalid or unsafe queries.
+- Test and benchmark examples to track reliability.
+
+## Tech Stack
+
+Python, FastAPI, Next.js, TypeScript, PostgreSQL, Pydantic, SQL validation, retrieval, CI tests.
+
+## Why It Matters
+
+AskData shows the applied AI systems profile clearly: LLMs connected to real databases, retrieval before generation, validation before execution, and a usable product interface rather than only a notebook demo.
+
+## Links
+
+- [GitHub](https://github.com/Pipe1213/AskData)

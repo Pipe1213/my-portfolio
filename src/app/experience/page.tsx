@@ -31,20 +31,55 @@ export default function Experience() {
         {experienceConfig.title}
       </Heading>
 
-      <Column gap="24">
+      <Column gap="32">
         <Column gap="8">
-          <Heading as="h2" variant="heading-strong-l">Capital Fund Management</Heading>
-          <Text variant="body-default-s" onBackground="neutral-weak">AI/ML Engineer Intern — LLM Agents & RAG — Paris, France (Mar 2025 – Sep 2025)</Text>
-          <Text variant="body-default-m">
-            Developed a Data Analysis Agent that enables analysts to query financial data in natural language. The system was built using <strong>LangChain</strong> and <strong>LangGraph</strong> to design <strong>agentic architectures</strong> and a <strong>hybrid retrieval</strong> mechanism that merges keyword and semantic search for more accurate table selection.
+          <Heading as="h2" variant="heading-strong-l">
+            AI Evaluation & Data Contractor
+          </Heading>
+          <Text variant="body-default-s" onBackground="neutral-weak">
+            Independent Contractor - Remote (November 2025 - April 2026)
           </Text>
           <Column as="ul" gap="8">
-            <Text as="li" variant="body-default-m">Built a data analysis agent that achieved <strong>88% end-to-end QA accuracy</strong> on an internal benchmark.</Text>
-            <Text as="li" variant="body-default-m">Reduced average SQL writing and correction time to <strong>51 seconds</strong>, speeding up analyst iterations and QA cycles.</Text>
-            <Text as="li" variant="body-default-m">Achieved <strong>95% top-k retrieval accuracy</strong> by combining <strong>BM25</strong>, dense embeddings, and <strong>RRF fusion</strong> in the RAG pipeline.</Text>
-            <Text as="li" variant="body-default-m">Integrated multi-tool capabilities (coding, data visualization, and analytical reasoning) to enable complex, autonomous analyst workflows.</Text>
-            <Text as="li" variant="body-default-m">Implemented active learning loops capturing user feedback for few-shot grounding and fine-tuning data curation.</Text>
-            <Text as="li" variant="body-default-m">Deployed the system to a pilot group within the Data team to validate the architecture for future enterprise integration.</Text>
+            <Text as="li" variant="body-default-m">
+              Delivered coding, data scraping, and AI-data tasks for client projects across
+              contractor platforms, using Apify and LLM-based assistants to collect, structure, and
+              validate data.
+            </Text>
+            <Text as="li" variant="body-default-m">
+              Evaluated LLM responses against strict rubrics for factuality, correctness, reasoning
+              quality, and safety, including health-related model-comparison tasks.
+            </Text>
+            <Text as="li" variant="body-default-m">
+              Analyzed failure patterns and prompt behavior, including unsupported claims, missing
+              evidence, hallucinated facts, and weak reasoning, to support model-quality review.
+            </Text>
+          </Column>
+        </Column>
+
+        <Column gap="8">
+          <Heading as="h2" variant="heading-strong-l">
+            Capital Fund Management (CFM)
+          </Heading>
+          <Text variant="body-default-s" onBackground="neutral-weak">
+            AI Engineer Intern - LLM Systems - Paris, France (March 2025 - September 2025)
+          </Text>
+          <Column as="ul" gap="8">
+            <Text as="li" variant="body-default-m">
+              Built a conversational SQL agent for financial data analysis, achieving{" "}
+              <strong>87.5% end-to-end accuracy</strong> on a 48-question internal benchmark.
+            </Text>
+            <Text as="li" variant="body-default-m">
+              Implemented a RAG retrieval pipeline using <strong>BM25</strong>, dense embeddings,
+              and Reciprocal Rank Fusion, achieving <strong>95% top-k accuracy</strong>.
+            </Text>
+            <Text as="li" variant="body-default-m">
+              Designed agentic, plan-first workflows for SQL generation, validation, code
+              execution, and answer synthesis to handle multi-step queries and follow-ups reliably.
+            </Text>
+            <Text as="li" variant="body-default-m">
+              Deployed the system as an analyst-facing tool and supported release-readiness with
+              testing, debugging, LangSmith tracing, and CI/Jenkins checks.
+            </Text>
           </Column>
           <Row paddingTop="8">
             <Button variant="secondary" prefixIcon="openLink" href="/projects/sql-agent-cfm">
@@ -54,16 +89,32 @@ export default function Experience() {
         </Column>
 
         <Column gap="8">
-          <Heading as="h2" variant="heading-strong-l">LISN (Laboratoire Interdisciplinaire des Sciences du Numérique)</Heading>
-          <Text variant="body-default-s" onBackground="neutral-weak">AI Scientist Intern — Speech Synthesis — Orsay, France (Apr 2024 – Aug 2024)</Text>
-          <Text variant="body-default-m">
-            Developed the first <strong>Text-to-Speech</strong> system for the Walloon language using the <strong>VITS</strong> architecture. The project covered the entire pipeline, from data collection to model training, fine-tuning, evaluation, and public deployment.
+          <Heading as="h2" variant="heading-strong-l">
+            Laboratoire Interdisciplinaire des Sciences du Numerique (LISN)
+          </Heading>
+          <Text variant="body-default-s" onBackground="neutral-weak">
+            AI Research Intern - Speech Synthesis - Orsay, France (February 2024 - August 2024)
           </Text>
           <Column as="ul" gap="8">
-            <Text as="li" variant="body-default-m">Trained the first Text-to-Speech model for Walloon (3h of data) using cross-lingual transfer from 20h of French, achieving <strong>MOS 4.22/5</strong> for the best configuration.</Text>
-            <Text as="li" variant="body-default-m">Ran ablation studies (French pretraining vs none, graphemes vs phonemes) and conducted objective + human evaluation (<strong>PESQ</strong>, <strong>MCD</strong>, <strong>SECS</strong> + native-speaker perceptual tests) to select the best configuration.</Text>
-            <Text as="li" variant="body-default-m">Lead author of a paper presented at the <strong>13th Speech Synthesis Workshop (SSW 2025)</strong>, in collaboration with senior researchers at LISN, highlighting cross-lingual transfer strategies for low-resource <strong>TTS</strong>.</Text>
-            <Text as="li" variant="body-default-m">Open-sourced trained models, demos, and inference scripts on <strong>Hugging Face</strong>, enabling reuse by other researchers.</Text>
+            <Text as="li" variant="body-default-m">
+              Developed the first text-to-speech system for Walloon, an under-resourced minority
+              language, using a VITS-based architecture adapted to low-resource speech data.
+            </Text>
+            <Text as="li" variant="body-default-m">
+              Designed and ran experiments comparing grapheme- and phoneme-based inputs, including
+              fine-tuning from French-pretrained models and Walloon-only baselines, to study
+              low-resource TTS trade-offs.
+            </Text>
+            <Text as="li" variant="body-default-m">
+              Built preprocessing and phonological components for the pipeline, including
+              sentence-level data preparation and a rule-based grapheme-to-phoneme workflow for
+              phoneme-based synthesis.
+            </Text>
+            <Text as="li" variant="body-default-m">
+              Evaluated generated speech with objective and human perceptual metrics, achieving a{" "}
+              <strong>4.22/5 MOS</strong>, and published the work as first author at{" "}
+              <strong>SSW 2025</strong>.
+            </Text>
           </Column>
           <Row paddingTop="8">
             <Button variant="secondary" prefixIcon="openLink" href="/projects/walloon-tts-ssw13">

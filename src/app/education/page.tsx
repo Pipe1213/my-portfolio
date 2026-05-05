@@ -33,16 +33,21 @@ export default function Education() {
 
       <Column gap="24">
         <Column gap="8">
-          <Heading as="h2" variant="heading-strong-l">Paris-Saclay University</Heading>
-          <Text variant="body-default-s" onBackground="neutral-weak">Master of Science in Computer Science- Artificial Intelligence Track — Sep 2023 – Sep 2025 — Grade: 16.2/20</Text>
+          <Heading as="h2" variant="heading-strong-l">
+            Universite Paris-Saclay
+          </Heading>
+          <Text variant="body-default-s" onBackground="neutral-weak">
+            M.Sc. in Computer Science, Artificial Intelligence - France (2023 - 2025)
+          </Text>
+          <Text variant="body-default-m">Grade: 16.2/20</Text>
         </Column>
         <Column gap="8">
-          <Heading as="h2" variant="heading-strong-l">Lloyds International College</Heading>
-          <Text variant="body-default-s" onBackground="neutral-weak">Advanced Diploma in Leadership and Management — Feb 2020 – Feb 2022</Text>
-        </Column>
-        <Column gap="8">
-          <Heading as="h2" variant="heading-strong-l">Universidad Industrial de Santander</Heading>
-          <Text variant="body-default-s" onBackground="neutral-weak">Bachelor of Science (B.Sc.) in Electronic Engineering — Apr 2010 – Dec 2016 — Grade: 3.9/5.0</Text>
+          <Heading as="h2" variant="heading-strong-l">
+            Universidad Industrial de Santander
+          </Heading>
+          <Text variant="body-default-s" onBackground="neutral-weak">
+            B.Sc. in Electronic Engineering - Colombia (Graduated 2017)
+          </Text>
         </Column>
       </Column>
     </Column>
