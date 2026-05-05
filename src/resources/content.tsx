@@ -1,15 +1,15 @@
 import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
-import { Line, Logo, Row, Text } from "@once-ui-system/core";
+import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
   firstName: "Felipe",
   lastName: "Espinosa",
-  name: `Felipe Espinosa`,
-  role: "AI/ML Engineer",
+  name: "Felipe Espinosa",
+  role: "Applied AI Engineer | NLP and LLM Systems",
   avatar: "/me.jpg",
   email: "felipeespinosa.13@outlook.com",
-  location: "Europe/Paris", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["Spanish (Native)", "English (C1)", "Portuguese (B2)", "French (B1)"], // optional: Leave the array empty if you don't want to display languages
+  location: "Europe/Paris",
+  languages: ["Spanish (Native)", "English (C1)", "French (B2)", "Portuguese (B2)"],
 };
 
 const newsletter: Newsletter = {
@@ -30,6 +30,11 @@ const social: Social = [
     link: "https://linkedin.com/in/felipe-espinosa13",
   },
   {
+    name: "Google Scholar",
+    icon: "document",
+    link: "https://scholar.google.com/citations?user=wWZDxU8AAAAJ&hl=en",
+  },
+  {
     name: "Hugging Face",
     icon: "huggingface",
     link: "https://huggingface.co/Pipe1213",
@@ -45,30 +50,38 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name} — LLMs, GenAI & Agents`,
-  description: `AI Engineer with expertise in agentic, retrieval-augmented, and LLM-powered systems. Built a functional SQL Agent prototype at CFM (LangChain/LangGraph, hybrid retrieval) and developed the first Walloon TTS system published at SSW13.`,
-  headline: <>LLM Agents • RAG • Applied GenAI</>,
+  title: `${person.name} - Applied AI, NLP & LLM Systems`,
+  description:
+    "Applied AI Engineer in Paris focused on RAG, SQL agents, LLM evaluation, and speech/NLP systems. Built an analyst-facing SQL agent at CFM, published first-author Walloon TTS research at SSW 2025, and built AskData, a full-stack analytics assistant.",
+  headline: <>Applied AI, NLP & LLM Systems</>,
   featured: {
-    display: false,
+    display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">Featured work</strong>
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Featured work
+          AskData and CFM SQL Agent
         </Text>
       </Row>
     ),
     href: "/projects",
   },
-  subline: (<>I like turning research ideas into working systems: agents that can use tools and data, and generative models that create things like speech. Most of my work sits between engineering and applied research, shipping prototypes, measuring what works, and iterating fast. Take a look around.</>),
+  subline: (
+    <>
+      I build AI systems that connect language models with real data: RAG pipelines,
+      conversational SQL agents, LLM evaluation workflows, and NLP/speech applications. My work
+      focuses on reliable retrieval, validation, tracing, and usable interfaces, from financial
+      data assistants to low-resource speech synthesis.
+    </>
+  ),
 };
 
 const about: About = {
   path: "/about",
   label: "About",
   title: `About - ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} in Paris, France`,
+  description: `Meet ${person.name}, an Applied AI Engineer focused on NLP and LLM systems in Paris, France`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -86,73 +99,33 @@ const about: About = {
     description: (
       <>
         <p>
-          Hey  I’m Felipe, an AI/ML Engineer based in Paris, France, passionate about creating intelligent systems that blend reasoning, retrieval, and generative capabilities. I’m especially interested in how Generative AI and large language models can make complex information easier to access and understand. I also have experience working on Text-to-Speech systems, exploring how generative models can bring new voices and languages to life.
+          I build AI systems that connect language models with real data: RAG pipelines,
+          conversational SQL agents, LLM evaluation workflows, and NLP/speech applications.
         </p>
         <p>
-          Outside of work, I love traveling, exercising, music, and learning new things, whether that’s exploring a new place, reading about the latest in AI, or picking up new tools to keep my skills sharp. I’m always looking for ways to grow, stay inspired, and turn new ideas into something meaningful.
+          My strongest area is turning natural-language requests into reliable outputs: retrieving
+          the right context, generating and validating SQL or code, tracing model behavior,
+          benchmarking failures, and making the result usable through APIs or lightweight
+          interfaces.
+        </p>
+        <p>
+          Recent work includes a financial SQL agent with RAG and evaluation workflows at Capital
+          Fund Management, low-resource speech synthesis research published as first author at SSW
+          2025, and AskData, a full-stack analytics assistant for querying PostgreSQL data in plain
+          English.
         </p>
       </>
     ),
   },
   work: {
-    display: false, // moved to dedicated Experience page
+    display: false,
     title: "Work Experience",
-    experiences: [
-      {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
-        achievements: [
-          <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
-          </>,
-          <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
-        ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
-        achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
-        ],
-        images: [],
-      },
-    ],
+    experiences: [],
   },
   studies: {
-    display: false, // moved to dedicated Education page
+    display: false,
     title: "Studies",
-    institutions: [
-      {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
-      },
-    ],
+    institutions: [],
   },
   technical: {
     display: true,
@@ -160,17 +133,38 @@ const about: About = {
     skills: [
       {
         title: "Programming",
-        description: (<>Python, SQL, Bash</>),
+        description: <>Python, SQL, Bash, TypeScript</>,
       },
       {
-        title: "Machine Learning",
+        title: "LLM Systems",
         description: (
-          <>PyTorch, TensorFlow, Scikit-learn, Pandas, Matplotlib, NumPy, Transformers (HF), Jupyter</>
+          <>
+            RAG, agentic workflows, LangChain, LangGraph, LangSmith, ChromaDB, BM25, vector
+            databases, prompt engineering, OpenAI API, LLM evaluation
+          </>
         ),
       },
       {
-        title: "Tools & Platforms",
-        description: (<>LangChain, LangGraph, Docker, Git, Slurm, Linux, Streamlit, OpenCV, ChromaDB, Redis</>),
+        title: "Backend and Data",
+        description: (
+          <>
+            FastAPI, Next.js, Pydantic, PostgreSQL, Oracle, Redis, Docker, CI, SQL safety,
+            schema-aware retrieval
+          </>
+        ),
+      },
+      {
+        title: "AI / ML and Speech",
+        description: (
+          <>
+            PyTorch, scikit-learn, Pandas, NumPy, Matplotlib, Hugging Face Transformers, speech
+            synthesis, fine-tuning, model evaluation
+          </>
+        ),
+      },
+      {
+        title: "Tools",
+        description: <>Git, Linux, Jupyter, Streamlit, Slurm, Apify, Claude Code</>,
       },
     ],
   },
@@ -179,19 +173,15 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  title: "Writing",
+  description: `Writing by ${person.name}`,
 };
 
 const work: Work = {
   path: "/work",
   label: "Work",
   title: `Projects - ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  description: `Applied AI, NLP, and LLM systems projects by ${person.name}`,
 };
 
 const gallery: Gallery = {
@@ -199,8 +189,6 @@ const gallery: Gallery = {
   label: "Gallery",
   title: `Photo gallery - ${person.name}`,
   description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",
@@ -245,33 +233,33 @@ const gallery: Gallery = {
   ],
 };
 
-// New page configs
 const experience = {
   path: "/experience",
   label: "Experience",
   title: `Experience - ${person.name}`,
-  description: `Professional experience of ${person.name}`,
+  description:
+    "Applied AI and NLP experience across LLM systems, RAG, SQL agents, LLM evaluation, and low-resource speech synthesis.",
 };
 
 const education = {
   path: "/education",
   label: "Education",
   title: `Education - ${person.name}`,
-  description: `Education history of ${person.name}`,
+  description: `Education history of ${person.name} in artificial intelligence, computer science, and electronic engineering.`,
 };
 
 const publications = {
   path: "/publications",
   label: "Publications",
   title: `Publications - ${person.name}`,
-  description: `Publications by ${person.name}`,
+  description: `First-author speech synthesis publication by ${person.name} at SSW 2025.`,
 };
 
 const projects = {
   path: "/projects",
   label: "Projects",
   title: `Projects - ${person.name}`,
-  description: `Project portfolio by ${person.name}`,
+  description: `Projects by ${person.name} covering RAG, SQL agents, LLM evaluation, full-stack analytics assistants, NLP, and speech synthesis.`,
 };
 
 const contact = {
@@ -281,4 +269,18 @@ const contact = {
   description: `Get in touch with ${person.name}`,
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery, experience, education, publications, projects, contact };
+export {
+  person,
+  social,
+  newsletter,
+  home,
+  about,
+  blog,
+  work,
+  gallery,
+  experience,
+  education,
+  publications,
+  projects,
+  contact,
+};

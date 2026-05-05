@@ -32,7 +32,7 @@ const routes: RoutesConfig = {
 };
 
 const display: DisplayConfig = {
-  location: true,
+  location: false,
   time: true,
   themeSwitcher: true,
 };
@@ -192,17 +192,17 @@ const mailchimp: MailchimpConfig = {
 // default schema data
 const schema: SchemaConfig = {
   logo: "",
-  type: "Organization",
-  name: "Once UI",
+  type: "Person",
+  name: "Felipe Espinosa",
   description: home.description,
-  email: "lorant@once-ui.com",
+  email: "felipeespinosa.13@outlook.com",
 };
 
 // social links
 const sameAs: SameAsConfig = {
-  threads: "https://www.threads.com/@once_ui",
-  linkedin: "https://www.linkedin.com/company/once-ui/",
-  discord: "https://discord.com/invite/5EyAQ4eNdS",
+  threads: "https://github.com/Pipe1213",
+  linkedin: "https://linkedin.com/in/felipe-espinosa13",
+  discord: "https://scholar.google.com/citations?user=wWZDxU8AAAAJ&hl=en",
 };
 
 // social sharing configuration for blog posts

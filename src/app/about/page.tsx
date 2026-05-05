@@ -199,7 +199,7 @@ export default function About() {
                     prefixIcon="document"
                     href="/resume.pdf"
                   >
-                    Resume
+                    CV / Resume
                   </Button>
                 </Row>
               </Row>

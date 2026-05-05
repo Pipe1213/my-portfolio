@@ -1,4 +1,4 @@
-import { Column, Heading, Meta, Schema, Text } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, Text, Row, Button } from "@once-ui-system/core";
 import { baseURL, person, publications as publicationsConfig, about } from "@/resources";
 
 export async function generateMetadata() {
@@ -28,18 +28,41 @@ export default function Publications() {
         }}
       />
       <Heading variant="heading-strong-xl" align="center">
-        {publicationsConfig.title}
+        Publications
       </Heading>
 
       <Column gap="24">
         <Column gap="8">
-          <Heading as="h2" variant="heading-strong-l">Walloon TTS (SSW13, 2025)</Heading>
-          <Text variant="body-default-m">
-            VITS-based TTS for Walloon with cross-lingual transfer, objective metrics, and MOS bootstrap analysis. Accepted at the 13th Speech Synthesis Workshop (Interspeech 2025).
+          <Heading as="h2" variant="heading-strong-l">
+            Speech Synthesis for Walloon, an Under-Resourced Minority Language
+          </Heading>
+          <Text variant="body-default-s" onBackground="brand-weak">
+            First author - SSW 2025
           </Text>
           <Text variant="body-default-m">
-            Paper: <a href="https://www.isca-archive.org/ssw_2025/orjuela25_ssw.pdf" target="_blank" rel="noreferrer">ISCA Archive</a>
+            First-author publication on the first Walloon text-to-speech system, using a VITS-based
+            architecture and comparing grapheme, phoneme, and French-pretrained configurations with
+            objective and perceptual evaluation.
           </Text>
+          <Row gap="12" wrap paddingTop="8">
+            <Button
+              variant="secondary"
+              prefixIcon="document"
+              href="https://www.isca-archive.org/ssw_2025/orjuela25_ssw.pdf"
+            >
+              Paper
+            </Button>
+            <Button
+              variant="secondary"
+              prefixIcon="document"
+              href="https://scholar.google.com/citations?user=wWZDxU8AAAAJ&hl=en"
+            >
+              Google Scholar
+            </Button>
+            <Button variant="secondary" prefixIcon="huggingface" href="https://huggingface.co/Pipe1213">
+              Hugging Face
+            </Button>
+          </Row>
         </Column>
       </Column>
     </Column>

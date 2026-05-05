@@ -39,7 +39,7 @@ export default function Contact() {
           </Button>
         )}
         <Button variant="secondary" prefixIcon="document" href="/resume.pdf">
-          Resume
+          CV / Resume
         </Button>
         {social
           // Avoid duplicating email if main email button is shown
