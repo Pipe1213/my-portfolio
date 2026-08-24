@@ -8,7 +8,6 @@ import {
   Column,
   Flex,
   Heading,
-  Media,
   Text,
   SmartLink,
   Row,
@@ -17,7 +16,7 @@ import {
 } from "@once-ui-system/core";
 import { baseURL, about, person, projects } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
-import { ScrollToHash, CustomMDX } from "@/components";
+import { ScrollToHash, CustomMDX, ProjectCover } from "@/components";
 import { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
 
@@ -120,11 +119,10 @@ export default async function Project({
       </Row>
       {post.metadata.images.length > 0 && (
         <Column maxWidth="s" horizontal="center">
-          <Media
+          <ProjectCover
             priority
-            aspectRatio="16 / 9"
             radius="m"
-            alt="image"
+            alt={post.metadata.title}
             sizes="(max-width: 800px) 100vw, 800px"
             src={post.metadata.images[0]}
           />

@@ -1,0 +1,13 @@
+.viewport {
+  // The six portfolio covers were exported with 18px of blank canvas on the
+  // right and 96px on the bottom. Show only the intended 1182x579 artwork.
+  aspect-ratio: 1182 / 579;
+}
+
+.image {
+  display: block;
+  flex: none;
+  width: calc(100% * 1200 / 1182);
+  max-width: none;
+  height: auto;
+}
