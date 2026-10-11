@@ -6,6 +6,8 @@ Plain static HTML and CSS in `site/`, no build step. Vercel serves `site/` as is
 
 - `site/index.html`: home page
 - `site/walloon/`, `site/cfm/`, `site/askdata/`: case studies
-- `site/assets/`: stylesheet, script, Archivo font (SIL Open Font License), images, audio
+- `site/assets/`: stylesheet, script, Archivo and Newsreader fonts (SIL Open Font License), images, audio, spectrograms
+- `tools/make_spectrograms.py`: regenerates the spectrogram images from the audio
+- `CLAUDE.md`: decisions, content rules and next steps
 
 To preview locally: `python3 -m http.server -d site 8000`.
