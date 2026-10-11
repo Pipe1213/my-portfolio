@@ -16,6 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/archivo-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/fonts/newsreader-var.woff" as="font" type="font/woff" crossorigin>
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="stylesheet" href="/assets/site.css">
 </head>
@@ -39,8 +40,8 @@
   </header>
   <section class="cs-hero wrap" aria-label="Overview">
     <p class="crumb"><a href="/#work">Selected work</a>, 2025</p>
-    <h1>An LLM agent that answers analysts' questions in SQL</h1>
-    <dl class="spec">
+    <h1 class="display">An LLM agent that answers analysts' questions in SQL</h1>
+    <dl class="spec-list">
       <div><dt>Role</dt><dd>AI Engineer Intern, LLM Systems</dd></div>
       <div><dt>Company and dates</dt><dd>Capital Fund Management (CFM), hedge fund, Paris. Mar to Sep 2025</dd></div>
       <div><dt>Stack</dt><dd>LangGraph, GPT-4.1, o4-mini, Oracle, ChromaDB, LangSmith, Streamlit</dd></div>
@@ -53,27 +54,19 @@
 <main id="main" class="wrap">
   <section class="listen w-cfm" aria-labelledby="res-h">
     <h2 id="res-h" class="section-title">Results</h2>
-    <div class="panel" style="align-items:stretch">
-      <div class="panel-fig">
-        <p class="fig-cap" style="border:0;padding:0;margin-bottom:16px;font-size:14px">End-to-end accuracy on the 48-question benchmark</p>
-        <div class="bars">
-          <div class="bar-row"><span>Without examples</span><div class="bar"><i style="width:83%"></i></div><b>83%</b></div>
-          <div class="bar-row hi"><span>With validated question and SQL examples</span><div class="bar"><i style="width:87.5%"></i></div><b>87.5%</b></div>
-        </div>
-      </div>
-      <div class="panel-fig">
-        <p class="fig-cap" style="border:0;padding:0;margin-bottom:16px;font-size:14px">Cost, at similar accuracy</p>
-        <div class="bars">
-          <div class="bar-row"><span>o3 on the whole task</span><div class="bar"><i style="width:100%"></i></div><b>~€5</b></div>
-          <div class="bar-row hi"><span>The agent, small models on sub-tasks</span><div class="bar"><i style="width:4.8%"></i></div><b>~€0.24</b></div>
-        </div>
-      </div>
-      <div class="panel-fig" style="flex-basis:100%">
-        <div class="stats">
-          <div class="stat"><b>95%</b><span>top-k table retrieval with hybrid search</span></div>
-          <div class="stat"><b>48</b><span>benchmark questions with gold SQL, built by me</span></div>
-        </div>
-      </div>
+    <p class="prose lead">On a 48-question benchmark I built with gold SQL, the agent answered <span class="num">87.5%</span> correctly, up from <span class="num">83%</span> without examples. Table retrieval reached <span class="num">95%</span> top-k with hybrid search. Routing sub-tasks to smaller models cut the cost per query about <span class="num">20&times;</span> compared with o3, at similar accuracy.</p>
+    <div class="results">
+      <figure class="cost">
+        <figcaption class="cap fig-title">End-to-end accuracy, 48 questions</figcaption>
+        <div class="row"><span class="lbl">Without examples</span><span class="bar"><i style="width:83%"></i></span><b>83%</b></div>
+        <div class="row hi"><span class="lbl">With validated question and SQL examples</span><span class="bar"><i style="width:87.5%"></i></span><b>87.5%</b></div>
+      </figure>
+      <figure class="cost">
+        <figcaption class="cap fig-title">Cost per query, at similar accuracy</figcaption>
+        <div class="row"><span class="lbl">o3 on the whole task</span><span class="bar"><i style="width:100%"></i></span><b>€5</b></div>
+        <div class="row hi"><span class="lbl">The agent, small models on sub-tasks</span><span class="bar"><i style="width:4.8%"></i></span><b>€0.24</b></div>
+        <p class="cap">Approximate figures.</p>
+      </figure>
     </div>
   </section>
 
@@ -96,14 +89,17 @@
       <p>Accuracy rose from 83% to 87.5% on the benchmark, table retrieval reached 95% top-k, and routing sub-tasks to smaller models cut the cost per query about 20 times compared with o3, at similar accuracy. I also built the Streamlit interface for analysts and part of a FastAPI backend.</p>
     </div>
   </section>
-  <p class="note" style="background:var(--cfm-sf);color:var(--cfm-mu)">The code and final architecture belong to CFM. The internship report, approved for sharing, has more detail on the method.</p>
+  <p class="note">The code and final architecture belong to CFM. The internship report, approved for sharing, has more detail on the method.</p>
 
   <nav class="cs-next" aria-label="Other case studies">
     <a href="/walloon">Previous: speech synthesis for Walloon</a>
     <a href="/askdata">Next: AskData</a>
   </nav>
 </main>
-<footer class="site-footer wrap">Felipe Espinosa Orjuela, Paris. Updated October 2026.</footer>
+<footer class="site-footer wrap">
+  <p>Set in Archivo and Newsreader. The spectrograms are computed from my models' own audio. Built by hand, no framework.</p>
+  <p>Felipe Espinosa Orjuela, Paris. Updated October 2026.</p>
+</footer>
 <script src="/assets/site.js" defer></script>
 </body>
 </html>

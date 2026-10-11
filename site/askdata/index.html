@@ -16,6 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/archivo-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/fonts/newsreader-var.woff" as="font" type="font/woff" crossorigin>
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="stylesheet" href="/assets/site.css">
 </head>
@@ -39,8 +40,8 @@
   </header>
   <section class="cs-hero wrap" aria-label="Overview">
     <p class="crumb"><a href="/#work">Selected work</a>, 2026, in progress</p>
-    <h1>AskData: plain-English analytics on PostgreSQL</h1>
-    <dl class="spec">
+    <h1 class="display">AskData: plain-English analytics on PostgreSQL</h1>
+    <dl class="spec-list">
       <div><dt>Type</dt><dd>Personal project</dd></div>
       <div><dt>Status</dt><dd>Core pipeline, demo datasets and tests work. Benchmark results and a hosted demo are next</dd></div>
       <div><dt>Stack</dt><dd>Python, FastAPI, Next.js, TypeScript, PostgreSQL, OpenAI API</dd></div>
@@ -51,7 +52,7 @@
 </div>
 
 <main id="main" class="wrap">
-  <figure class="cs-figure" style="margin-top:clamp(56px,8vw,104px)">
+  <figure class="cs-figure first">
     <img src="/assets/img/askdata-details.jpg" width="1400" height="900" loading="lazy" alt="AskData answer view showing a 10-row result table and the validated SQL query">
     <figcaption>Each answer comes with the result table and the validated SQL behind it.</figcaption>
   </figure>
@@ -87,7 +88,10 @@
     <a href="/#work">All work</a>
   </nav>
 </main>
-<footer class="site-footer wrap">Felipe Espinosa Orjuela, Paris. Updated October 2026.</footer>
+<footer class="site-footer wrap">
+  <p>Set in Archivo and Newsreader. The spectrograms are computed from my models' own audio. Built by hand, no framework.</p>
+  <p>Felipe Espinosa Orjuela, Paris. Updated October 2026.</p>
+</footer>
 <script src="/assets/site.js" defer></script>
 </body>
 </html>

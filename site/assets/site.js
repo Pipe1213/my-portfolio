@@ -24,8 +24,21 @@
   });
   labelThemeButtons();
 
+  /* ---------- Spectrogram helpers ---------- */
+  var screen = document.querySelector(".screen");
+  var screenSpec = screen ? screen.querySelector(".spec") : null;
+  function specFor(src) { return "url(/assets/spec/spec-" + src.split("/").pop().replace(/\.mp3$/, "") + ".webp)"; }
+  function setP(el, v) { if (el) el.style.setProperty("--p", v); }
+  function showOnScreen(src, name, voice) {
+    if (!screen || !src) return;
+    screenSpec.style.setProperty("--m", specFor(src));
+    var n = screen.querySelector(".now-name"), v = screen.querySelector(".now-voice");
+    if (n && name) n.textContent = name;
+    if (v && voice) v.textContent = voice + " voice";
+  }
+
   /* ---------- Audio: one clip at a time ---------- */
-  var audio = null, activeRow = null;
+  var audio = null, activeRow = null, voiceNow = "female";
 
   function stop() {
     if (audio) { audio.pause(); audio = null; }
@@ -33,8 +46,8 @@
       activeRow.classList.remove("is-playing");
       var b = activeRow.querySelector(".play");
       if (b) b.setAttribute("aria-label", b.getAttribute("data-label-play"));
-      var bar = activeRow.querySelector(".prog i");
-      if (bar) bar.style.width = "0";
+      setP(activeRow.querySelector(".spec"), "100%");
+      if (screen && activeRow.closest(".listen")) setP(screenSpec, "100%");
       activeRow = null;
     }
   }
@@ -48,10 +61,18 @@
     audio = new Audio(src);
     activeRow = row;
     row.classList.add("is-playing");
-    btn.setAttribute("aria-label", btn.getAttribute("data-label-pause"));
-    var bar = row.querySelector(".prog i");
+    if (btn) btn.setAttribute("aria-label", btn.getAttribute("data-label-pause"));
+    var specs = [row.querySelector(".spec")];
+    if (screen && row.closest(".listen")) {
+      var label = row.querySelector(".mos-label strong, .fr-name");
+      showOnScreen(src, label ? label.textContent.replace(/,\s*\d+\s*s$/, "") : "", voiceNow);
+      specs.push(screenSpec);
+    }
+    specs.forEach(function (s) { setP(s, "0%"); });
     audio.addEventListener("timeupdate", function () {
-      if (bar && audio && audio.duration) bar.style.width = (100 * audio.currentTime / audio.duration).toFixed(1) + "%";
+      if (!audio || !audio.duration) return;
+      var p = (100 * audio.currentTime / audio.duration).toFixed(2) + "%";
+      specs.forEach(function (s) { setP(s, p); });
     });
     audio.addEventListener("ended", stop);
     audio.play().catch(stop);
@@ -70,6 +91,7 @@
 
   function setVoice(voice) {
     stop();
+    voiceNow = voice;
     document.querySelectorAll("[data-voice-switch] button").forEach(function (b) {
       b.setAttribute("aria-pressed", b.getAttribute("data-voice") === voice ? "true" : "false");
     });
@@ -77,9 +99,11 @@
       var d = row.getAttribute("data-" + voice).split("|"); // mean|lo|hi|src|secs
       var mean = parseFloat(d[0]), lo = parseFloat(d[1]), hi = parseFloat(d[2]);
       var dot = row.querySelector(".dot"), ci = row.querySelector(".ci"), val = row.querySelector(".mos-val");
-      if (dot) dot.style.left = pct(mean);
-      if (ci) { ci.style.left = pct(lo); ci.style.width = ((hi - lo) / 2.5 * 100).toFixed(1) + "%"; }
-      if (val) val.textContent = mean.toFixed(2);
+      if (!isNaN(mean)) {
+        if (dot) dot.style.left = pct(mean);
+        if (ci) { ci.style.left = pct(lo); ci.style.width = ((hi - lo) / 2.5 * 100).toFixed(1) + "%"; }
+        if (val) val.textContent = mean.toFixed(2);
+      }
       var secs = row.querySelector(".secs");
       if (secs && d[4]) secs.textContent = d[4] + " s";
       if (d[3]) row.setAttribute("data-src", d[3]);
@@ -91,6 +115,9 @@
         btn.setAttribute("aria-label", "Play " + name + ", " + voice + " voice");
       }
     });
+    var best = document.querySelector(".mos-row.best");
+    if (best) showOnScreen(best.getAttribute("data-src"), best.querySelector(".mos-label strong").textContent, voice);
+    setP(screenSpec, "100%");
   }
   if (seg) {
     seg.addEventListener("click", function (e) {

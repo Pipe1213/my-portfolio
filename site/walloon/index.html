@@ -16,6 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/archivo-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/fonts/newsreader-var.woff" as="font" type="font/woff" crossorigin>
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="stylesheet" href="/assets/site.css">
 </head>
@@ -39,8 +40,8 @@
   </header>
   <section class="cs-hero wrap" aria-label="Overview">
     <p class="crumb"><a href="/#work">Selected work</a>, 2024</p>
-    <h1>The first speech synthesis system for Walloon</h1>
-    <dl class="spec">
+    <h1 class="display">The first speech synthesis system for Walloon</h1>
+    <dl class="spec-list">
       <div><dt>Role</dt><dd>AI Research Intern, LISN (CNRS / Université Paris-Saclay)</dd></div>
       <div><dt>Dates and supervisors</dt><dd>Feb to Aug 2024. Philippe Boula de Mareüil, Marc Evrard</dd></div>
       <div><dt>Stack</dt><dd>PyTorch, VITS, NVIDIA V100</dd></div>
@@ -54,7 +55,7 @@
   <section class="listen" aria-labelledby="listen-h">
     <div class="listen-head">
       <div>
-        <h2 id="listen-h" class="section-title" style="margin:0">Listen to each model</h2>
+        <h2 id="listen-h" class="section-title">Listen to each model</h2>
         <p>One sentence of the fable "The North Wind and the Sun", a text no model saw in training. Scores are the mean opinion of 23 listeners, out of 5, with 95% intervals.</p>
       </div>
       <div class="seg" role="group" aria-label="Voice" data-voice-switch>
@@ -63,6 +64,11 @@
       </div>
     </div>
 
+    <figure class="screen">
+      <span class="spec" style="--m:url(/assets/spec/spec-wa-ft-g-female.webp)" aria-hidden="true"></span>
+      <figcaption class="now"><span><b class="now-name">Fine-tuned from French, graphemes</b>, <span class="now-voice">female voice</span></span><span>Log-mel spectrogram, 40 Hz to 9 kHz. Press play on any model to see it here.</span></figcaption>
+    </figure>
+
     <div class="mos">
       <div class="mos-row best" data-src="/assets/audio/wa-ft-g-female.mp3" data-male="4.10|3.97|4.23|/assets/audio/wa-ft-g-male.mp3|15" data-female="4.10|4.07|4.13|/assets/audio/wa-ft-g-female.mp3|13">
         <button class="play" type="button" data-name="fine-tuned from French, graphemes" aria-label="Play fine-tuned from French, graphemes, female voice" data-label-play="Play fine-tuned from French, graphemes, female voice" data-label-pause="Pause fine-tuned from French, graphemes, female voice">
@@ -70,7 +76,7 @@
           <svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg>
         </button>
         <div class="mos-body">
-          <div class="mos-label"><strong>Fine-tuned from French, graphemes</strong><span>Best mean for both voices, <span class="secs">13 s</span></span><div class="prog"><i></i></div></div>
+          <div class="mos-label"><strong>Fine-tuned from French, graphemes</strong><span>Best mean for both voices, <span class="secs">13 s</span></span></div>
           <div class="mos-plot"><div class="track" aria-hidden="true"><span class="ci" style="left:62.8%;width:2.4%"></span><span class="dot" style="left:64.0%"></span></div><div class="mos-val">4.10</div></div>
         </div>
       </div>
@@ -80,7 +86,7 @@
           <svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg>
         </button>
         <div class="mos-body">
-          <div class="mos-label"><strong>Fine-tuned from French, phonemes</strong><span>Phoneme input, <span class="secs">12 s</span></span><div class="prog"><i></i></div></div>
+          <div class="mos-label"><strong>Fine-tuned from French, phonemes</strong><span>Phoneme input, <span class="secs">12 s</span></span></div>
           <div class="mos-plot"><div class="track" aria-hidden="true"><span class="ci" style="left:51.6%;width:14.0%"></span><span class="dot" style="left:58.4%"></span></div><div class="mos-val">3.96</div></div>
         </div>
       </div>
@@ -90,7 +96,7 @@
           <svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg>
         </button>
         <div class="mos-body">
-          <div class="mos-label"><strong>Walloon data only, graphemes</strong><span>Trained from scratch, <span class="secs">13 s</span></span><div class="prog"><i></i></div></div>
+          <div class="mos-label"><strong>Walloon data only, graphemes</strong><span>Trained from scratch, <span class="secs">13 s</span></span></div>
           <div class="mos-plot"><div class="track" aria-hidden="true"><span class="ci" style="left:25.2%;width:20.0%"></span><span class="dot" style="left:35.2%"></span></div><div class="mos-val">3.38</div></div>
         </div>
       </div>
@@ -100,7 +106,7 @@
           <svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg>
         </button>
         <div class="mos-body">
-          <div class="mos-label"><strong>Walloon data only, phonemes</strong><span>Trained from scratch, <span class="secs">11 s</span></span><div class="prog"><i></i></div></div>
+          <div class="mos-label"><strong>Walloon data only, phonemes</strong><span>Trained from scratch, <span class="secs">11 s</span></span></div>
           <div class="mos-plot"><div class="track" aria-hidden="true"><span class="ci" style="left:4.0%;width:7.6%"></span><span class="dot" style="left:8.0%"></span></div><div class="mos-val">2.70</div></div>
         </div>
       </div>
@@ -123,7 +129,7 @@
             <svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg>
             <svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg>
           </button>
-          <div><strong style="font-weight:600">The French model before fine-tuning, <span class="secs">7 s</span></strong><div class="t" lang="fr">La bise et le soleil se disputaient, chacun assurant qu'il était le plus fort, quand ils ont vu un voyageur qui s'avançait, enveloppé dans son manteau.</div></div>
+          <div><strong class="fr-name">The French model before fine-tuning</strong>, <span class="secs">7 s</span><div class="t" lang="fr">La bise et le soleil se disputaient, chacun assurant qu'il était le plus fort, quand ils ont vu un voyageur qui s'avançait, enveloppé dans son manteau.</div></div>
         </div>
       </div>
     </div>
@@ -154,7 +160,10 @@
     <a href="/cfm">Next: the LLM agent at CFM</a>
   </nav>
 </main>
-<footer class="site-footer wrap">Felipe Espinosa Orjuela, Paris. Updated October 2026.</footer>
+<footer class="site-footer wrap">
+  <p>Set in Archivo and Newsreader. The spectrograms are computed from my models' own audio. Built by hand, no framework.</p>
+  <p>Felipe Espinosa Orjuela, Paris. Updated October 2026.</p>
+</footer>
 <script src="/assets/site.js" defer></script>
 </body>
 </html>
