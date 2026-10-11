@@ -77,16 +77,15 @@ Owner: Felipe Espinosa Orjuela. The fuller private record lives in the claude.ai
   - added the colophon and the new favicon;
   - removed the hero spectrogram, at Felipe's request: it broke the flow from intro to work;
   - made the bands more compact, moved the rover after the publications, and added View Transitions plus one scroll effect.
-  - **Awaiting Felipe's review of the preview before merging to `main`.**
+  - Felipe approved it and it was merged to `main` (live) on 12 Oct 2026, 01:10.
 
 ## Next
 
-1. Felipe reviews `visual-v2` on his phone and laptop, then merge.
-2. AskData:
+1. AskData:
    - publish the benchmark results (three sets of 10 questions) on `/askdata`, with the limits found;
    - update the home band text once results exist;
    - consider a hosted demo.
-3. Robotics direction (Lane A): when a new robotics or embodied-AI project exists, give it its own band and case study. It would sit above the 2014 rover, which then stays as the origin.
-4. CLSE paper: when it's accepted, link it and update "Under review".
-5. Possibly a short "Writing" or "Notes" section later, but only if there are real posts.
-6. Check link previews after each content change with LinkedIn Post Inspector.
+2. Robotics direction (Lane A): when a new robotics or embodied-AI project exists, give it its own band and case study. It would sit above the 2014 rover, which then stays as the origin.
+3. CLSE paper: when it's accepted, link it and update "Under review".
+4. Possibly a short "Writing" or "Notes" section later, but only if there are real posts.
+5. Check link previews after each content change with LinkedIn Post Inspector.
