@@ -1,0 +1,27 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "",
+  "installCommand": "",
+  "outputDirectory": "site",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/about", "destination": "/", "permanent": true },
+    { "source": "/experience", "destination": "/#cv", "permanent": true },
+    { "source": "/education", "destination": "/#cv", "permanent": true },
+    { "source": "/publications", "destination": "/#research", "permanent": true },
+    { "source": "/contact", "destination": "/#contact", "permanent": true },
+    { "source": "/projects", "destination": "/#work", "permanent": true },
+    { "source": "/work", "destination": "/#work", "permanent": true },
+    { "source": "/projects/sql-agent-cfm", "destination": "/cfm", "permanent": true },
+    { "source": "/projects/walloon-tts-ssw13", "destination": "/walloon", "permanent": true },
+    { "source": "/projects/askdata-analytics-assistant", "destination": "/askdata", "permanent": true },
+    { "source": "/projects/:slug", "destination": "/#work", "permanent": true },
+    { "source": "/resume.pdf", "destination": "/#contact", "permanent": true },
+    { "source": "/cfm.pdf", "destination": "https://github.com/Pipe1213/Pipe1213/raw/main/CFM_internship_report.pdf", "permanent": true }
+  ],
+  "headers": [
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }] }
+  ]
+}

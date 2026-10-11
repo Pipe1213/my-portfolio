@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://felipe-espinosa.vercel.app/sitemap.xml
