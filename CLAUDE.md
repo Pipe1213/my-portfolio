@@ -3,6 +3,17 @@
 Working notes for Claude Code. They record what has been built and decided, the rules every change must follow, and what comes next. Update this file whenever a decision changes.
 Owner: Felipe Espinosa Orjuela. The fuller private record lives in the claude.ai project "Job Application Things" (`claude/PORTFOLIO_DESIGN_2026-10-11.md`, `claude/PROJECT_CONTEXT.md`).
 
+## Current status (update this first)
+
+*Last updated 12 Oct 2026, 10:45.*
+
+- **Live:** `main` at visual v2 (approved by Felipe, merged 12 Oct 01:10). No branch is in progress. `redesign` and `visual-v2` are old and can be deleted.
+- **Next portfolio task: AskData content fixes** (agreed in principle, not started; discuss the wording with Felipe before editing):
+  1. The home-page screenshot (`site/assets/img/askdata-chart.jpg`) shows the app's **known wrong answer**: "Marion, 64.87" for the top-10 customers. The true leader is Karl Seal, $221.55; the app missed a partitioned table. Replace it once the partition fix is in AskData, or crop it so no answer is shown. Even better, use the before/after as the AskData story.
+  2. `/askdata` says "a benchmark script with three sets of 10 questions". That is outdated. The real state is a **52-question eval set** (20 dev + 32 held-out, including ambiguous and unanswerable questions) with a scorer, and **no results yet**. Also check `askdata-details.jpg` for the same wrong answer.
+  3. The angle to use: "asks instead of guessing". Never quote numbers until a real eval run exists.
+- **After that, nothing is scheduled on the site until the robotics project has results** (page `/robot-learning`, target public Mon 16 Nov 2026).
+
 ## How the site works
 
 - Plain static HTML, CSS and JS in `site/`. No framework and no build step. Vercel serves `site/` as is (`vercel.json`: framework null, cleanUrls, redirects from the old Next.js routes).
@@ -81,11 +92,14 @@ Owner: Felipe Espinosa Orjuela. The fuller private record lives in the claude.ai
 
 ## Next
 
-1. AskData:
-   - publish the benchmark results (three sets of 10 questions) on `/askdata`, with the limits found;
-   - update the home band text once results exist;
-   - consider a hosted demo.
-2. Robotics direction (Lane A): when a new robotics or embodied-AI project exists, give it its own band and case study. It would sit above the 2014 rover, which then stays as the origin.
-3. CLSE paper: when it's accepted, link it and update "Under review".
-4. Possibly a short "Writing" or "Notes" section later, but only if there are real posts.
-5. Check link previews after each content change with LinkedIn Post Inspector.
+1. **AskData content fixes** (see Current status).
+2. **AskData results** (AskData phase 4, after its eval runs; scheduled around 21 and 28 Oct): update `/askdata` with baseline vs final, dev vs held-out and the limits found; update the home band text and screenshot; GIF; consider a hosted demo.
+3. **Robotics page `/robot-learning`** (deliverable D3 of the robotics plan, in the project doc `ROBOTICS_PROJECT_PLAN_2026-10-12.md`):
+   - LeRobot + LIBERO, ACT from scratch vs SmolVLA fine-tuned, 5/10/20/all demos, success rate with Wilson 95% CIs.
+   - Build it only from real results, in the same format as `/walloon`: headline plot, results table, success and failure GIFs, links to the repo, Hub checkpoints and write-up.
+   - Add a home-page band above the 2014 rover, which stays as the origin. Give it its own colour world (not navy).
+   - Also add an og image, a sitemap entry and a nav/index link.
+   - Target public Mon 16 Nov 2026 (stretch 9 Nov). Until then the site doesn't mention the project.
+4. **CLSE paper:** when it's accepted, link it and update "Under review".
+5. Possibly a short "Writing" or "Notes" section later, but only if there are real posts.
+6. After each content change, check link previews with LinkedIn Post Inspector.
