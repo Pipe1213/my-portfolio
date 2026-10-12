@@ -10,7 +10,7 @@ Owner: Felipe Espinosa Orjuela. The fuller private record lives in the claude.ai
 - **Live:** `main` at visual v2 (approved by Felipe, merged 12 Oct 01:10). No branch is in progress. `redesign` and `visual-v2` are old and can be deleted.
 - **Next portfolio task: AskData content fixes** (agreed in principle, not started; discuss the wording with Felipe before editing):
   1. The home-page screenshot (`site/assets/img/askdata-chart.jpg`) shows the app's **known wrong answer**: "Marion, 64.87" for the top-10 customers. The true leader is Karl Seal, $221.55; the app missed a partitioned table. Replace it once the partition fix is in AskData, or crop it so no answer is shown. Even better, use the before/after as the AskData story.
-  2. `/askdata` says "a benchmark script with three sets of 10 questions". That is outdated. The real state is a **52-question eval set** (20 dev + 32 held-out, including ambiguous and unanswerable questions) with a scorer, and **no results yet**. Also check `askdata-details.jpg` for the same wrong answer.
+  2. `/askdata` says "a benchmark script with three sets of 10 questions". That is outdated. The real state is a **52-question eval set** (20 dev + 32 held-out, including ambiguous and unanswerable questions) with a scorer, and **no results yet**. `askdata-details.jpg` (on `/askdata`) shows the **same wrong table**, plus the faulty SQL that unions single `payment_p2022_*` partitions, under a caption that calls it "validated". It needs the same fix.
   3. The angle to use: "asks instead of guessing". Never quote numbers until a real eval run exists.
 - **After that, nothing is scheduled on the site until the robotics project has results** (page `/robot-learning`, target public Mon 16 Nov 2026).
 
