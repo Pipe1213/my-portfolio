@@ -5,7 +5,9 @@ Owner: Felipe Espinosa Orjuela. The fuller private record lives in the claude.ai
 
 ## Current status (update this first)
 
-*Last updated 12 Oct 2026, 10:45.*
+*Last updated 17 Oct 2026, 16:45.*
+
+- **17 Oct:** hero line now reads "Paris, France. Authorised to work in France, available now." (approved by Felipe, pushed straight to `main`; checked at 390/768/1440 px, dark and light). Matches the CV header and LinkedIn About. The og description was left unchanged on purpose. Bolívar has no location on the site; if one is ever added, it is "Remote", never "Colombia".
 
 - **Live:** `main` at visual v2 (approved by Felipe, merged 12 Oct 01:10). No branch is in progress. `redesign` and `visual-v2` are old and can be deleted.
 - **Next portfolio task: AskData content fixes** (agreed in principle, not started; discuss the wording with Felipe before editing):
@@ -57,7 +59,7 @@ Owner: Felipe Espinosa Orjuela. The fuller private record lives in the claude.ai
 
 ## Content decisions (decided)
 
-- Hero: name, "AI/ML Engineer", "LLM agents, generative models and evaluation", location and work authorisation, links to the four projects, and the portrait on the side. **No summary-style sentence. No CV download.** CVs go out only on request.
+- Hero: name, "AI/ML Engineer", "LLM agents, generative models and evaluation", location, work authorisation and availability ("available now"), links to the four projects, and the portrait on the side. **No summary-style sentence. No CV download.** CVs go out only on request.
 - The page balances two kinds of reader:
   - ML research / robotics (Lane A): Walloon TTS, publications, the rover;
   - applied AI engineering (Lane B): CFM agent, AskData.
