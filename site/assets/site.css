@@ -1,9 +1,10 @@
-/* Hallmark · shape: Index-First (draw a52a5e swapped from Conversational FAQ: the page has no questions to answer, and copy is verbatim) · genre: editorial · theme: Almanac (deal 1/3, seed portfolio-engineer-paris-research-dced·96c6c9ea·2026-10-28·r0) · redesign: full · copy: verbatim · job: hire · modes: light+dark
+/* Hallmark · shape: Index-First (draw a52a5e swapped from Conversational FAQ: the page has no questions to answer, and copy is verbatim) · genre: editorial · theme: Almanac, repainted warm graphite with five project marks at the owner's request (deal 1/3, seed portfolio-engineer-paris-research-dced·96c6c9ea·2026-10-28·r0) · redesign: full · copy: verbatim · job: hire · modes: light+dark
  * hero: Index (draw said Ledge; the five projects are the reason to come, so the list leads) · nav: edge-aligned (wordmark, four section links, theme switch) · footer: letter close (colophon over a hairline) · imagery: the product (demo videos, played spectrograms, the cost chart) and two photographs (portrait, rover) · signature: the Walloon spectrograms, played in ink with a magenta playhead
- * axes: mid/grotesk-sans/chromatic-magenta · posture: restrained · contrast: pass · fold: pass · v2.0.0 */
+ * axes: light/grotesk-sans/full-palette · posture: full palette (five project colours, each a mark: year, sheet rule, chart, control) · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: P, a portfolio index is a familiar argument; the record sheet sets every project's year and place in columns so the page reads as a dated research record, not a showcase */
 /* Hallmark · waive 79 · the hero index is a nav of the five projects ending near y 800, which the checker skips as chrome · the project index fills the first screen */
 /* Hallmark · waive 44c · the hero index nav runs to y 800 at 1440 and the next section starts below the fold · the project index is the hero visual */
+/* Hallmark · waive 23 · outside a project the accent token is the ink itself, so body ink reads as accent on the hero · the five project colours appear only as index years, sheet rules, one bar and one playhead */
 @import url("./tokens.css");
 @import url("./base.css");
 
@@ -14,39 +15,50 @@
 @font-face { font-family: "IBM Plex Mono"; src: url("/assets/fonts/ibm-plex-mono-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "IBM Plex Mono"; src: url("/assets/fonts/ibm-plex-mono-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
 
-/* ---------- Tokens: the page's own, then the dark rendering ---------- */
+/* ---------- Tokens: warm graphite paper, one colour per project (used as marks only), then the dark rendering ---------- */
 :root {
   --text-body: 1.1875rem;
   --nav-h: 72px;
-  --color-band: var(--color-ink); --color-band-ink: var(--color-sheet); --color-band-muted: oklch(78% 0.012 245); --color-band-rule: oklch(34% 0.016 245);
-  --color-band-accent: oklch(74% 0.150 350); --color-band-focus: oklch(80% 0.130 350);
-  --color-spec-rest: oklch(84% 0.012 245 / 0.5); --color-spec-play: var(--color-band-accent);
-  --color-sheet-hover: oklch(89% 0.012 245);
+  --color-paper: oklch(97% 0.004 100); --color-paper-2: oklch(94.5% 0.005 100); --color-paper-3: oklch(91.5% 0.006 100);
+  --color-ink: oklch(21% 0.005 100); --color-ink-2: oklch(31% 0.006 100); --color-muted: oklch(47% 0.010 90);
+  --color-rule: oklch(88.5% 0.006 100); --color-rule-2: oklch(36% 0.006 100);
+  --color-sheet: oklch(99% 0.002 100); --color-sheet-hover: oklch(95.5% 0.005 100);
+  --color-accent: var(--color-ink-2); --color-accent-2: var(--color-ink); --color-accent-ink: var(--color-paper); --color-focus: var(--color-ink);
+  --c-rob: oklch(44% 0.120 320); --c-ask: oklch(45% 0.130 40); --c-cfm: oklch(44% 0.075 175); --c-wal: oklch(46% 0.095 85); --c-rov: oklch(46% 0.100 130);
+  --color-band: oklch(21% 0.005 100); --color-band-ink: oklch(96% 0.004 100); --color-band-muted: oklch(80% 0.008 95); --color-band-rule: oklch(34% 0.006 100);
+  --color-band-accent: oklch(86% 0.150 92); --color-band-focus: oklch(86% 0.150 92);
+  --color-spec-rest: oklch(96% 0.004 100 / 0.42); --color-spec-play: var(--color-band-accent);
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --color-paper: oklch(17% 0.008 245); --color-paper-2: oklch(20% 0.008 245); --color-paper-3: oklch(23% 0.009 245);
-  --color-ink: oklch(94% 0.008 245); --color-ink-2: oklch(86% 0.010 245); --color-muted: oklch(72% 0.012 245);
-  --color-rule: oklch(30% 0.010 240); --color-rule-2: oklch(66% 0.012 240);
-  --color-accent: oklch(72% 0.150 350); --color-accent-2: oklch(80% 0.120 350); --color-accent-ink: oklch(17% 0.010 350); --color-focus: oklch(74% 0.150 350);
-  --color-sheet: oklch(21% 0.008 245); --color-sheet-hover: oklch(25% 0.009 245);
-  --color-band: oklch(24% 0.009 245); --color-band-ink: oklch(94% 0.008 245); --color-band-muted: oklch(76% 0.012 245); --color-band-rule: oklch(36% 0.010 245);
-  --color-band-accent: oklch(74% 0.150 350); --color-band-focus: oklch(80% 0.130 350);
-  --color-spec-rest: oklch(94% 0.008 245 / 0.4);
+  --color-paper: oklch(19% 0.004 100); --color-paper-2: oklch(22% 0.005 100); --color-paper-3: oklch(25% 0.005 100);
+  --color-ink: oklch(94% 0.006 100); --color-ink-2: oklch(86% 0.008 100); --color-muted: oklch(72% 0.010 95);
+  --color-rule: oklch(30% 0.005 100); --color-rule-2: oklch(68% 0.008 100);
+  --color-sheet: oklch(22.5% 0.005 100); --color-sheet-hover: oklch(26% 0.005 100);
+  --color-accent-ink: oklch(19% 0.004 100);
+  --c-rob: oklch(80% 0.100 320); --c-ask: oklch(77% 0.120 45); --c-cfm: oklch(81% 0.090 175); --c-wal: oklch(87% 0.140 92); --c-rov: oklch(84% 0.120 125);
+  --color-band: oklch(24% 0.005 100); --color-band-ink: oklch(94% 0.006 100); --color-band-muted: oklch(78% 0.008 95); --color-band-rule: oklch(36% 0.005 100);
+  --color-spec-rest: oklch(94% 0.006 100 / 0.36);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     color-scheme: dark;
-    --color-paper: oklch(17% 0.008 245); --color-paper-2: oklch(20% 0.008 245); --color-paper-3: oklch(23% 0.009 245);
-    --color-ink: oklch(94% 0.008 245); --color-ink-2: oklch(86% 0.010 245); --color-muted: oklch(72% 0.012 245);
-    --color-rule: oklch(30% 0.010 240); --color-rule-2: oklch(66% 0.012 240);
-    --color-accent: oklch(72% 0.150 350); --color-accent-2: oklch(80% 0.120 350); --color-accent-ink: oklch(17% 0.010 350); --color-focus: oklch(74% 0.150 350);
-    --color-sheet: oklch(21% 0.008 245); --color-sheet-hover: oklch(25% 0.009 245);
-    --color-band: oklch(24% 0.009 245); --color-band-ink: oklch(94% 0.008 245); --color-band-muted: oklch(76% 0.012 245); --color-band-rule: oklch(36% 0.010 245);
-    --color-band-accent: oklch(74% 0.150 350); --color-band-focus: oklch(80% 0.130 350);
-    --color-spec-rest: oklch(94% 0.008 245 / 0.4);
+    --color-paper: oklch(19% 0.004 100); --color-paper-2: oklch(22% 0.005 100); --color-paper-3: oklch(25% 0.005 100);
+    --color-ink: oklch(94% 0.006 100); --color-ink-2: oklch(86% 0.008 100); --color-muted: oklch(72% 0.010 95);
+    --color-rule: oklch(30% 0.005 100); --color-rule-2: oklch(68% 0.008 100);
+    --color-sheet: oklch(22.5% 0.005 100); --color-sheet-hover: oklch(26% 0.005 100);
+    --color-accent-ink: oklch(19% 0.004 100);
+    --c-rob: oklch(80% 0.100 320); --c-ask: oklch(77% 0.120 45); --c-cfm: oklch(81% 0.090 175); --c-wal: oklch(87% 0.140 92); --c-rov: oklch(84% 0.120 125);
+    --color-band: oklch(24% 0.005 100); --color-band-ink: oklch(94% 0.006 100); --color-band-muted: oklch(78% 0.008 95); --color-band-rule: oklch(36% 0.005 100);
+    --color-spec-rest: oklch(94% 0.006 100 / 0.36);
   }
 }
+/* Each project scopes the accent to its own colour: its year, its sheet's top rule, its chart, its playing control */
+.w-rob { --color-accent: var(--c-rob); }
+.w-ask { --color-accent: var(--c-ask); }
+.w-cfm { --color-accent: var(--c-cfm); }
+.w-wal { --color-accent: var(--c-wal); }
+.w-rov { --color-accent: var(--c-rov); }
 
 /* ---------- Base ---------- */
 html { -webkit-text-size-adjust: 100%; }
@@ -108,14 +120,13 @@ figure { margin: 0; }
 .index { grid-column: 1 / -1; background: var(--color-sheet); border-top: var(--rule-bar) solid var(--color-ink); padding: var(--space-2xs) var(--space-lg); }
 .ix { display: grid; grid-template-columns: 4.5rem minmax(0, 6fr) minmax(0, 5fr); align-items: baseline; column-gap: var(--space-lg); padding-block: var(--space-md); border-top: var(--rule-hair) solid var(--color-rule); color: var(--color-ink); text-decoration: none; }
 .ix:first-child { border-top: 0; }
-.ix-year { font-size: var(--text-md); color: var(--color-muted); }
+.ix-year { font-size: var(--text-md); color: var(--color-accent); }
 .ix-name { font-family: var(--font-display); font-weight: 600; font-size: var(--text-2xl); line-height: 1.1; letter-spacing: -0.02em; text-decoration: underline; text-decoration-thickness: 1px; text-decoration-color: transparent; text-underline-offset: 0.14em; }
 .ix-where { font-size: var(--text-md); color: var(--color-muted); }
 .ix:hover { background: var(--color-sheet-hover); }
-.ix:hover .ix-name { text-decoration-color: var(--color-accent); }
-.ix:active .ix-name { color: var(--color-accent-2); }
+.ix:hover .ix-name { text-decoration-color: var(--color-accent); text-decoration-thickness: 2px; }
+.ix:active .ix-name { color: var(--color-accent); }
 .ix:focus-visible { outline-offset: -2px; }
-.ix.is-lead .ix-name { color: var(--color-accent); }
 @media (max-width: 60rem) {
   .hero-head { grid-column: 1 / span 8; }
   .hero-photo { grid-column: 10 / span 3; }
@@ -142,8 +153,10 @@ figure { margin: 0; }
 .p-fig { grid-column: 6 / span 7; }
 .project.mirror .p-text { grid-column: 8 / span 5; grid-row: 1; }
 .project.mirror .p-fig { grid-column: 1 / span 6; grid-row: 1; }
-.project.wide .p-text { grid-column: 1 / span 4; }
-.project.wide .p-fig { grid-column: 6 / span 7; }
+.project.wide .p-text { grid-column: 9 / span 4; grid-row: 1; }
+.project.wide .p-fig { grid-column: 1 / span 7; grid-row: 1; }
+.project.half .p-text { grid-column: 1 / span 5; }
+.project.half .p-fig { grid-column: 7 / span 6; }
 .p-title { font-size: var(--text-3xl); line-height: 1.04; letter-spacing: -0.025em; max-width: 18ch; }
 .p-meta { margin-top: var(--space-sm); font-size: var(--text-md); color: var(--color-muted); }
 .p-prose { margin-top: var(--space-lg); max-width: 38em; }
@@ -152,11 +165,11 @@ figure { margin: 0; }
 .links a { padding-block: var(--space-sm); color: var(--color-ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.3em; }
 .links a:hover { text-decoration-thickness: 2px; }
 @media (max-width: 60rem) {
-  .p-text, .p-fig, .project.mirror .p-text, .project.mirror .p-fig, .project.wide .p-text, .project.wide .p-fig { grid-column: 1 / -1; grid-row: auto; }
+  .p-text, .p-fig, .project.mirror .p-text, .project.mirror .p-fig, .project.wide .p-text, .project.wide .p-fig, .project.half .p-text, .project.half .p-fig { grid-column: 1 / -1; grid-row: auto; }
 }
 
 /* The sheet: the printed page the evidence sits on */
-.sheet { background: var(--color-sheet); border-top: var(--rule-bar) solid var(--color-ink); padding: var(--space-lg); }
+.sheet { background: var(--color-sheet); border-top: var(--rule-bar) solid var(--color-accent); padding: var(--space-lg); }
 .sheet figcaption, .cap { font-size: var(--text-sm); line-height: 1.5; color: var(--color-muted); }
 
 /* Demo videos: the control sits beside the caption, never over the frame */
@@ -204,7 +217,7 @@ figure { margin: 0; }
 .clip .spec { grid-column: 1 / -1; height: clamp(88px, 9vw, 136px); }
 .band .play { border-color: var(--color-band-ink); color: var(--color-band-ink); }
 .band .play:hover { background: var(--color-band-rule); }
-.band .is-playing .play { background: var(--color-band-accent); border-color: var(--color-band-accent); color: var(--color-ink); }
+.band .is-playing .play { background: var(--color-band-accent); border-color: var(--color-band-accent); color: var(--color-band); }
 .band .clips + .cap { margin-top: var(--space-lg); }
 @media (max-width: 60rem) {
   .band-head .p-text, .band-head .band-prose { grid-column: 1 / -1; }

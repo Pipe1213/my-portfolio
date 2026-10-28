@@ -51,18 +51,18 @@
       <figcaption class="where">Paris, France. Authorised to work in France, available now.</figcaption>
     </figure>
     <nav class="index" aria-label="Selected work">
-      <a class="ix is-lead" href="#robot"><span class="ix-year mono">2026</span><span class="ix-name">Robot learning</span><span class="ix-where">personal project</span></a>
-      <a class="ix" href="#cfm"><span class="ix-year mono">2025</span><span class="ix-name">LLM agent at CFM</span><span class="ix-where">Capital Fund Management, Paris</span></a>
-      <a class="ix" href="#walloon"><span class="ix-year mono">2024</span><span class="ix-name">Walloon speech synthesis</span><span class="ix-where">LISN, CNRS and Université Paris-Saclay</span></a>
-      <a class="ix" href="#askdata"><span class="ix-year mono">2026</span><span class="ix-name">AskData</span><span class="ix-where">personal project</span></a>
-      <a class="ix" href="#rover"><span class="ix-year mono">2014</span><span class="ix-name">Agricultural rover</span><span class="ix-where">University of São Paulo, Mobile Robotics Lab</span></a>
+      <a class="ix w-rob" href="#robot"><span class="ix-year mono">2026</span><span class="ix-name">Robot learning</span><span class="ix-where">personal project</span></a>
+      <a class="ix w-ask" href="#askdata"><span class="ix-year mono">2026</span><span class="ix-name">AskData</span><span class="ix-where">personal project</span></a>
+      <a class="ix w-cfm" href="#cfm"><span class="ix-year mono">2025</span><span class="ix-name">LLM agent at CFM</span><span class="ix-where">Capital Fund Management, Paris</span></a>
+      <a class="ix w-wal" href="#walloon"><span class="ix-year mono">2024</span><span class="ix-name">Walloon speech synthesis</span><span class="ix-where">LISN, CNRS and Université Paris-Saclay</span></a>
+      <a class="ix w-rov" href="#rover"><span class="ix-year mono">2014</span><span class="ix-name">Agricultural rover</span><span class="ix-where">University of São Paulo, Mobile Robotics Lab</span></a>
     </nav>
   </section>
 
   <section id="work" class="section" aria-labelledby="work-h">
     <div class="container"><div class="section-head"><h2 id="work-h">Selected work</h2></div></div>
 
-    <article id="robot" class="project" style="view-transition-name:rob-band">
+    <article id="robot" class="project w-rob" style="view-transition-name:rob-band">
       <div class="container grid">
         <div class="p-text">
           <h3 class="p-title" style="view-transition-name:rob-title">Robot learning from few demonstrations</h3>
@@ -82,7 +82,27 @@
       </div>
     </article>
 
-    <article id="cfm" class="project mirror" style="view-transition-name:cfm-band">
+    <article id="askdata" class="project wide w-ask" style="view-transition-name:ask-band">
+      <div class="container grid">
+        <div class="p-text">
+          <h3 class="p-title" style="view-transition-name:ask-title">AskData: plain-English analytics on PostgreSQL</h3>
+          <p class="p-meta">2026, personal project</p>
+          <p class="p-prose">A text-to-SQL web app for PostgreSQL, built with FastAPI and Next.js. Before any SQL is written, a triage step routes each question to answer, clarify or decline. On 32 held-out test questions it gave <span class="num">1</span> wrong answer, at under a cent per question.</p>
+          <p class="links"><a href="/askdata">Read the case study</a><a href="https://github.com/Pipe1213/AskData">Code</a></p>
+        </div>
+        <figure class="p-fig sheet vid">
+          <video muted loop playsinline preload="none" poster="/assets/video/askdata-answer-poster.jpg" width="1000" height="640" aria-label="AskData answering 'Which 10 customers spent the most?' with a sentence, a bar chart, its assumptions and the SQL">
+            <source src="/assets/video/askdata-answer.mp4" type="video/mp4">
+          </video>
+          <div class="vid-foot">
+            <button class="vid-btn" type="button" data-name="the AskData demo" aria-label="Play the AskData demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+            <figcaption>Asking &ldquo;Which 10 customers spent the most?&rdquo; and opening &ldquo;How I got this&rdquo;.</figcaption>
+          </div>
+        </figure>
+      </div>
+    </article>
+
+    <article id="cfm" class="project half w-cfm" style="view-transition-name:cfm-band">
       <div class="container grid">
         <div class="p-text">
           <h3 class="p-title" style="view-transition-name:cfm-title">An LLM agent that answers financial data questions in SQL</h3>
@@ -99,7 +119,7 @@
       </div>
     </article>
 
-    <article id="walloon" class="band" style="view-transition-name:wal-band">
+    <article id="walloon" class="band w-wal" style="view-transition-name:wal-band">
       <div class="container">
         <div class="grid band-head">
           <div class="p-text">
@@ -136,26 +156,6 @@
         </figure>
       </div>
     </article>
-
-    <article id="askdata" class="project wide" style="view-transition-name:ask-band">
-      <div class="container grid">
-        <div class="p-text">
-          <h3 class="p-title" style="view-transition-name:ask-title">AskData: plain-English analytics on PostgreSQL</h3>
-          <p class="p-meta">2026, personal project</p>
-          <p class="p-prose">A text-to-SQL web app for PostgreSQL, built with FastAPI and Next.js. Before any SQL is written, a triage step routes each question to answer, clarify or decline. On 32 held-out test questions it gave <span class="num">1</span> wrong answer, at under a cent per question.</p>
-          <p class="links"><a href="/askdata">Read the case study</a><a href="https://github.com/Pipe1213/AskData">Code</a></p>
-        </div>
-        <figure class="p-fig sheet vid">
-          <video muted loop playsinline preload="none" poster="/assets/video/askdata-answer-poster.jpg" width="1000" height="640" aria-label="AskData answering 'Which 10 customers spent the most?' with a sentence, a bar chart, its assumptions and the SQL">
-            <source src="/assets/video/askdata-answer.mp4" type="video/mp4">
-          </video>
-          <div class="vid-foot">
-            <button class="vid-btn" type="button" data-name="the AskData demo" aria-label="Play the AskData demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
-            <figcaption>Asking &ldquo;Which 10 customers spent the most?&rdquo; and opening &ldquo;How I got this&rdquo;.</figcaption>
-          </div>
-        </figure>
-      </div>
-    </article>
   </section>
 
   <section id="research" class="section" aria-labelledby="research-h">
@@ -166,7 +166,7 @@
         <li><span class="when mono">2025</span><span><a class="t" href="https://www.isca-archive.org/ssw_2025/orjuela25_ssw.html">Speech synthesis for Walloon, an under-resourced minority language</a><span class="rest">. Espinosa Orjuela, Boula de Mareüil, Evrard. 13th ISCA Speech Synthesis Workshop (SSW 2025), oral. Poster at LT4All 2025 (UNESCO).</span></span></li>
       </ol>
 
-      <article id="rover" class="rover grid">
+      <article id="rover" class="rover grid w-rov">
         <figure class="rover-photo">
           <img src="/assets/img/usp-rover-2014.jpg" width="800" height="533" loading="lazy" alt="White four-wheeled rover with USP and Embrapa logos in a maize field, a drone resting on top">
           <figcaption class="cap">At SIAGRO 2014; the drone was a hand-flown demonstrator. Photo: Tati Zanichelli.</figcaption>
