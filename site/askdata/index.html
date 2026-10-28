@@ -15,17 +15,17 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/archivo-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/newsreader-var.woff" as="font" type="font/woff" crossorigin>
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="/assets/legacy.css">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="cs-top w-ask" style="view-transition-name:ask-band">
-  <header class="site-header">
-    <div class="wrap">
-      <a class="brand" href="/">Felipe Espinosa Orjuela</a>
+  <header class="masthead">
+    <div class="container topbar">
+      <a class="wordmark" href="/">Felipe Espinosa Orjuela</a>
       <nav class="nav" aria-label="Sections">
         <a href="/#work" aria-current="page">Work</a>
         <a href="/#research">Research</a>
@@ -38,8 +38,8 @@
       </button>
     </div>
   </header>
-  <section class="cs-hero wrap" aria-label="Overview">
-    <p class="crumb"><a href="/#work">Selected work</a>, 2026</p>
+  <section class="cs-hero container" aria-label="Overview">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/#work">Selected work</a>, 2026</nav>
     <h1 class="display" style="view-transition-name:ask-title">AskData: plain-English analytics on PostgreSQL</h1>
     <dl class="spec-list">
       <div><dt>Type</dt><dd>Personal project</dd></div>
@@ -51,14 +51,13 @@
   </section>
 </div>
 
-<main id="main" class="wrap">
+<main id="main" class="container w-ask">
   <div class="cs-figure first">
     <figure class="vid">
       <video muted loop playsinline preload="none" poster="/assets/video/askdata-answer-poster.jpg" width="1000" height="640" aria-label="AskData answering 'Which 10 customers spent the most?' with a sentence, a bar chart, its assumptions and the SQL">
         <source src="/assets/video/askdata-answer.mp4" type="video/mp4">
       </video>
-      <button class="vid-btn" type="button" data-name="the AskData demo" aria-label="Play the AskData demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
-      <figcaption>The answer comes as a sentence, a chart or table, the assumptions made under &ldquo;I assumed&rdquo;, and under &ldquo;How I got this&rdquo; the tables used, the SQL and the cost.</figcaption>
+      <div class="vid-foot"><button class="vid-btn" type="button" data-name="the AskData demo" aria-label="Play the AskData demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button><figcaption>The answer comes as a sentence, a chart or table, the assumptions made under &ldquo;I assumed&rdquo;, and under &ldquo;How I got this&rdquo; the tables used, the SQL and the cost.</figcaption></div>
     </figure>
   </div>
 
@@ -76,15 +75,13 @@
         <video muted loop playsinline preload="none" poster="/assets/video/askdata-clarify-poster.jpg" width="1000" height="640" aria-label="AskData offering two readings of 'Who are our best customers?'; picking one gives the answer">
           <source src="/assets/video/askdata-clarify.mp4" type="video/mp4">
         </video>
-        <button class="vid-btn" type="button" data-name="the clarify demo" aria-label="Play the clarify demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
-        <figcaption>&ldquo;Who are our best customers?&rdquo; could mean most spent or most rentals. Each option is a full question you can click.</figcaption>
+        <div class="vid-foot"><button class="vid-btn" type="button" data-name="the clarify demo" aria-label="Play the clarify demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button><figcaption>&ldquo;Who are our best customers?&rdquo; could mean most spent or most rentals. Each option is a full question you can click.</figcaption></div>
       </figure>
       <figure class="vid">
         <video muted loop playsinline preload="none" poster="/assets/video/askdata-decline-poster.jpg" width="1000" height="640" aria-label="AskData declining 'What is the profit margin for each film?' and suggesting two questions it can answer">
           <source src="/assets/video/askdata-decline.mp4" type="video/mp4">
         </video>
-        <button class="vid-btn" type="button" data-name="the decline demo" aria-label="Play the decline demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
-        <figcaption>&ldquo;What is the profit margin for each film?&rdquo; needs costs the database doesn&rsquo;t record. No query runs, and it suggests questions it can answer.</figcaption>
+        <div class="vid-foot"><button class="vid-btn" type="button" data-name="the decline demo" aria-label="Play the decline demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button><figcaption>&ldquo;What is the profit margin for each film?&rdquo; needs costs the database doesn&rsquo;t record. No query runs, and it suggests questions it can answer.</figcaption></div>
       </figure>
     </div>
   </section>
@@ -100,7 +97,7 @@
       <li><span><b>Answer.</b> A small model writes the sentence from the result rows. Every number in it is checked against the rows, and a plain template replaces it if one doesn&rsquo;t match.</span></li>
     </ol>
     <p>Four of these steps call a model, each with one narrow job and a structured (Pydantic) output; the rest is plain Python. There is no agent loop, so the number of model calls per question, and with it the cost and the latency, has a fixed upper bound.</p>
-    <figure class="cs-figure arch" style="margin-top:40px">
+    <figure class="cs-figure arch">
       <img class="light-only" src="/assets/img/askdata-architecture-light.svg" width="960" height="800" loading="lazy" alt="How AskData answers a question: triage, then table retrieval, SQL writing, review, safety check, read-only run and the answer sentence; vague questions get a clarifying question and unanswerable ones a refusal.">
       <img class="dark-only" src="/assets/img/askdata-architecture-dark.svg" width="960" height="800" loading="lazy" alt="How AskData answers a question: triage, then table retrieval, SQL writing, review, safety check, read-only run and the answer sentence; vague questions get a clarifying question and unanswerable ones a refusal.">
       <figcaption>Architecture, from the project README.</figcaption>
@@ -131,13 +128,12 @@
       <li>Every query runs in a read-only transaction with a 10-second timeout and at most 200 rows.</li>
       <li>Connections added in the interface live in memory only, and passwords are masked in logs.</li>
     </ul>
-    <div class="vid-stack" style="max-width:880px">
+    <div class="vid-stack">
       <figure class="vid">
         <video muted loop playsinline preload="none" poster="/assets/video/askdata-connect-poster.jpg" width="1000" height="640" aria-label="Connecting to AskData as a superuser is refused with the reasons; a read-only user passes">
           <source src="/assets/video/askdata-connect.mp4" type="video/mp4">
         </video>
-        <button class="vid-btn" type="button" data-name="the connection demo" aria-label="Play the connection demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
-        <figcaption>Connecting as a superuser is refused with the reasons; a read-only user passes.</figcaption>
+        <div class="vid-foot"><button class="vid-btn" type="button" data-name="the connection demo" aria-label="Play the connection demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button><figcaption>Connecting as a superuser is refused with the reasons; a read-only user passes.</figcaption></div>
       </figure>
     </div>
   </section>
@@ -157,9 +153,11 @@
     <a href="/cfm">Next: the LLM agent at CFM</a>
   </nav>
 </main>
-<footer class="site-footer wrap">
-  <p>Set in Archivo and Newsreader. The spectrograms are computed from my models' own audio. Built by hand, no framework.</p>
-  <p>Felipe Espinosa Orjuela, Paris. Updated October 2026.</p>
+<footer class="container">
+  <div class="site-footer">
+    <p>Set in Hanken Grotesk, Newsreader and IBM Plex Mono. The spectrograms are computed from my models' own audio. Built by hand, no framework.</p>
+    <p>Felipe Espinosa Orjuela, Paris. Updated October 2026.</p>
+  </div>
 </footer>
 <script src="/assets/site.js" defer></script>
 </body>

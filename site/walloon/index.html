@@ -15,17 +15,17 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/archivo-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/newsreader-var.woff" as="font" type="font/woff" crossorigin>
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="/assets/legacy.css">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="cs-top w-wal" style="view-transition-name:wal-band">
-  <header class="site-header">
-    <div class="wrap">
-      <a class="brand" href="/">Felipe Espinosa Orjuela</a>
+  <header class="masthead">
+    <div class="container topbar">
+      <a class="wordmark" href="/">Felipe Espinosa Orjuela</a>
       <nav class="nav" aria-label="Sections">
         <a href="/#work" aria-current="page">Work</a>
         <a href="/#research">Research</a>
@@ -38,8 +38,8 @@
       </button>
     </div>
   </header>
-  <section class="cs-hero wrap" aria-label="Overview">
-    <p class="crumb"><a href="/#work">Selected work</a>, 2024</p>
+  <section class="cs-hero container" aria-label="Overview">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/#work">Selected work</a>, 2024</nav>
     <h1 class="display" style="view-transition-name:wal-title">The first speech synthesis system for Walloon</h1>
     <dl class="spec-list">
       <div><dt>Role</dt><dd>AI Research Intern, LISN (CNRS / Université Paris-Saclay)</dd></div>
@@ -51,7 +51,7 @@
   </section>
 </div>
 
-<main id="main" class="wrap">
+<main id="main" class="container w-wal">
   <section class="listen" aria-labelledby="listen-h">
     <div class="listen-head">
       <div>
@@ -160,9 +160,11 @@
     <a href="/#work">All work</a>
   </nav>
 </main>
-<footer class="site-footer wrap">
-  <p>Set in Archivo and Newsreader. The spectrograms are computed from my models' own audio. Built by hand, no framework.</p>
-  <p>Felipe Espinosa Orjuela, Paris. Updated October 2026.</p>
+<footer class="container">
+  <div class="site-footer">
+    <p>Set in Hanken Grotesk, Newsreader and IBM Plex Mono. The spectrograms are computed from my models' own audio. Built by hand, no framework.</p>
+    <p>Felipe Espinosa Orjuela, Paris. Updated October 2026.</p>
+  </div>
 </footer>
 <script src="/assets/site.js" defer></script>
 </body>

@@ -5,13 +5,17 @@ Owner: Felipe Espinosa Orjuela. The fuller private record lives in the claude.ai
 
 ## Current status (update this first)
 
-*Last updated 28 Oct 2026, 22:45.*
+*Last updated 29 Oct 2026.*
+
+- **29 Oct: branch `visual-2026-10` (pushed, not merged; waiting for Felipe's OK).** Full visual redesign with the Hallmark skill, copy verbatim. The locked system is `design.md` at the repo root; read it before any visual change. Summary in "Visual identity" below. Felipe chose the palette (warm graphite with project colours as marks) and the reverse-chronological work order. One wording change, approved as part of the redesign: the colophon now names the new faces.
+  - Not done yet: the link-preview images (`og*.png`) still use Archivo on the old coloured surfaces; regenerate them in the new type after merge if Felipe wants them to match. The favicon is unchanged.
+  - Hallmark's working files (`.hallmark/`, `site/**/.hallmark/`) and `.claude/launch.json` are excluded in `.git/info/exclude`; never commit them.
 
 - **28 Oct, 22:45: `content-2026-10` merged to `main` (live), approved by Felipe.** Three content commits:
   1. `6f7c375` text fixes: CFM is built for the **data referential team** (not "analysts"); "giving each task a suitable model"; context examples **kept separate from the benchmark**; CLSE **first author**; rover adds LIBS, ultrasonic sensors, Raspberry Pi and Arduino; titles **LLM Evaluation Specialist (freelance)** and **Business Owner, demolition and renovation subcontracting**; tools line; NER line removed; new `og-cfm.png`.
   2. `69de9e3` AskData finished: `/askdata` rewritten (6 steps, results table, safety, limits, light/dark architecture SVG, 4 demo videos); both screenshots with the old wrong answer deleted; new `og-askdata.png`. Adds shared styles (`.cs-sec`, `.tbl`, `.steps`, `.vid`, `.chart`) and in-view video playback in `site.js`.
   3. `70316b9` robot learning: `/robot-learning` page, home band **first** in Selected work, hero link, `.w-rob` colour world, `og-robot-learning.png`, sitemap; case-study prev/next follow the home order.
-- **Next (Felipe, in a separate Claude Code session): visual pass, on a new branch from `main` (e.g. `visual-2026-10`).** The content and numbers are final; change layout, type and colour freely, but not the wording or numbers without asking Felipe. Known points to look at:
+- **28 Oct: visual pass requested; done on 29 Oct (see above). The known points below were all fixed in it:** The content and numbers are final; change layout, type and colour freely, but not the wording or numbers without asking Felipe. Known points to look at:
   - `.w-rob` is a **placeholder plum** (light `#F0E7F1/#7A3B8C/#5F4A64/#DCC8DF`, dark `#2B1D30/#DDA8EC/#C9B6CE/#4A3350`, contrast checked ≥ 6:1). Felipe may pick another; keep ≥ 5.3:1 and no navy.
   - The video play button sits top-left over the video; on the AskData demo it covers the app's logo.
   - The success-rate chart (inline SVG in `/robot-learning`): the ACT "55.4%" label crowds the line; on phones the chart scrolls sideways at a fixed min width.
@@ -22,12 +26,12 @@ Owner: Felipe Espinosa Orjuela. The fuller private record lives in the claude.ai
 
 - Plain static HTML, CSS and JS in `site/`. No framework and no build step. Vercel serves `site/` as is (`vercel.json`: framework null, cleanUrls, redirects from the old Next.js routes).
 - Pages: `site/index.html` (home), `site/robot-learning/`, `site/cfm/`, `site/walloon/`, `site/askdata/` (case studies), `site/404.html`.
-- `site/assets/site.css` holds all styles; `site/assets/site.js` handles the theme toggle, audio (one clip at a time), the spectrogram playhead, the Walloon voice switch, and the demo videos (play while ≥ 50% in view, click or button toggles, never autoplay under `prefers-reduced-motion`).
+- `site/assets/site.css` holds all styles (its first lines are the Hallmark stamp and waivers; it imports `tokens.css` and `base.css`, the Hallmark scaffold); `site/assets/site.js` handles the theme toggle, audio (one clip at a time), the spectrogram playhead, the Walloon voice switch, and the demo videos (play while ≥ 50% in view, click or button toggles, never autoplay under `prefers-reduced-motion`).
 - Demo videos live in `site/assets/video/` (H.264 MP4 + `-poster.jpg`, each < 400 KB), converted from the project READMEs' GIFs. The robot clips are 512×256 simulator renders: left/right must be named in the caption.
-- Fonts are self-hosted WOFF subsets in `site/assets/fonts/` (OFL licences included):
-  - Archivo, variable width 62–125, used for UI and display;
-  - Newsreader, normal and italic, used for body text.
-  - Subsets were made with fontTools from the google/fonts repo. If you need new glyphs, re-subset from source; don't link to Google Fonts.
+- Fonts are self-hosted in `site/assets/fonts/` (OFL licences included); don't link to Google Fonts:
+  - Hanken Grotesk, variable, latin and latin-ext WOFF2 (from Fontsource 5.1.0), for heads, labels and controls;
+  - Newsreader, normal and italic WOFF subsets (fontTools, from google/fonts), for body text;
+  - IBM Plex Mono 400 and 500 WOFF2 (Fontsource 5.1.0), for figures only: scores, dates, costs, table numbers.
 - Spectrograms: `site/assets/spec/spec-<clip>.webp` are white alpha masks, regenerated with `python tools/make_spectrograms.py site/assets/audio/*.mp3`. CSS colours them (`.spec` uses `mask: var(--m)`) and the playhead is the CSS variable `--p`, set by `site.js` on `timeupdate`.
 - Link previews: `site/og.png` (home), plus `og-walloon.png`, `og-cfm.png`, `og-askdata.png` and `og-robot-learning.png` (1200×630, Archivo on the project's dark surface colour; rendered with Playwright from a temporary HTML page).
 - Local preview: `python3 -m http.server -d site 8765`. That server has no clean URLs, so `/cfm` becomes `/cfm/`.
@@ -39,28 +43,27 @@ Owner: Felipe Espinosa Orjuela. The fuller private record lives in the claude.ai
   - the theme persists after a reload.
 - Workflow: work on a branch, push it, check the Vercel preview, and merge to `main` (which is live) **only after Felipe says OK**.
 
-## Visual identity (decided)
+## Visual identity (decided 29 Oct 2026; the full system is `design.md`)
 
-- Warm graphite base: dark `#161615`, light `#F7F7F5`. Dark mode is required (Felipe uses dark everywhere); the site follows the system and has a toggle stored in localStorage. **No navy, anywhere.**
-- Each project has its own colour world, set by a class:
+- A dated research record: warm graphite paper, near-black ink, ruled lines in two weights (1px rows, 2px heads), square corners, no shadows. Dark mode is required (Felipe uses dark everywhere); the site follows the system and has a toggle stored in localStorage. **No navy, anywhere.**
+- Each project keeps its colour, but only as a mark, set by a class that scopes `--color-accent`:
 
   | Project | Class | Colour |
   |---|---|---|
-  | CFM | `.w-cfm` | teal |
-  | Walloon | `.w-wal` | Walloon-flag yellow |
+  | Robot learning | `.w-rob` | plum |
   | AskData | `.w-ask` | rust |
+  | CFM | `.w-cfm` | teal |
+  | Walloon | `.w-wal` | Walloon yellow (ochre on light paper) |
   | Rover | `.w-rov` | field green |
-  | Robot learning | `.w-rob` | plum (placeholder, 28 Oct) |
 
-  The tokens are `--sf`, `--ac`, `--mu` and `--prl`. All colour pairs were checked at 5.3:1 or better (WCAG AA).
-- Projects are full-bleed colour bands, not cards. Numbers are set in prose (`.num`), with no stat tiles. Links are plain underlined text, never pills.
-- The signature element is real spectrograms of Felipe's own Walloon model audio. They appear only where they can be played: the two clips on the home page, and the large screen above the scores on `/walloon`. Never use one as decoration.
-- Motion:
-  - cross-document View Transitions: on the home page each band and title has `view-transition-name: cfm-band` / `cfm-title` (and the same for `wal`, `ask` and `rob`), which morph into the case-study header and h1;
-  - demo videos loop only while in view (content, not decoration); nothing else moves;
-  - one scroll effect: bands rise in using `animation-timeline: view()`.
-  - Everything is off under `prefers-reduced-motion`. **Don't add more animation**: animating everything on scroll is what makes a site look like a template.
-- Footer colophon: "Set in Archivo and Newsreader. The spectrograms are computed from my models' own audio. Built by hand, no framework." The tab icon is spectrogram bars in yellow-to-coral.
+  The colour shows only as the year in the home index, the 2px rule on top of a sheet, one chart series or bar, a playing control, list markers and step numerals. Never a band or a fill behind text. Every pair is 6:1 or better in both modes.
+- Home: the hero is a ruled index of the five projects (year, name, place) on a pale sheet; projects below are splits of text and evidence on sheets; Walloon is the one dark ink band. Case studies: a spec list on a sheet, then sections under 2px rules; tables, charts and videos on sheets.
+- Type: Hanken Grotesk heads, Newsreader body at 19px, IBM Plex Mono for figures. Labels are the body face, a step smaller, never capitals.
+- The signature element is real spectrograms of Felipe's own Walloon model audio, drawn pale and filled with the yellow playhead as they play. They appear only where they can be played: the two clips on the home page, and the large screen above the scores on `/walloon`. Never use one as decoration.
+- Video controls sit beside the caption, never over the frame.
+- Motion: cross-document View Transitions only (each home project and title has `view-transition-name: rob-band` / `rob-title`, and the same for `ask`, `cfm` and `wal`, morphing into the case-study header and h1); demo videos loop only while in view. No scroll reveals. Everything is off under `prefers-reduced-motion`. **Don't add more animation.**
+- Footer colophon: "Set in Hanken Grotesk, Newsreader and IBM Plex Mono. The spectrograms are computed from my models' own audio. Built by hand, no framework." The tab icon is spectrogram bars in yellow-to-coral.
+- Hallmark checks: `node ~/.agents/skills/hallmark/scripts/sloplint.mjs site/assets/site.css --genre editorial --render --url http://localhost:8765/ …` (needs `puppeteer-core`, pointed to by `HALLMARK_PUPPETEER`; check through the local server, since the pages use root-relative paths). Keep it at 0 FAIL; waivers live in the stamp at the top of `site.css`.
 
 ## Content decisions (decided)
 
@@ -68,7 +71,7 @@ Owner: Felipe Espinosa Orjuela. The fuller private record lives in the claude.ai
 - The page balances two kinds of reader:
   - ML research / robotics (Lane A): robot learning, Walloon TTS, publications, the rover;
   - applied AI engineering (Lane B): CFM agent, AskData.
-- Selected work order (28 Oct): **Robot learning, CFM, Walloon, AskData**. The NER line was removed (28 Oct). Each band should fit on one laptop screen.
+- Selected work order (29 Oct): **newest first, Robot learning, AskData, CFM, Walloon**, the same in the hero index (which ends with the 2014 rover). Case-study previous/next links follow this order. The NER line was removed (28 Oct).
 - Research: the publication list comes first, newest first. The 2014 rover is the last item, as a green band holding its two 2014 papers, so the date is honest and the path reads robotics → speech → LLM agents.
 - Writing style: every sentence names a thing, place or number. Never claim anything Felipe can't defend in an interview.
 
@@ -104,9 +107,11 @@ Owner: Felipe Espinosa Orjuela. The fuller private record lives in the claude.ai
   - Felipe approved it and it was merged to `main` (live) on 12 Oct 2026, 01:10.
 - **28 Oct 2026, branch `content-2026-10`:** content update from the claude.ai project (CVs and LinkedIn of 28 Oct): CFM wording, AskData finished, robot-learning page, NER removed. Felipe approved it and it was merged to `main` (live) on 28 Oct 2026, 22:45.
 
+- **29 Oct 2026, branch `visual-2026-10`:** redesign with the Hallmark skill (Almanac theme repainted warm graphite, project colours as marks, Hanken Grotesk and IBM Plex Mono, reverse-chronological work); `legacy.css` and Archivo removed; system locked in `design.md`.
+
 ## Next
 
-1. **Visual pass** on a new branch from `main` (Felipe, see Current status), then merge after Felipe's OK.
+1. **Merge `visual-2026-10`** after Felipe's OK; then decide whether to regenerate the `og*.png` link previews in the new type.
 2. **CLSE paper:** when it's accepted, link it and update "Under review".
 3. Possibly a short "Writing" or "Notes" section later, but only if there are real posts.
 4. After each content change, check link previews with LinkedIn Post Inspector.
