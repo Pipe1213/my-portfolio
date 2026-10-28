@@ -7,8 +7,8 @@ Owner: Felipe Espinosa Orjuela. The fuller private record lives in the claude.ai
 
 *Last updated 29 Oct 2026.*
 
-- **29 Oct: branch `visual-2026-10` (pushed, not merged; waiting for Felipe's OK).** Full visual redesign with the Hallmark skill, copy verbatim. The locked system is `design.md` at the repo root; read it before any visual change. Summary in "Visual identity" below. Felipe chose the palette (warm graphite with project colours as marks) and the reverse-chronological work order. One wording change, approved as part of the redesign: the colophon now names the new faces.
-  - Not done yet: the link-preview images (`og*.png`) still use Archivo on the old coloured surfaces; regenerate them in the new type after merge if Felipe wants them to match. The favicon is unchanged.
+- **29 Oct: branch `visual-2026-10` merged to `main` (live), approved by Felipe.** Full visual redesign with the Hallmark skill, copy verbatim. The locked system is `design.md` at the repo root; read it before any visual change. Summary in "Visual identity" below. Felipe chose the palette (warm graphite with project colours as marks) and the reverse-chronological work order. One wording change, approved as part of the redesign: the colophon now names the new faces.
+  - Link previews (`og*.png`) regenerated on 29 Oct in the new design (dark theme, project-colour rule, Hanken Grotesk, Newsreader, Plex Mono), same wording as before. The favicon is unchanged.
   - Hallmark's working files (`.hallmark/`, `site/**/.hallmark/`) and `.claude/launch.json` are excluded in `.git/info/exclude`; never commit them.
 
 - **28 Oct, 22:45: `content-2026-10` merged to `main` (live), approved by Felipe.** Three content commits:
@@ -33,7 +33,7 @@ Owner: Felipe Espinosa Orjuela. The fuller private record lives in the claude.ai
   - Newsreader, normal and italic WOFF subsets (fontTools, from google/fonts), for body text;
   - IBM Plex Mono 400 and 500 WOFF2 (Fontsource 5.1.0), for figures only: scores, dates, costs, table numbers.
 - Spectrograms: `site/assets/spec/spec-<clip>.webp` are white alpha masks, regenerated with `python tools/make_spectrograms.py site/assets/audio/*.mp3`. CSS colours them (`.spec` uses `mask: var(--m)`) and the playhead is the CSS variable `--p`, set by `site.js` on `timeupdate`.
-- Link previews: `site/og.png` (home), plus `og-walloon.png`, `og-cfm.png`, `og-askdata.png` and `og-robot-learning.png` (1200×630, Archivo on the project's dark surface colour; rendered with Playwright from a temporary HTML page).
+- Link previews: `site/og.png` (home), plus `og-walloon.png`, `og-cfm.png`, `og-askdata.png` and `og-robot-learning.png` (1200×630, in the site's dark theme: a sheet with the project's colour rule, Hanken Grotesk title, Newsreader result line; rendered with headless Chrome from a temporary page served from `site/`, then deleted).
 - Local preview: `python3 -m http.server -d site 8765`. That server has no clean URLs, so `/cfm` becomes `/cfm/`.
 - Test with Playwright before every push:
   - viewports 390, 768 and 1440 px, in both dark and light;
@@ -111,7 +111,7 @@ Owner: Felipe Espinosa Orjuela. The fuller private record lives in the claude.ai
 
 ## Next
 
-1. **Merge `visual-2026-10`** after Felipe's OK; then decide whether to regenerate the `og*.png` link previews in the new type.
+1. **After the og merge:** LinkedIn Post Inspector on `/`, `/askdata`, `/robot-learning` so the previews refresh.
 2. **CLSE paper:** when it's accepted, link it and update "Under review".
 3. Possibly a short "Writing" or "Notes" section later, but only if there are real posts.
 4. After each content change, check link previews with LinkedIn Post Inspector.
