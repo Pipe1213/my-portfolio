@@ -13,6 +13,7 @@
   --wal-btn: #1A1A18; --wal-btn-fg: #FAF0C8; --wal-row: #F3E5A9;
   --ask-sf: #F8E6DE; --ask-ac: #9E3D1A; --ask-mu: #6F5046; --ask-rl: #EAC8BA;
   --rov-sf: #E5ECD8; --rov-ac: #486819; --rov-mu: #535D46; --rov-rl: #C6D4AF;
+  --rob-sf: #F0E7F1; --rob-ac: #7A3B8C; --rob-mu: #5F4A64; --rob-rl: #DCC8DF;
   --sp-hi: #8A6500; --sp-lo: #A3401C; --sp-mute: rgba(26, 26, 24, 0.2);
   --wrap: 1280px;
   --gut: clamp(20px, 5vw, 64px);
@@ -30,6 +31,7 @@
     --wal-btn: #F6D255; --wal-btn-fg: #2A2209; --wal-row: #43380F;
     --ask-sf: #3A1F14; --ask-ac: #F59A75; --ask-mu: #D2B2A5; --ask-rl: #5A3324;
     --rov-sf: #1F3018; --rov-ac: #B4D77E; --rov-mu: #B2BEA3; --rov-rl: #3A4E2D;
+    --rob-sf: #2B1D30; --rob-ac: #DDA8EC; --rob-mu: #C9B6CE; --rob-rl: #4A3350;
     --sp-hi: #F6D255; --sp-lo: #F0705E; --sp-mute: rgba(237, 236, 231, 0.2);
   }
 }
@@ -41,12 +43,14 @@
   --wal-btn: #F6D255; --wal-btn-fg: #2A2209; --wal-row: #43380F;
   --ask-sf: #3A1F14; --ask-ac: #F59A75; --ask-mu: #D2B2A5; --ask-rl: #5A3324;
   --rov-sf: #1F3018; --rov-ac: #B4D77E; --rov-mu: #B2BEA3; --rov-rl: #3A4E2D;
+  --rob-sf: #2B1D30; --rob-ac: #DDA8EC; --rob-mu: #C9B6CE; --rob-rl: #4A3350;
   --sp-hi: #F6D255; --sp-lo: #F0705E; --sp-mute: rgba(237, 236, 231, 0.2);
 }
 .w-cfm { --sf: var(--cfm-sf); --ac: var(--cfm-ac); --mu: var(--cfm-mu); --prl: var(--cfm-rl); }
 .w-wal { --sf: var(--wal-sf); --ac: var(--wal-ac); --mu: var(--wal-mu); --prl: var(--wal-rl); }
 .w-ask { --sf: var(--ask-sf); --ac: var(--ask-ac); --mu: var(--ask-mu); --prl: var(--ask-rl); }
 .w-rov { --sf: var(--rov-sf); --ac: var(--rov-ac); --mu: var(--rov-mu); --prl: var(--rov-rl); }
+.w-rob { --sf: var(--rob-sf); --ac: var(--rob-ac); --mu: var(--rob-mu); --prl: var(--rob-rl); }
 
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -292,6 +296,56 @@ button { font: inherit; }
 .lead { max-width: 40em; color: var(--t2); }
 .fig-title { margin-bottom: 4px; font-size: 14px; color: var(--tx); }
 .results { margin-top: clamp(40px, 5vw, 64px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px clamp(32px, 5vw, 80px); }
+
+/* ---------- Case-study sections, tables, steps, video, charts (28 Oct 2026) ---------- */
+.cs-sec { margin-top: var(--sec); }
+.cs-sec > h2 { font-family: var(--sans); font-size: clamp(26px, 2.6vw, 36px); line-height: 1.05; font-weight: 650; font-stretch: 118%; letter-spacing: -0.02em; }
+.cs-sec > p, .cs-sec > ul { margin-top: 16px; max-width: 40em; color: var(--t2); }
+.cs-sec > p + p { margin-top: 12px; }
+.cs-sec > ul { list-style: disc; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+.cs-sec .lead { color: var(--tx); font-size: 21px; line-height: 1.5; }
+.cs-sec code { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: .85em; }
+.steps { margin-top: 24px; max-width: 46em; counter-reset: st; display: flex; flex-direction: column; }
+.steps li { counter-increment: st; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 0 12px; padding: 14px 0; border-top: 1px solid var(--rl); color: var(--t2); }
+.steps li:last-child { border-bottom: 1px solid var(--rl); }
+.steps li::before { content: counter(st); font-family: var(--sans); font-weight: 650; font-stretch: 112%; color: var(--tx); }
+.steps b { color: var(--tx); font-weight: 600; }
+.tbl-wrap { margin-top: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tbl { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 14px; font-variant-numeric: lining-nums tabular-nums; }
+.tbl th, .tbl td { padding: 10px 14px 10px 0; text-align: left; vertical-align: top; border-top: 1px solid var(--rl); }
+.tbl thead th { font-weight: 500; color: var(--t2); font-size: 13px; border-top: 0; }
+.tbl tbody tr:last-child td, .tbl tbody tr:last-child th { border-bottom: 1px solid var(--rl); }
+.tbl .n { text-align: right; white-space: nowrap; }
+.tbl tbody th { font-weight: 600; color: var(--tx); }
+.tbl strong { font-weight: 650; }
+.tbl-note { margin-top: 12px; font-family: var(--sans); font-size: 13px; color: var(--t2); max-width: 60em; line-height: 1.5; }
+.vid { position: relative; margin: 0; }
+.vid video { display: block; width: 100%; height: auto; border-radius: 2px; background: var(--prl, var(--rl)); box-shadow: 0 0 0 1px var(--prl, var(--rl)); cursor: pointer; }
+.vid .vid-btn { position: absolute; left: 12px; top: 12px; width: 40px; height: 40px; border-radius: 20px; border: 0; padding: 0; cursor: pointer; background: var(--tx); color: var(--bg); display: inline-flex; align-items: center; justify-content: center; opacity: .9; }
+.vid .vid-btn .i-pause { display: none; }
+.vid.is-playing .vid-btn .i-pause { display: block; }
+.vid.is-playing .vid-btn .i-play { display: none; }
+.vid figcaption { margin-top: 12px; font-family: var(--sans); font-size: 13px; color: var(--mu, var(--t2)); line-height: 1.5; }
+.vid.sim { max-width: 768px; }
+.vid-pair { margin-top: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px clamp(24px, 3vw, 40px); }
+.vid-stack { margin-top: 28px; display: flex; flex-direction: column; gap: 40px; }
+.arch .dark-only { display: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .arch .dark-only { display: block; } :root:not([data-theme="light"]) .arch .light-only { display: none; } }
+:root[data-theme="dark"] .arch .dark-only { display: block; }
+:root[data-theme="dark"] .arch .light-only { display: none; }
+.chart { margin-top: 28px; max-width: 880px; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; font-family: var(--sans); }
+.chart .grid line { stroke: var(--rl); stroke-width: 1; }
+.chart .ax text { fill: var(--t2); font-size: 12px; }
+.chart .ln { fill: none; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.chart .band { opacity: .14; }
+.chart .s-vla .ln { stroke: var(--rob-ac); } .chart .s-vla .pt, .chart .s-vla .band { fill: var(--rob-ac); }
+.chart .s-act .ln { stroke: var(--t2); } .chart .s-act .pt, .chart .s-act .band { fill: var(--t2); }
+.chart .lab { font-size: 13px; font-weight: 600; }
+.chart .s-vla .lab { fill: var(--rob-ac); }
+.chart .s-act .lab { fill: var(--tx); }
+.chart .val { font-size: 12px; font-weight: 600; fill: var(--tx); }
+.chart figcaption { margin-top: 12px; font-family: var(--sans); font-size: 13px; color: var(--t2); line-height: 1.5; max-width: 60em; }
 
 /* ---------- Motion ---------- */
 @view-transition { navigation: auto; }

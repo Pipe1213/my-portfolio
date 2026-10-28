@@ -126,4 +126,26 @@
     });
     setVoice("female");
   }
+  /* ---------- Looping demo videos: play while in view; never autoplay under reduced motion ---------- */
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var vids = document.querySelectorAll(".vid video");
+  function run(v, on) { if (on) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } else { v.pause(); } }
+  vids.forEach(function (v) {
+    var fig = v.closest(".vid"), btn = fig.querySelector(".vid-btn");
+    v.addEventListener("play", function () { fig.classList.add("is-playing"); if (btn) btn.setAttribute("aria-label", "Pause " + btn.getAttribute("data-name")); });
+    v.addEventListener("pause", function () { fig.classList.remove("is-playing"); if (btn) btn.setAttribute("aria-label", "Play " + btn.getAttribute("data-name")); });
+    function toggle() { fig.setAttribute("data-user", v.paused ? "play" : "pause"); run(v, v.paused); }
+    v.addEventListener("click", toggle);
+    if (btn) btn.addEventListener("click", toggle);
+  });
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var v = e.target, fig = v.closest(".vid"), user = fig.getAttribute("data-user");
+        if (e.isIntersecting && e.intersectionRatio >= 0.5) { if (!reduce && user !== "pause") run(v, true); }
+        else if (!v.paused) { run(v, false); }
+      });
+    }, { threshold: [0, 0.5] });
+    vids.forEach(function (v) { io.observe(v); });
+  }
 })();

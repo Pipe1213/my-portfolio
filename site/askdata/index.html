@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AskData, project notes. Felipe Espinosa Orjuela</title>
-<meta name="description" content="AskData, in progress: a web app that turns plain-English questions into read-only SQL on PostgreSQL, with schema-aware retrieval, SQL validation and one repair attempt. FastAPI, Next.js, PostgreSQL.">
+<title>AskData, case study. Felipe Espinosa Orjuela</title>
+<meta name="description" content="AskData, a text-to-SQL web app for PostgreSQL. A triage step routes each question to answer, clarify or decline; read-only SQL validated with sqlglot. 1 wrong answer in 32 held-out test questions. FastAPI, Next.js, PostgreSQL.">
 <link rel="canonical" href="https://felipe-espinosa.vercel.app/askdata">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AskData: plain-English analytics on PostgreSQL">
-<meta property="og:description" content="In progress. Read-only SQL from plain-English questions, with schema-aware retrieval and query repair.">
+<meta property="og:description" content="Text-to-SQL for PostgreSQL with a triage step before any SQL is written. 1 wrong answer in 32 held-out test questions.">
 <meta property="og:url" content="https://felipe-espinosa.vercel.app/askdata">
 <meta property="og:image" content="https://felipe-espinosa.vercel.app/og-askdata.png">
 <meta property="og:image:width" content="1200">
@@ -39,52 +39,121 @@
     </div>
   </header>
   <section class="cs-hero wrap" aria-label="Overview">
-    <p class="crumb"><a href="/#work">Selected work</a>, 2026, in progress</p>
+    <p class="crumb"><a href="/#work">Selected work</a>, 2026</p>
     <h1 class="display" style="view-transition-name:ask-title">AskData: plain-English analytics on PostgreSQL</h1>
     <dl class="spec-list">
       <div><dt>Type</dt><dd>Personal project</dd></div>
-      <div><dt>Status</dt><dd>Core pipeline, demo datasets and tests work. Benchmark results and a hosted demo are next</dd></div>
-      <div><dt>Stack</dt><dd>Python, FastAPI, Next.js, TypeScript, PostgreSQL, OpenAI API</dd></div>
-      <div><dt>Data</dt><dd>Two demo databases (pagila, retail_ops), or any PostgreSQL connection</dd></div>
+      <div><dt>Status</dt><dd>Complete, October 2026</dd></div>
+      <div><dt>Stack</dt><dd>FastAPI, Pydantic, sqlglot, OpenAI API; Next.js, TypeScript; PostgreSQL 16 in Docker Compose</dd></div>
+      <div><dt>Data</dt><dd>Two demo databases (Pagila, a DVD-rental store, and retail_ops, a synthetic retail company), or any PostgreSQL database through a read-only user</dd></div>
     </dl>
-    <p class="links"><a href="https://github.com/Pipe1213/AskData">Code on GitHub</a></p>
+    <p class="links"><a href="https://github.com/Pipe1213/AskData">Code on GitHub</a><a href="https://github.com/Pipe1213/AskData/blob/main/eval/EVAL.md">Evaluation details</a></p>
   </section>
 </div>
 
 <main id="main" class="wrap">
-  <figure class="cs-figure first">
-    <img src="/assets/img/askdata-details.jpg" width="1400" height="900" loading="lazy" alt="AskData answer view showing a 10-row result table and the validated SQL query">
-    <figcaption>Each answer comes with the result table and the validated SQL behind it.</figcaption>
-  </figure>
+  <div class="cs-figure first">
+    <figure class="vid">
+      <video muted loop playsinline preload="none" poster="/assets/video/askdata-answer-poster.jpg" width="1000" height="640" aria-label="AskData answering 'Which 10 customers spent the most?' with a sentence, a bar chart, its assumptions and the SQL">
+        <source src="/assets/video/askdata-answer.mp4" type="video/mp4">
+      </video>
+      <button class="vid-btn" type="button" data-name="the AskData demo" aria-label="Play the AskData demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+      <figcaption>The answer comes as a sentence, a chart or table, the assumptions made under &ldquo;I assumed&rdquo;, and under &ldquo;How I got this&rdquo; the tables used, the SQL and the cost.</figcaption>
+    </figure>
+  </div>
 
-  <section class="cols3" aria-label="Details">
-    <div>
-      <h2>What it does</h2>
-      <p>You ask a question in plain English. AskData writes a read-only SQL query, runs it on PostgreSQL and answers with a sentence, a table and, when the result suits one, a bar or line chart.</p>
-    </div>
-    <div>
-      <h2>How a question is answered</h2>
-      <ul>
-        <li>Retrieve the relevant schema context.</li>
-        <li>Plan and generate the SQL.</li>
-        <li>Validate it as read-only, then execute it.</li>
-        <li>Repair the query once if it fails.</li>
-        <li>Summarise the result and suggest a chart.</li>
-      </ul>
-    </div>
-    <div>
-      <h2>Testing and next steps</h2>
-      <p>The backend has 13 test files, from SQL validation to the query pipeline. A benchmark script with three sets of 10 questions is ready; its results will go here, with the limits found, when the run is done.</p>
+  <section class="cs-sec" aria-labelledby="what-h">
+    <h2 id="what-h">What it does</h2>
+    <p>You ask a question in plain English and get a sentence with the names and numbers that matter, a chart or a table you can copy or download as CSV, and the SQL behind it. It handles follow-ups in the same conversation (&ldquo;now only the top 5&rdquo;), keeps past conversations, lets you browse the tables, and connects to your own PostgreSQL database through a read-only user.</p>
+    <p>It is built for people who know their business but don&rsquo;t read SQL. They can&rsquo;t check the query, so the app has to decide when to answer at all.</p>
+  </section>
+
+  <section class="cs-sec" aria-labelledby="triage-h">
+    <h2 id="triage-h">Answer, clarify or decline</h2>
+    <p>A triage call sees the question, the conversation and the candidate tables, and returns one of three decisions. It answers by default and states small choices as assumptions. It asks only when two readings would give materially different answers, and declines only when no column could hold the fact.</p>
+    <div class="vid-pair">
+      <figure class="vid">
+        <video muted loop playsinline preload="none" poster="/assets/video/askdata-clarify-poster.jpg" width="1000" height="640" aria-label="AskData offering two readings of 'Who are our best customers?'; picking one gives the answer">
+          <source src="/assets/video/askdata-clarify.mp4" type="video/mp4">
+        </video>
+        <button class="vid-btn" type="button" data-name="the clarify demo" aria-label="Play the clarify demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+        <figcaption>&ldquo;Who are our best customers?&rdquo; could mean most spent or most rentals. Each option is a full question you can click.</figcaption>
+      </figure>
+      <figure class="vid">
+        <video muted loop playsinline preload="none" poster="/assets/video/askdata-decline-poster.jpg" width="1000" height="640" aria-label="AskData declining 'What is the profit margin for each film?' and suggesting two questions it can answer">
+          <source src="/assets/video/askdata-decline.mp4" type="video/mp4">
+        </video>
+        <button class="vid-btn" type="button" data-name="the decline demo" aria-label="Play the decline demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+        <figcaption>&ldquo;What is the profit margin for each film?&rdquo; needs costs the database doesn&rsquo;t record. No query runs, and it suggests questions it can answer.</figcaption>
+      </figure>
     </div>
   </section>
 
-  <figure class="cs-figure">
-    <img src="/assets/img/askdata-architecture.png" width="1570" height="623" loading="lazy" alt="Architecture diagram: Next.js frontend, FastAPI layer, a seven-step query pipeline calling OpenAI and PostgreSQL, and a structured response back to the user">
-    <figcaption>Architecture, from the project README.</figcaption>
-  </figure>
+  <section class="cs-sec" aria-labelledby="how-h">
+    <h2 id="how-h">How a question is answered</h2>
+    <ol class="steps">
+      <li><span><b>Schema.</b> At startup the backend reads tables, columns, types, keys and comments. Partitioned tables appear as one table, so the model can&rsquo;t sum two monthly partitions and call it the total.</span></li>
+      <li><span><b>Triage.</b> One model call decides to answer, clarify or decline.</span></li>
+      <li><span><b>Retrieval.</b> Tables and columns are scored by the words in the question through a small business vocabulary (&ldquo;spent&rdquo; &rarr; amount, payment), plus the shortest foreign-key path between matched tables, so the model sees the joins it needs.</span></li>
+      <li><span><b>SQL.</b> One call writes a single SELECT and up to three assumptions in plain words; a second call reviews it against the question and can ask for one rewrite.</span></li>
+      <li><span><b>Checks and run.</b> sqlglot parses the query and allows one read-only SELECT. It runs in a read-only transaction with a 10-second timeout and a 200-row cap; errors go back to the model for a bounded repair.</span></li>
+      <li><span><b>Answer.</b> A small model writes the sentence from the result rows. Every number in it is checked against the rows, and a plain template replaces it if one doesn&rsquo;t match.</span></li>
+    </ol>
+    <p>Four of these steps call a model, each with one narrow job and a structured (Pydantic) output; the rest is plain Python. There is no agent loop, so the number of model calls per question, and with it the cost and the latency, has a fixed upper bound.</p>
+    <figure class="cs-figure arch" style="margin-top:40px">
+      <img class="light-only" src="/assets/img/askdata-architecture-light.svg" width="960" height="800" loading="lazy" alt="How AskData answers a question: triage, then table retrieval, SQL writing, review, safety check, read-only run and the answer sentence; vague questions get a clarifying question and unanswerable ones a refusal.">
+      <img class="dark-only" src="/assets/img/askdata-architecture-dark.svg" width="960" height="800" loading="lazy" alt="How AskData answers a question: triage, then table retrieval, SQL writing, review, safety check, read-only run and the answer sentence; vague questions get a clarifying question and unanswerable ones a refusal.">
+      <figcaption>Architecture, from the project README.</figcaption>
+    </figure>
+  </section>
+
+  <section class="cs-sec" aria-labelledby="res-h">
+    <h2 id="res-h">Results</h2>
+    <p>I tested it on 52 questions about two demo databases, including questions that are vague on purpose and questions the data can&rsquo;t answer. Each answer was checked against the result of a hand-written SQL query.</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th scope="col">Questions</th><th scope="col" class="n">Answered correctly</th><th scope="col" class="n">Vague: asked first</th><th scope="col" class="n">Unanswerable: declined</th><th scope="col" class="n">Wrong answers</th><th scope="col" class="n">Median time</th><th scope="col" class="n">Cost per question</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">All 52</th><td class="n">35 of 38</td><td class="n">6 of 8</td><td class="n">6 of 6</td><td class="n">3 of 52 (6%)</td><td class="n">8.3 s / 8.7 s</td><td class="n">$0.0072 / $0.0051</td></tr>
+          <tr><th scope="row">32 held-out</th><td class="n">19 of 20</td><td class="n">4 of 6</td><td class="n">6 of 6</td><td class="n"><strong>1 of 32 (3%)</strong></td><td class="n">7.8 s / 8.3 s</td><td class="n">$0.0064 / $0.0044</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>&ldquo;Wrong answers&rdquo; are the ones that matter most: a confident answer that is wrong, or an answer to a question the data can&rsquo;t support. Asking or declining is visible to the user and doesn&rsquo;t count. The 32 held-out questions were written before any test run and never used to change prompts or rules, so that row is the fair one. Both runs gave the same outcome on every question; time and cost show run 1 / run 2.</p>
+  </section>
+
+  <section class="cs-sec" aria-labelledby="safe-h">
+    <h2 id="safe-h">Safety</h2>
+    <p>AskData is meant to be pointed at databases it doesn&rsquo;t own, so it doesn&rsquo;t rely on a single check.</p>
+    <ul>
+      <li>Before connecting, it inspects the database user and refuses it, with the reasons, if it is a superuser, can create objects, can change any table, or can read or write server files.</li>
+      <li>The SQL must be one SELECT; <code>COPY</code> and risky functions such as <code>pg_read_file</code>, <code>pg_sleep</code> and <code>dblink</code> are denied anywhere in the query.</li>
+      <li>Every query runs in a read-only transaction with a 10-second timeout and at most 200 rows.</li>
+      <li>Connections added in the interface live in memory only, and passwords are masked in logs.</li>
+    </ul>
+    <div class="vid-stack" style="max-width:880px">
+      <figure class="vid">
+        <video muted loop playsinline preload="none" poster="/assets/video/askdata-connect-poster.jpg" width="1000" height="640" aria-label="Connecting to AskData as a superuser is refused with the reasons; a read-only user passes">
+          <source src="/assets/video/askdata-connect.mp4" type="video/mp4">
+        </video>
+        <button class="vid-btn" type="button" data-name="the connection demo" aria-label="Play the connection demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+        <figcaption>Connecting as a superuser is refused with the reasons; a read-only user passes.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="cs-sec" aria-labelledby="lim-h">
+    <h2 id="lim-h">Limits</h2>
+    <ul>
+      <li>Tested on two small demo databases and 52 questions; a difference of one or two questions is within run-to-run noise.</li>
+      <li>One model family (OpenAI). Answers vary a little between runs.</li>
+      <li>An answer takes about 8&ndash;9 seconds (median), because it needs four model calls.</li>
+      <li>The number check catches invented numbers, not a correct number attached to the wrong name.</li>
+    </ul>
+  </section>
 
   <nav class="cs-next" aria-label="Other case studies">
-    <a href="/cfm">Previous: the LLM agent at CFM</a>
+    <a href="/walloon">Previous: speech synthesis for Walloon</a>
     <a href="/#work">All work</a>
   </nav>
 </main>

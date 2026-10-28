@@ -121,13 +121,17 @@
     <article id="askdata" class="band w-ask" style="view-transition-name:ask-band">
       <div class="wrap split wide">
         <div class="txt">
-          <p class="meta">2026, personal project, in progress</p>
+          <p class="meta">2026, personal project</p>
           <h3 class="proj-title" style="view-transition-name:ask-title">AskData: plain-English analytics on PostgreSQL</h3>
-          <p class="prose">A FastAPI and Next.js app that turns questions into read-only SQL, with schema-aware retrieval and automatic repair of failed queries. Benchmark results will be published here when the evaluation run is done.</p>
-          <p class="links"><a href="/askdata">Project notes</a><a href="https://github.com/Pipe1213/AskData">Code</a></p>
+          <p class="prose">A text-to-SQL web app for PostgreSQL, built with FastAPI and Next.js. Before any SQL is written, a triage step routes each question to answer, clarify or decline. On 32 held-out test questions it gave <span class="num">1</span> wrong answer, at under a cent per question.</p>
+          <p class="links"><a href="/askdata">Read the case study</a><a href="https://github.com/Pipe1213/AskData">Code</a></p>
         </div>
-        <figure class="fig">
-          <img class="shot" src="/assets/img/askdata-chart.jpg" width="1195" height="720" loading="lazy" alt="AskData answering 'Which 10 customers spent the most in total?' with a sentence and a bar chart">
+        <figure class="fig vid">
+          <video muted loop playsinline preload="none" poster="/assets/video/askdata-answer-poster.jpg" width="1000" height="640" aria-label="AskData answering 'Which 10 customers spent the most?' with a sentence, a bar chart, its assumptions and the SQL">
+            <source src="/assets/video/askdata-answer.mp4" type="video/mp4">
+          </video>
+          <button class="vid-btn" type="button" data-name="the AskData demo" aria-label="Play the AskData demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+          <figcaption>Asking &ldquo;Which 10 customers spent the most?&rdquo; and opening &ldquo;How I got this&rdquo;.</figcaption>
         </figure>
       </div>
     </article>
