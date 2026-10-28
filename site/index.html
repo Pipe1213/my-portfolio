@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Felipe Espinosa Orjuela, AI/ML Engineer</title>
-<meta name="description" content="AI/ML Engineer in Paris working on LLM agents, generative models and evaluation. LLM agent for financial data at CFM, first speech synthesis system for Walloon (SSW 2025), robotics research at USP.">
+<meta name="description" content="AI/ML Engineer in Paris working on LLM agents, generative models and evaluation. Robot learning from few demonstrations with SmolVLA and ACT, an LLM agent for financial data at CFM, and the first speech synthesis system for Walloon (SSW 2025).">
 <link rel="canonical" href="https://felipe-espinosa.vercel.app/">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Felipe Espinosa Orjuela, AI/ML Engineer">
@@ -71,14 +71,14 @@
       <div class="wrap split">
         <div class="txt">
           <p class="meta">2025, Capital Fund Management, Paris</p>
-          <h3 class="proj-title" style="view-transition-name:cfm-title">An LLM agent that answers analysts' questions in SQL</h3>
-          <p class="prose">Seven tools, an internal Oracle database, and a 48-question benchmark I built to measure it. Accuracy rose from 83% to <span class="num">87.5%</span>, and routing sub-tasks to smaller models made each query about <span class="num">20×</span> cheaper than o3.</p>
+          <h3 class="proj-title" style="view-transition-name:cfm-title">An LLM agent that answers financial data questions in SQL</h3>
+          <p class="prose">Seven tools, an internal Oracle database, and a 48-question benchmark I designed to measure it. Accuracy rose from 83% to <span class="num">87.5%</span>, and giving each task a suitable model made each query about <span class="num">20×</span> cheaper than o3.</p>
           <p class="links"><a href="/cfm">Read the case study</a><a href="https://github.com/Pipe1213/Pipe1213/raw/main/CFM_internship_report.pdf">Internship report (PDF)</a></p>
         </div>
         <figure class="fig cost">
           <p class="cap" style="margin-bottom:10px">Cost per query, at similar accuracy</p>
           <div class="row"><span class="lbl">o3 on the whole task</span><div class="bar"><i style="width:100%"></i></div><b>€5</b></div>
-          <div class="row hi"><span class="lbl">The agent, small models on sub-tasks</span><div class="bar"><i style="width:4.8%"></i></div><b>€0.24</b></div>
+          <div class="row hi"><span class="lbl">The agent, a suitable model per task</span><div class="bar"><i style="width:4.8%"></i></div><b>€0.24</b></div>
           <figcaption class="cap">Approximate figures. Table retrieval reached 95% top-k with hybrid search.</figcaption>
         </figure>
       </div>
@@ -132,9 +132,6 @@
       </div>
     </article>
 
-    <div class="wrap">
-      <p class="also">Also: a synthetic French NER dataset for clinical trials, course project with a team of three; 12,423 rows released on Hugging Face.<a href="https://github.com/jlopetegui98/Creation-of-a-synthetic-dataset-for-French-NER-in-clinical-trial-texts">Code</a></p>
-    </div>
   </section>
 
   <section id="research" class="section" aria-labelledby="research-h">
@@ -142,7 +139,7 @@
 
     <div class="wrap">
       <ol class="pubs" aria-label="Publications">
-        <li><span class="when">Under review</span><span><span class="t">Cross-lingual study of phoneme, syllable and word embeddings</span><span class="rest"> in Spanish, English and French. Lead author. <i>Language Resources and Evaluation</i> (Springer Nature).</span></span></li>
+        <li><span class="when">Under review</span><span><span class="t">Cross-lingual study of phoneme, syllable and word embeddings</span><span class="rest"> in Spanish, English and French. First author. <i>Language Resources and Evaluation</i> (Springer Nature).</span></span></li>
         <li><span class="when">2025</span><span><a class="t" href="https://www.isca-archive.org/ssw_2025/orjuela25_ssw.html">Speech synthesis for Walloon, an under-resourced minority language</a><span class="rest">. Espinosa Orjuela, Boula de Mareüil, Evrard. 13th ISCA Speech Synthesis Workshop (SSW 2025), oral. Poster at LT4All 2025 (UNESCO).</span></span></li>
       </ol>
     </div>
@@ -151,7 +148,7 @@
       <div class="rover-text">
         <p class="meta">2014, University of São Paulo, Mobile Robotics Lab</p>
         <h3 class="proj-title">Propulsion and steering for an agricultural rover</h3>
-        <p class="prose">Built with Embrapa Instrumentação. I selected the motors, controllers and sensors, wrote the motion and collision-avoidance routines, and ran the field trials.</p>
+        <p class="prose">Built with Embrapa Instrumentação for soil analysis with LIBS. I selected the motors, controllers and ultrasonic sensors, wrote the motion and collision-avoidance routines on Raspberry Pi and Arduino, and ran the field trials.</p>
         <ol class="pubs rover-pubs" aria-label="2014 publications">
             <li><span><span class="t" lang="pt">Projeto mecatrônico de um rover para análise de solos usando tecnologia LIBS</span><span class="rest">, Parts <a href="https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1005340/projeto-mecatronico-de-um-rover-para-aplicacao-na-analise-de-solos-usando-tecnologia-libs---parte-i">I</a> and <a href="https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1005348/projeto-mecatronico-de-um-rover-para-aplicacao-na-analise-de-solos-usando-tecnologia-libs---parte-ii">II</a>. Co-author. SIAGRO 2014, Embrapa Instrumentação.</span></span></li>
             <li><span><a class="t" href="https://repositorio.usp.br/item/002728621" lang="pt">Controle da propulsão e o esterçamento de um rover aplicado à agricultura de precisão</a><span class="rest">. Co-author. SIICUSP 2014, University of São Paulo.</span></span></li>
@@ -168,10 +165,10 @@
         <h3 class="label ui">Experience</h3>
         <ol class="rows">
           <li><span class="r-main"><strong>Research Collaborator, NLP</strong><span class="r-org">, Universidad Tecnológica de Bolívar</span></span><span class="r-date">2026 – now</span></li>
-          <li><span class="r-main"><strong>AI Evaluation Contractor</strong><span class="r-org">, Mercor, Mindrift, Alignerr, DataAnnotation</span></span><span class="r-date">2025 – 2026</span></li>
+          <li><span class="r-main"><strong>LLM Evaluation Specialist (freelance)</strong><span class="r-org">, Mercor, Mindrift, Alignerr, DataAnnotation</span></span><span class="r-date">2025 – 2026</span></li>
           <li><span class="r-main"><strong>AI Engineer Intern, LLM Systems</strong><span class="r-org">, Capital Fund Management</span></span><span class="r-date">2025</span></li>
           <li><span class="r-main"><strong>AI Research Intern, Speech Synthesis</strong><span class="r-org">, LISN, CNRS</span></span><span class="r-date">2024</span></li>
-          <li><span class="r-main"><strong>Self-Employed Contractor, construction</strong><span class="r-org">, own business, Sydney</span></span><span class="r-date">2018 – 2023</span></li>
+          <li><span class="r-main"><strong>Business Owner, demolition and renovation subcontracting</strong><span class="r-org">, Sydney</span></span><span class="r-date">2018 – 2023</span></li>
           <li><span class="r-main"><strong>Research Assistant (exchange)</strong><span class="r-org">, University of São Paulo</span></span><span class="r-date">2014</span></li>
         </ol>
       </div>
@@ -182,7 +179,7 @@
           <li><span class="r-main"><strong>Advanced Diploma of Leadership and Management</strong><span class="r-sub">Lloyds International College, Sydney</span></span><span class="r-date">2020 – 2022</span></li>
           <li><span class="r-main"><strong>B.Sc. Electronic Engineering</strong><span class="r-sub">Universidad Industrial de Santander. GPA 3.89/5</span></span><span class="r-date">2010 – 2016</span></li>
         </ol>
-        <p class="extra"><b>Tools.</b> Python, PyTorch, Hugging Face, LangGraph, SQL, C/C++, Docker, Slurm.<br><b>Languages.</b> Spanish, English (C2), Portuguese, French (intermediate).</p>
+        <p class="extra"><b>Tools.</b> Python, PyTorch, Hugging Face, LeRobot, LangGraph, FastAPI, Next.js, SQL, PostgreSQL, C/C++, Docker, Slurm.<br><b>Languages.</b> Spanish, English (C2), Portuguese, French (intermediate).</p>
       </div>
     </div>
   </section>

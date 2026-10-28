@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LLM agent for financial data at CFM, case study. Felipe Espinosa Orjuela</title>
-<meta name="description" content="An LLM agent with 7 tools (LangGraph, GPT-4.1) that answers analysts' questions on an internal Oracle database in SQL. 87.5% accuracy on a 48-question benchmark, 95% top-k table retrieval, about 20 times lower cost than o3.">
+<meta name="description" content="An LLM agent with 7 tools (LangGraph) that answers questions from CFM's data referential team on an internal Oracle database in SQL. 87.5% accuracy on a 48-question benchmark, 95% top-k table retrieval, about 20 times lower cost than o3.">
 <link rel="canonical" href="https://felipe-espinosa.vercel.app/cfm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="An LLM agent that answers analysts' questions in SQL">
-<meta property="og:description" content="Capital Fund Management, 2025. 87.5% accuracy on a benchmark I built, about 20 times lower cost per query than o3.">
+<meta property="og:title" content="An LLM agent that answers financial data questions in SQL">
+<meta property="og:description" content="An LLM agent with 7 tools (LangGraph) that answers questions from CFM's data referential team on an internal Oracle database in SQL. 87.5% accuracy on a 48-question benchmark, 95% top-k table retrieval, about 20 times lower cost than o3.">
 <meta property="og:url" content="https://felipe-espinosa.vercel.app/cfm">
 <meta property="og:image" content="https://felipe-espinosa.vercel.app/og-cfm.png">
 <meta property="og:image:width" content="1200">
@@ -40,12 +40,12 @@
   </header>
   <section class="cs-hero wrap" aria-label="Overview">
     <p class="crumb"><a href="/#work">Selected work</a>, 2025</p>
-    <h1 class="display" style="view-transition-name:cfm-title">An LLM agent that answers analysts' questions in SQL</h1>
+    <h1 class="display" style="view-transition-name:cfm-title">An LLM agent that answers financial data questions in SQL</h1>
     <dl class="spec-list">
       <div><dt>Role</dt><dd>AI Engineer Intern, LLM Systems</dd></div>
       <div><dt>Company and dates</dt><dd>Capital Fund Management (CFM), hedge fund, Paris. Mar to Sep 2025</dd></div>
-      <div><dt>Stack</dt><dd>LangGraph, GPT-4.1, o4-mini, Oracle, ChromaDB, LangSmith, Streamlit</dd></div>
-      <div><dt>Output</dt><dd>Agent built for analysts; internship report</dd></div>
+      <div><dt>Stack</dt><dd>LangGraph, GPT-4.1, GPT-4.1-nano, o4-mini, Oracle, ChromaDB, Redis, LangSmith, Pydantic, Streamlit, FastAPI</dd></div>
+      <div><dt>Output</dt><dd>Agent built for the data referential team; internship report</dd></div>
     </dl>
     <p class="links"><a href="https://github.com/Pipe1213/Pipe1213/raw/main/CFM_internship_report.pdf">Internship report (PDF)</a></p>
   </section>
@@ -54,17 +54,17 @@
 <main id="main" class="wrap">
   <section class="listen w-cfm" aria-labelledby="res-h">
     <h2 id="res-h" class="section-title">Results</h2>
-    <p class="prose lead">On a 48-question benchmark I built with gold SQL, the agent answered <span class="num">87.5%</span> correctly, up from <span class="num">83%</span> without examples. Table retrieval reached <span class="num">95%</span> top-k with hybrid search. Routing sub-tasks to smaller models cut the cost per query about <span class="num">20&times;</span> compared with o3, at similar accuracy.</p>
+    <p class="prose lead">On a 48-question benchmark I designed with gold SQL, the agent answered <span class="num">87.5%</span> correctly, up from <span class="num">83%</span> without examples. Table retrieval reached <span class="num">95%</span> top-k with hybrid search. Giving each task a suitable model cut the cost per query about <span class="num">20&times;</span> compared with o3, at similar accuracy.</p>
     <div class="results">
       <figure class="cost">
         <figcaption class="cap fig-title">End-to-end accuracy, 48 questions</figcaption>
         <div class="row"><span class="lbl">Without examples</span><span class="bar"><i style="width:83%"></i></span><b>83%</b></div>
-        <div class="row hi"><span class="lbl">With validated question and SQL examples</span><span class="bar"><i style="width:87.5%"></i></span><b>87.5%</b></div>
+        <div class="row hi"><span class="lbl">With validated question–SQL examples, kept separate from the benchmark</span><span class="bar"><i style="width:87.5%"></i></span><b>87.5%</b></div>
       </figure>
       <figure class="cost">
         <figcaption class="cap fig-title">Cost per query, at similar accuracy</figcaption>
         <div class="row"><span class="lbl">o3 on the whole task</span><span class="bar"><i style="width:100%"></i></span><b>€5</b></div>
-        <div class="row hi"><span class="lbl">The agent, small models on sub-tasks</span><span class="bar"><i style="width:4.8%"></i></span><b>€0.24</b></div>
+        <div class="row hi"><span class="lbl">The agent, a suitable model per task</span><span class="bar"><i style="width:4.8%"></i></span><b>€0.24</b></div>
         <p class="cap">Approximate figures.</p>
       </figure>
     </div>
@@ -73,20 +73,21 @@
   <section class="cols3" aria-label="Details">
     <div>
       <h2>The problem</h2>
-      <p>Analysts needed answers from an internal Oracle financial database without writing SQL. The evaluation subset alone has 30 core tables; the full database is larger, so the agent first has to find the right tables.</p>
+      <p>The data referential team needed answers from an internal Oracle financial database without writing SQL, in English, French or Spanish. The evaluation subset alone has 30 core tables; the full database is larger, so the agent first has to find the right tables.</p>
     </div>
     <div>
       <h2>What I did</h2>
       <ul>
         <li>Built a LangGraph agent with 7 tools: o4-mini plans the steps, GPT-4.1 writes the SQL and judges answers, GPT-4.1-nano filters context.</li>
-        <li>Built the 48-question benchmark with gold SQL from about 12 starter questions, and scored runs with an LLM judge.</li>
-        <li>Built table retrieval with BM25 and embeddings, merged with reciprocal rank fusion.</li>
-        <li>Added validated question and SQL examples to the model's context.</li>
+        <li>Designed the 48-question benchmark with gold SQL from about 12 starter questions, and scored runs with an LLM judge.</li>
+        <li>Built table retrieval with BM25 and ChromaDB embeddings, merged with reciprocal rank fusion, plus a Redis lookup tool for financial product names.</li>
+        <li>Added validated question–SQL examples to the model's context, from a set kept separate from the benchmark questions.</li>
+        <li>Built the Streamlit interface and part of the FastAPI backend; traced and evaluated runs in LangSmith and validated outputs with Pydantic.</li>
       </ul>
     </div>
     <div>
       <h2>Results</h2>
-      <p>Accuracy rose from 83% to 87.5% on the benchmark, table retrieval reached 95% top-k, and routing sub-tasks to smaller models cut the cost per query about 20 times compared with o3, at similar accuracy. I also built the Streamlit interface for analysts and part of a FastAPI backend.</p>
+      <p>Accuracy rose from 83% to 87.5% on the benchmark, table retrieval reached 95% top-k, and giving each task a suitable model cut the cost per query about 20 times compared with o3, at similar accuracy.</p>
     </div>
   </section>
   <p class="note">The code and final architecture belong to CFM. The internship report, approved for sharing, has more detail on the method.</p>
