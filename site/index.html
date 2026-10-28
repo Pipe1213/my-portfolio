@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="Felipe Espinosa Orjuela, AI/ML Engineer. LLM agents, generative models and evaluation.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/archivo-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/newsreader-var.woff" as="font" type="font/woff" crossorigin>
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="stylesheet" href="/assets/site.css">
@@ -24,9 +24,9 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="/">Felipe Espinosa Orjuela</a>
+<header class="masthead">
+  <div class="container topbar">
+    <a class="wordmark" href="/">Felipe Espinosa Orjuela</a>
     <nav class="nav" aria-label="Sections">
       <a href="#work">Work</a>
       <a href="#research">Research</a>
@@ -41,84 +41,104 @@
 </header>
 
 <main id="main">
-  <div class="wrap">
-    <section class="hero" aria-label="Introduction">
-      <div class="hero-text">
-        <h1 class="display">Felipe<br>Espinosa Orjuela</h1>
-        <p class="role">AI/ML Engineer</p>
-        <p class="focus">LLM agents, generative models and evaluation</p>
-        <p class="where ui">Paris, France. Authorised to work in France, available now.</p>
-        <nav class="index" aria-label="Selected work">
-          <a class="w-rob" href="#robot">Robot learning</a>
-          <a class="w-cfm" href="#cfm">LLM agent at CFM</a>
-          <a class="w-wal" href="#walloon">Walloon speech synthesis</a>
-          <a class="w-ask" href="#askdata">AskData</a>
-          <a class="w-rov" href="#rover">Agricultural rover</a>
-        </nav>
-      </div>
-      <div class="hero-photo">
-        <img src="/assets/img/felipe-portrait.jpg" width="720" height="900" alt="Portrait of Felipe Espinosa Orjuela" fetchpriority="high">
-      </div>
-    </section>
-  </div>
-
+  <section class="hero container grid" aria-label="Introduction">
+    <div class="hero-head">
+      <h1>Felipe<br>Espinosa Orjuela</h1>
+      <p class="lead"><span class="role">AI/ML Engineer</span><br><span class="focus">LLM agents, generative models and evaluation</span></p>
+    </div>
+    <figure class="hero-photo">
+      <img src="/assets/img/felipe-portrait.jpg" width="720" height="900" alt="Portrait of Felipe Espinosa Orjuela" fetchpriority="high">
+      <figcaption class="where">Paris, France. Authorised to work in France, available now.</figcaption>
+    </figure>
+    <nav class="index" aria-label="Selected work">
+      <a class="ix w-rob" href="#robot"><span class="ix-year mono">2026</span><span class="ix-name">Robot learning</span><span class="ix-where">personal project</span></a>
+      <a class="ix w-ask" href="#askdata"><span class="ix-year mono">2026</span><span class="ix-name">AskData</span><span class="ix-where">personal project</span></a>
+      <a class="ix w-cfm" href="#cfm"><span class="ix-year mono">2025</span><span class="ix-name">LLM agent at CFM</span><span class="ix-where">Capital Fund Management, Paris</span></a>
+      <a class="ix w-wal" href="#walloon"><span class="ix-year mono">2024</span><span class="ix-name">Walloon speech synthesis</span><span class="ix-where">LISN, CNRS and Université Paris-Saclay</span></a>
+      <a class="ix w-rov" href="#rover"><span class="ix-year mono">2014</span><span class="ix-name">Agricultural rover</span><span class="ix-where">University of São Paulo, Mobile Robotics Lab</span></a>
+    </nav>
+  </section>
 
   <section id="work" class="section" aria-labelledby="work-h">
-    <div class="wrap section-head">
-      <h2 id="work-h" class="section-title">Selected work</h2>
-    </div>
+    <div class="container"><div class="section-head"><h2 id="work-h">Selected work</h2></div></div>
 
-    <article id="robot" class="band w-rob" style="view-transition-name:rob-band">
-      <div class="wrap split">
-        <div class="txt">
-          <p class="meta">2026, personal project</p>
-          <h3 class="proj-title" style="view-transition-name:rob-title">Robot learning from few demonstrations</h3>
-          <p class="prose">A pretrained vision-language-action model against a policy trained without robot pretraining, on three simulated pick-and-place tasks. I trained 60 models with LeRobot and ran 9,000 evaluation episodes. Fine-tuned on 5 demonstrations per task, SmolVLA succeeded <span class="num">78%</span> of the time; ACT trained on all of them, about 47 per task, reached <span class="num">55%</span>.</p>
+    <article id="robot" class="project w-rob" style="view-transition-name:rob-band">
+      <div class="container grid">
+        <div class="p-text">
+          <h3 class="p-title" style="view-transition-name:rob-title">Robot learning from few demonstrations</h3>
+          <p class="p-meta">2026, personal project</p>
+          <p class="p-prose">A pretrained vision-language-action model against a policy trained without robot pretraining, on three simulated pick-and-place tasks. I trained 60 models with LeRobot and ran 9,000 evaluation episodes. Fine-tuned on 5 demonstrations per task, SmolVLA succeeded <span class="num">78%</span> of the time; ACT trained on all of them, about 47 per task, reached <span class="num">55%</span>.</p>
           <p class="links"><a href="/robot-learning">Read the case study</a><a href="https://github.com/Pipe1213/vla-vs-scratch">Code</a><a href="https://huggingface.co/collections/Pipe1213/smolvla-and-act-on-libero-object-5-to-50-demos-6adfec8eea235665e9d43137">Models</a></p>
         </div>
-        <figure class="fig vid">
+        <figure class="p-fig sheet vid robot">
           <video muted loop playsinline preload="none" poster="/assets/video/butter_n10_pair-poster.jpg" width="512" height="256" aria-label="Two simulated robot arms. Left, SmolVLA picks up the butter and places it in the basket. Right, ACT misses the grasp and keeps trying.">
             <source src="/assets/video/butter_n10_pair.mp4" type="video/mp4">
           </video>
-          <button class="vid-btn" type="button" data-name="the robot comparison" aria-label="Play the robot comparison"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
-          <figcaption>Butter, 10 demonstrations. Left: SmolVLA picks up the butter and places it. Right: ACT misses the grasp and keeps trying until the time limit. Quarter speed.</figcaption>
+          <div class="vid-foot">
+            <button class="vid-btn" type="button" data-name="the robot comparison" aria-label="Play the robot comparison"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+            <figcaption>Butter, 10 demonstrations. Left: SmolVLA picks up the butter and places it. Right: ACT misses the grasp and keeps trying until the time limit. Quarter speed.</figcaption>
+          </div>
         </figure>
       </div>
     </article>
 
-    <article id="cfm" class="band w-cfm" style="view-transition-name:cfm-band">
-      <div class="wrap split">
-        <div class="txt">
-          <p class="meta">2025, Capital Fund Management, Paris</p>
-          <h3 class="proj-title" style="view-transition-name:cfm-title">An LLM agent that answers financial data questions in SQL</h3>
-          <p class="prose">Seven tools, an internal Oracle database, and a 48-question benchmark I designed to measure it. Accuracy rose from 83% to <span class="num">87.5%</span>, and giving each task a suitable model made each query about <span class="num">20×</span> cheaper than o3.</p>
+    <article id="askdata" class="project wide w-ask" style="view-transition-name:ask-band">
+      <div class="container grid">
+        <div class="p-text">
+          <h3 class="p-title" style="view-transition-name:ask-title">AskData: plain-English analytics on PostgreSQL</h3>
+          <p class="p-meta">2026, personal project</p>
+          <p class="p-prose">A text-to-SQL web app for PostgreSQL, built with FastAPI and Next.js. Before any SQL is written, a triage step routes each question to answer, clarify or decline. On 32 held-out test questions it gave <span class="num">1</span> wrong answer, at under a cent per question.</p>
+          <p class="links"><a href="/askdata">Read the case study</a><a href="https://github.com/Pipe1213/AskData">Code</a></p>
+        </div>
+        <figure class="p-fig sheet vid">
+          <video muted loop playsinline preload="none" poster="/assets/video/askdata-answer-poster.jpg" width="1000" height="640" aria-label="AskData answering 'Which 10 customers spent the most?' with a sentence, a bar chart, its assumptions and the SQL">
+            <source src="/assets/video/askdata-answer.mp4" type="video/mp4">
+          </video>
+          <div class="vid-foot">
+            <button class="vid-btn" type="button" data-name="the AskData demo" aria-label="Play the AskData demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+            <figcaption>Asking &ldquo;Which 10 customers spent the most?&rdquo; and opening &ldquo;How I got this&rdquo;.</figcaption>
+          </div>
+        </figure>
+      </div>
+    </article>
+
+    <article id="cfm" class="project half w-cfm" style="view-transition-name:cfm-band">
+      <div class="container grid">
+        <div class="p-text">
+          <h3 class="p-title" style="view-transition-name:cfm-title">An LLM agent that answers financial data questions in SQL</h3>
+          <p class="p-meta">2025, Capital Fund Management, Paris</p>
+          <p class="p-prose">Seven tools, an internal Oracle database, and a 48-question benchmark I designed to measure it. Accuracy rose from 83% to <span class="num">87.5%</span>, and giving each task a suitable model made each query about <span class="num">20×</span> cheaper than o3.</p>
           <p class="links"><a href="/cfm">Read the case study</a><a href="https://github.com/Pipe1213/Pipe1213/raw/main/CFM_internship_report.pdf">Internship report (PDF)</a></p>
         </div>
-        <figure class="fig cost">
-          <p class="cap" style="margin-bottom:10px">Cost per query, at similar accuracy</p>
+        <figure class="p-fig sheet cost">
+          <p class="fig-title">Cost per query, at similar accuracy</p>
           <div class="row"><span class="lbl">o3 on the whole task</span><div class="bar"><i style="width:100%"></i></div><b>€5</b></div>
           <div class="row hi"><span class="lbl">The agent, a suitable model per task</span><div class="bar"><i style="width:4.8%"></i></div><b>€0.24</b></div>
-          <figcaption class="cap">Approximate figures. Table retrieval reached 95% top-k with hybrid search.</figcaption>
+          <figcaption>Approximate figures. Table retrieval reached 95% top-k with hybrid search.</figcaption>
         </figure>
       </div>
     </article>
 
-    <article id="walloon" class="band w-wal" style="view-transition-name:wal-band">
-      <div class="wrap split rev">
-        <div class="txt">
-          <p class="meta">2024, LISN, CNRS and Université Paris-Saclay</p>
-          <h3 class="proj-title" style="view-transition-name:wal-title">The first speech synthesis system for Walloon</h3>
-          <p class="prose">VITS models trained on 18 to 156 minutes of speech. With only 18 minutes of the female voice, fine-tuning from French raised the listener score from 3.38 to <span class="num">4.10</span> out of 5. First author, oral presentation at SSW 2025.</p>
-          <p class="links"><a href="/walloon">Read the case study</a><a href="https://www.isca-archive.org/ssw_2025/orjuela25_ssw.html">Paper</a><a href="https://huggingface.co/spaces/Pipe1213/VITS_Walloon_Graphemes">Try the demo</a></p>
+    <article id="walloon" class="inkband w-wal" style="view-transition-name:wal-band">
+      <div class="container">
+        <div class="grid band-head">
+          <div class="p-text">
+            <h3 class="p-title" style="view-transition-name:wal-title">The first speech synthesis system for Walloon</h3>
+            <p class="p-meta">2024, LISN, CNRS and Université Paris-Saclay</p>
+          </div>
+          <div class="band-prose">
+            <p class="p-prose">VITS models trained on 18 to 156 minutes of speech. With only 18 minutes of the female voice, fine-tuning from French raised the listener score from 3.38 to <span class="num">4.10</span> out of 5. First author, oral presentation at SSW 2025.</p>
+            <p class="links"><a href="/walloon">Read the case study</a><a href="https://www.isca-archive.org/ssw_2025/orjuela25_ssw.html">Paper</a><a href="https://huggingface.co/spaces/Pipe1213/VITS_Walloon_Graphemes">Try the demo</a></p>
+          </div>
         </div>
-        <figure class="fig">
+        <figure>
           <div class="clips">
             <div class="clip" data-src="/assets/audio/wa-only-g-female.mp3">
               <button class="play" type="button" aria-label="Play the model trained on Walloon only" data-label-play="Play the model trained on Walloon only" data-label-pause="Pause the model trained on Walloon only">
                 <svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg>
                 <svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg>
               </button>
-              <div><div class="name">Trained on Walloon only</div><div class="detail">From scratch, 13 s</div></div>
+              <div><div class="clip-name">Trained on Walloon only</div><div class="clip-detail">From scratch, 13 s</div></div>
               <div class="score"><b>3.38</b><span>MOS</span></div>
               <span class="spec" style="--m:url(/assets/spec/spec-wa-only-g-female.webp)" aria-hidden="true"></span>
             </div>
@@ -127,97 +147,86 @@
                 <svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg>
                 <svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg>
               </button>
-              <div><div class="name">Fine-tuned from French</div><div class="detail">Same 18 minutes, 13 s</div></div>
+              <div><div class="clip-name">Fine-tuned from French</div><div class="clip-detail">Same 18 minutes, 13 s</div></div>
               <div class="score"><b>4.10</b><span>MOS</span></div>
               <span class="spec" style="--m:url(/assets/spec/spec-wa-ft-g-female.webp)" aria-hidden="true"></span>
             </div>
           </div>
-          <figcaption class="cap" style="margin-top:16px">Female voice, grapheme input. Mean opinion score out of 5 from 23 listeners; natural speech scored 4.55.</figcaption>
+          <figcaption class="cap">Female voice, grapheme input. Mean opinion score out of 5 from 23 listeners; natural speech scored 4.55.</figcaption>
         </figure>
       </div>
     </article>
-
-    <article id="askdata" class="band w-ask" style="view-transition-name:ask-band">
-      <div class="wrap split wide">
-        <div class="txt">
-          <p class="meta">2026, personal project</p>
-          <h3 class="proj-title" style="view-transition-name:ask-title">AskData: plain-English analytics on PostgreSQL</h3>
-          <p class="prose">A text-to-SQL web app for PostgreSQL, built with FastAPI and Next.js. Before any SQL is written, a triage step routes each question to answer, clarify or decline. On 32 held-out test questions it gave <span class="num">1</span> wrong answer, at under a cent per question.</p>
-          <p class="links"><a href="/askdata">Read the case study</a><a href="https://github.com/Pipe1213/AskData">Code</a></p>
-        </div>
-        <figure class="fig vid">
-          <video muted loop playsinline preload="none" poster="/assets/video/askdata-answer-poster.jpg" width="1000" height="640" aria-label="AskData answering 'Which 10 customers spent the most?' with a sentence, a bar chart, its assumptions and the SQL">
-            <source src="/assets/video/askdata-answer.mp4" type="video/mp4">
-          </video>
-          <button class="vid-btn" type="button" data-name="the AskData demo" aria-label="Play the AskData demo"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
-          <figcaption>Asking &ldquo;Which 10 customers spent the most?&rdquo; and opening &ldquo;How I got this&rdquo;.</figcaption>
-        </figure>
-      </div>
-    </article>
-
   </section>
 
   <section id="research" class="section" aria-labelledby="research-h">
-    <div class="wrap section-head"><h2 id="research-h" class="section-title">Research</h2></div>
-
-    <div class="wrap">
+    <div class="container">
+      <div class="section-head"><h2 id="research-h">Research</h2></div>
       <ol class="pubs" aria-label="Publications">
         <li><span class="when">Under review</span><span><span class="t">Cross-lingual study of phoneme, syllable and word embeddings</span><span class="rest"> in Spanish, English and French. First author. <i>Language Resources and Evaluation</i> (Springer Nature).</span></span></li>
-        <li><span class="when">2025</span><span><a class="t" href="https://www.isca-archive.org/ssw_2025/orjuela25_ssw.html">Speech synthesis for Walloon, an under-resourced minority language</a><span class="rest">. Espinosa Orjuela, Boula de Mareüil, Evrard. 13th ISCA Speech Synthesis Workshop (SSW 2025), oral. Poster at LT4All 2025 (UNESCO).</span></span></li>
+        <li><span class="when mono">2025</span><span><a class="t" href="https://www.isca-archive.org/ssw_2025/orjuela25_ssw.html">Speech synthesis for Walloon, an under-resourced minority language</a><span class="rest">. Espinosa Orjuela, Boula de Mareüil, Evrard. 13th ISCA Speech Synthesis Workshop (SSW 2025), oral. Poster at LT4All 2025 (UNESCO).</span></span></li>
       </ol>
-    </div>
-    <article id="rover" class="rover w-rov">
-      <img src="/assets/img/usp-rover-2014.jpg" width="800" height="533" loading="lazy" alt="White four-wheeled rover with USP and Embrapa logos in a maize field, a drone resting on top">
-      <div class="rover-text">
-        <p class="meta">2014, University of São Paulo, Mobile Robotics Lab</p>
-        <h3 class="proj-title">Propulsion and steering for an agricultural rover</h3>
-        <p class="prose">Built with Embrapa Instrumentação for soil analysis with LIBS. I selected the motors, controllers and ultrasonic sensors, wrote the motion and collision-avoidance routines on Raspberry Pi and Arduino, and ran the field trials.</p>
-        <ol class="pubs rover-pubs" aria-label="2014 publications">
-            <li><span><span class="t" lang="pt">Projeto mecatrônico de um rover para análise de solos usando tecnologia LIBS</span><span class="rest">, Parts <a href="https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1005340/projeto-mecatronico-de-um-rover-para-aplicacao-na-analise-de-solos-usando-tecnologia-libs---parte-i">I</a> and <a href="https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1005348/projeto-mecatronico-de-um-rover-para-aplicacao-na-analise-de-solos-usando-tecnologia-libs---parte-ii">II</a>. Co-author. SIAGRO 2014, Embrapa Instrumentação.</span></span></li>
-            <li><span><a class="t" href="https://repositorio.usp.br/item/002728621" lang="pt">Controle da propulsão e o esterçamento de um rover aplicado à agricultura de precisão</a><span class="rest">. Co-author. SIICUSP 2014, University of São Paulo.</span></span></li>
-        </ol>
-        <p class="cap credit">At SIAGRO 2014; the drone was a hand-flown demonstrator. Photo: Tati Zanichelli.</p>
-      </div>
-    </article>
-  </section>
 
-  <section id="cv" class="section wrap" aria-labelledby="cv-h">
-    <div class="section-head"><h2 id="cv-h" class="section-title">Experience and education</h2></div>
-    <div class="cv">
-      <div>
-        <h3 class="label ui">Experience</h3>
-        <ol class="rows">
-          <li><span class="r-main"><strong>Research Collaborator, NLP</strong><span class="r-org">, Universidad Tecnológica de Bolívar</span></span><span class="r-date">2026 – now</span></li>
-          <li><span class="r-main"><strong>LLM Evaluation Specialist (freelance)</strong><span class="r-org">, Mercor, Mindrift, Alignerr, DataAnnotation</span></span><span class="r-date">2025 – 2026</span></li>
-          <li><span class="r-main"><strong>AI Engineer Intern, LLM Systems</strong><span class="r-org">, Capital Fund Management</span></span><span class="r-date">2025</span></li>
-          <li><span class="r-main"><strong>AI Research Intern, Speech Synthesis</strong><span class="r-org">, LISN, CNRS</span></span><span class="r-date">2024</span></li>
-          <li><span class="r-main"><strong>Business Owner, demolition and renovation subcontracting</strong><span class="r-org">, Sydney</span></span><span class="r-date">2018 – 2023</span></li>
-          <li><span class="r-main"><strong>Research Assistant (exchange)</strong><span class="r-org">, University of São Paulo</span></span><span class="r-date">2014</span></li>
-        </ol>
-      </div>
-      <div>
-        <h3 class="label ui">Education</h3>
-        <ol class="rows">
-          <li><span class="r-main"><strong>M.Sc. Artificial Intelligence</strong><span class="r-sub">Université Paris-Saclay. 16.2/20, Mention Très Bien</span></span><span class="r-date">2023 – 2025</span></li>
-          <li><span class="r-main"><strong>Advanced Diploma of Leadership and Management</strong><span class="r-sub">Lloyds International College, Sydney</span></span><span class="r-date">2020 – 2022</span></li>
-          <li><span class="r-main"><strong>B.Sc. Electronic Engineering</strong><span class="r-sub">Universidad Industrial de Santander. GPA 3.89/5</span></span><span class="r-date">2010 – 2016</span></li>
-        </ol>
-        <p class="extra"><b>Tools.</b> Python, PyTorch, Hugging Face, LeRobot, LangGraph, FastAPI, Next.js, SQL, PostgreSQL, C/C++, Docker, Slurm.<br><b>Languages.</b> Spanish, English (C2), Portuguese, French (intermediate).</p>
-      </div>
+      <article id="rover" class="rover grid w-rov">
+        <figure class="rover-photo">
+          <img src="/assets/img/usp-rover-2014.jpg" width="800" height="533" loading="lazy" alt="White four-wheeled rover with USP and Embrapa logos in a maize field, a drone resting on top">
+          <figcaption class="cap">At SIAGRO 2014; the drone was a hand-flown demonstrator. Photo: Tati Zanichelli.</figcaption>
+        </figure>
+        <div class="rover-text">
+          <h3 class="p-title">Propulsion and steering for an agricultural rover</h3>
+          <p class="p-meta">2014, University of São Paulo, Mobile Robotics Lab</p>
+          <p class="p-prose">Built with Embrapa Instrumentação for soil analysis with LIBS. I selected the motors, controllers and ultrasonic sensors, wrote the motion and collision-avoidance routines on Raspberry Pi and Arduino, and ran the field trials.</p>
+          <ol class="rover-pubs" aria-label="2014 publications">
+            <li><span class="t" lang="pt">Projeto mecatrônico de um rover para análise de solos usando tecnologia LIBS</span><span class="rest">, Parts <a href="https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1005340/projeto-mecatronico-de-um-rover-para-aplicacao-na-analise-de-solos-usando-tecnologia-libs---parte-i">I</a> and <a href="https://www.embrapa.br/busca-de-publicacoes/-/publicacao/1005348/projeto-mecatronico-de-um-rover-para-aplicacao-na-analise-de-solos-usando-tecnologia-libs---parte-ii">II</a>. Co-author. SIAGRO 2014, Embrapa Instrumentação.</span></li>
+            <li><a class="t" href="https://repositorio.usp.br/item/002728621" lang="pt">Controle da propulsão e o esterçamento de um rover aplicado à agricultura de precisão</a><span class="rest">. Co-author. SIICUSP 2014, University of São Paulo.</span></li>
+          </ol>
+        </div>
+      </article>
     </div>
   </section>
 
-  <section id="contact" class="section wrap" aria-labelledby="contact-h">
-    <div class="contact">
-      <h2 id="contact-h" class="label ui">Contact, for roles and CV requests</h2>
-      <a class="email" href="mailto:felipeespinosa.13@outlook.com">felipeespinosa.13@outlook.com</a>
-      <p class="links"><a href="https://linkedin.com/in/felipe-espinosa13">LinkedIn</a><a href="https://github.com/Pipe1213">GitHub</a><a href="https://scholar.google.com/citations?user=wWZDxU8AAAAJ">Google Scholar</a><a href="https://huggingface.co/Pipe1213">Hugging Face</a></p>
+  <section id="cv" class="section" aria-labelledby="cv-h">
+    <div class="container">
+      <div class="section-head"><h2 id="cv-h">Experience and education</h2></div>
+      <div class="cv grid">
+        <div class="cv-exp">
+          <h3>Experience</h3>
+          <ol class="rows">
+            <li><span class="r-main"><strong>Research Collaborator, NLP</strong><span class="r-org">, Universidad Tecnológica de Bolívar</span></span><span class="r-date">2026 – now</span></li>
+            <li><span class="r-main"><strong>LLM Evaluation Specialist (freelance)</strong><span class="r-org">, Mercor, Mindrift, Alignerr, DataAnnotation</span></span><span class="r-date">2025 – 2026</span></li>
+            <li><span class="r-main"><strong>AI Engineer Intern, LLM Systems</strong><span class="r-org">, Capital Fund Management</span></span><span class="r-date">2025</span></li>
+            <li><span class="r-main"><strong>AI Research Intern, Speech Synthesis</strong><span class="r-org">, LISN, CNRS</span></span><span class="r-date">2024</span></li>
+            <li><span class="r-main"><strong>Business Owner, demolition and renovation subcontracting</strong><span class="r-org">, Sydney</span></span><span class="r-date">2018 – 2023</span></li>
+            <li><span class="r-main"><strong>Research Assistant (exchange)</strong><span class="r-org">, University of São Paulo</span></span><span class="r-date">2014</span></li>
+          </ol>
+        </div>
+        <div class="cv-edu">
+          <h3>Education</h3>
+          <ol class="rows">
+            <li><span class="r-main"><strong>M.Sc. Artificial Intelligence</strong><span class="r-sub">Université Paris-Saclay. 16.2/20, Mention Très Bien</span></span><span class="r-date">2023 – 2025</span></li>
+            <li><span class="r-main"><strong>Advanced Diploma of Leadership and Management</strong><span class="r-sub">Lloyds International College, Sydney</span></span><span class="r-date">2020 – 2022</span></li>
+            <li><span class="r-main"><strong>B.Sc. Electronic Engineering</strong><span class="r-sub">Universidad Industrial de Santander. GPA 3.89/5</span></span><span class="r-date">2010 – 2016</span></li>
+          </ol>
+          <p class="extra"><b>Tools.</b> Python, PyTorch, Hugging Face, LeRobot, LangGraph, FastAPI, Next.js, SQL, PostgreSQL, C/C++, Docker, Slurm.<br><b>Languages.</b> Spanish, English (C2), Portuguese, French (intermediate).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section" aria-labelledby="contact-h">
+    <div class="container">
+      <div class="contact">
+        <h2 id="contact-h">Contact, for roles and CV requests</h2>
+        <a class="email" href="mailto:felipeespinosa.13@outlook.com">felipeespinosa.13@outlook.com</a>
+        <p class="links"><a href="https://linkedin.com/in/felipe-espinosa13">LinkedIn</a><a href="https://github.com/Pipe1213">GitHub</a><a href="https://scholar.google.com/citations?user=wWZDxU8AAAAJ">Google Scholar</a><a href="https://huggingface.co/Pipe1213">Hugging Face</a></p>
+      </div>
     </div>
   </section>
 </main>
-<footer class="site-footer wrap">
-  <p>Set in Archivo and Newsreader. The spectrograms are computed from my models' own audio. Built by hand, no framework.</p>
-  <p>Felipe Espinosa Orjuela, Paris. Updated October 2026.</p>
+<footer class="container">
+  <div class="site-footer">
+    <p>Set in Hanken Grotesk, Newsreader and IBM Plex Mono. The spectrograms are computed from my models' own audio. Built by hand, no framework.</p>
+    <p>Felipe Espinosa Orjuela, Paris. Updated October 2026.</p>
+  </div>
 </footer>
 <script src="/assets/site.js" defer></script>
 </body>

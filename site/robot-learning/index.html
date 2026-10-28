@@ -15,7 +15,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/archivo-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/newsreader-var.woff" as="font" type="font/woff" crossorigin>
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="stylesheet" href="/assets/site.css">
@@ -23,9 +23,9 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="cs-top w-rob" style="view-transition-name:rob-band">
-  <header class="site-header">
-    <div class="wrap">
-      <a class="brand" href="/">Felipe Espinosa Orjuela</a>
+  <header class="masthead">
+    <div class="container topbar">
+      <a class="wordmark" href="/">Felipe Espinosa Orjuela</a>
       <nav class="nav" aria-label="Sections">
         <a href="/#work" aria-current="page">Work</a>
         <a href="/#research">Research</a>
@@ -38,8 +38,8 @@
       </button>
     </div>
   </header>
-  <section class="cs-hero wrap" aria-label="Overview">
-    <p class="crumb"><a href="/#work">Selected work</a>, 2026</p>
+  <section class="cs-hero container" aria-label="Overview">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/#work">Selected work</a>, 2026</nav>
     <h1 class="display" style="view-transition-name:rob-title">Robot learning from few demonstrations</h1>
     <dl class="spec-list">
       <div><dt>Question</dt><dd>At each number of demonstrations, how does a fine-tuned pretrained vision-language-action model compare with a policy trained from scratch?</dd></div>
@@ -51,7 +51,7 @@
   </section>
 </div>
 
-<main id="main" class="wrap">
+<main id="main" class="container w-rob">
   <section class="listen w-rob" aria-labelledby="res-h">
     <h2 id="res-h" class="section-title">Result</h2>
     <p class="prose lead">SmolVLA fine-tuned on <span class="num">5</span> demonstrations per task succeeded <span class="num">78%</span> of the time. ACT trained on all of them, about 47 per task, reached <span class="num">55%</span>. Every SmolVLA training seed with 5 demonstrations beat every ACT seed trained on all of them. The gap shrank from 60 to 32 points as data was added, but it never closed. SmolVLA is also the larger model and cost more to train, so this is about data efficiency, not compute.</p>
@@ -153,15 +153,13 @@
         <video muted loop playsinline preload="none" poster="/assets/video/butter_n10_pair-poster.jpg" width="512" height="256" aria-label="Two simulated robot arms. Left, SmolVLA picks up the butter and places it in the basket. Right, ACT misses the grasp and keeps trying.">
           <source src="/assets/video/butter_n10_pair.mp4" type="video/mp4">
         </video>
-        <button class="vid-btn" type="button" data-name="the butter comparison" aria-label="Play the butter comparison"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
-        <figcaption>Butter, 10 demonstrations. Left: SmolVLA (seed 2000, checkpoint 4k) picks up the butter and places it. Right: ACT (seed 3000, checkpoint 6k) misses the grasp and keeps trying until the time limit. Quarter speed.</figcaption>
+        <div class="vid-foot"><button class="vid-btn" type="button" data-name="the butter comparison" aria-label="Play the butter comparison"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button><figcaption>Butter, 10 demonstrations. Left: SmolVLA (seed 2000, checkpoint 4k) picks up the butter and places it. Right: ACT (seed 3000, checkpoint 6k) misses the grasp and keeps trying until the time limit. Quarter speed.</figcaption></div>
       </figure>
       <figure class="vid sim">
         <video muted loop playsinline preload="none" poster="/assets/video/pudding_n05_retry_vs_recovery_pair-poster.jpg" width="512" height="256" aria-label="Two simulated robot arms. Left, ACT misses the chocolate pudding and keeps trying. Right, SmolVLA misses once, tries again and succeeds.">
           <source src="/assets/video/pudding_n05_retry_vs_recovery_pair.mp4" type="video/mp4">
         </video>
-        <button class="vid-btn" type="button" data-name="the chocolate pudding comparison" aria-label="Play the chocolate pudding comparison"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
-        <figcaption>Chocolate pudding, 5 demonstrations. Left: ACT (seed 2000, checkpoint 8k) reaches the pudding behind the bottle, misses and keeps trying until the time limit. Right: SmolVLA (seed 1000, checkpoint 4k) misses its first grasp, tries again and succeeds. Quarter speed.</figcaption>
+        <div class="vid-foot"><button class="vid-btn" type="button" data-name="the chocolate pudding comparison" aria-label="Play the chocolate pudding comparison"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button><figcaption>Chocolate pudding, 5 demonstrations. Left: ACT (seed 2000, checkpoint 8k) reaches the pudding behind the bottle, misses and keeps trying until the time limit. Right: SmolVLA (seed 1000, checkpoint 4k) misses its first grasp, tries again and succeeds. Quarter speed.</figcaption></div>
       </figure>
     </div>
     <p>I coded 90 evaluation videos without knowing which method produced them. Almost every failure of both methods started with a missed or dropped grasp. ACT usually tried again after a miss but recovered only once; its typical failure was hovering over the object until the time limit. SmolVLA&rsquo;s failures were mostly a single miss with no second attempt. Both clips were picked at random from the coded videos of each kind.</p>
@@ -235,12 +233,14 @@
 
   <nav class="cs-next" aria-label="Other case studies">
     <a href="/#work">All work</a>
-    <a href="/cfm">Next: the LLM agent at CFM</a>
+    <a href="/askdata">Next: AskData</a>
   </nav>
 </main>
-<footer class="site-footer wrap">
-  <p>Set in Archivo and Newsreader. The spectrograms are computed from my models' own audio. Built by hand, no framework.</p>
-  <p>Felipe Espinosa Orjuela, Paris. Updated October 2026.</p>
+<footer class="container">
+  <div class="site-footer">
+    <p>Set in Hanken Grotesk, Newsreader and IBM Plex Mono. The spectrograms are computed from my models' own audio. Built by hand, no framework.</p>
+    <p>Felipe Espinosa Orjuela, Paris. Updated October 2026.</p>
+  </div>
 </footer>
 <script src="/assets/site.js" defer></script>
 </body>
