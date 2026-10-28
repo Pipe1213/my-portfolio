@@ -5,13 +5,13 @@ Owner: Felipe Espinosa Orjuela. The fuller private record lives in the claude.ai
 
 ## Current status (update this first)
 
-*Last updated 28 Oct 2026, 22:30.*
+*Last updated 28 Oct 2026, 22:45.*
 
-- **Branch `content-2026-10` (pushed, NOT merged; waiting for Felipe's OK on the Vercel preview).** Three commits, content only:
+- **28 Oct, 22:45: `content-2026-10` merged to `main` (live), approved by Felipe.** Three content commits:
   1. `6f7c375` text fixes: CFM is built for the **data referential team** (not "analysts"); "giving each task a suitable model"; context examples **kept separate from the benchmark**; CLSE **first author**; rover adds LIBS, ultrasonic sensors, Raspberry Pi and Arduino; titles **LLM Evaluation Specialist (freelance)** and **Business Owner, demolition and renovation subcontracting**; tools line; NER line removed; new `og-cfm.png`.
   2. `69de9e3` AskData finished: `/askdata` rewritten (6 steps, results table, safety, limits, light/dark architecture SVG, 4 demo videos); both screenshots with the old wrong answer deleted; new `og-askdata.png`. Adds shared styles (`.cs-sec`, `.tbl`, `.steps`, `.vid`, `.chart`) and in-view video playback in `site.js`.
   3. `70316b9` robot learning: `/robot-learning` page, home band **first** in Selected work, hero link, `.w-rob` colour world, `og-robot-learning.png`, sitemap; case-study prev/next follow the home order.
-- **Next (Felipe, in a separate Claude Code session): visual pass on this branch.** The content and numbers are final; change layout, type and colour freely, but not the wording or numbers without asking Felipe. Known points to look at:
+- **Next (Felipe, in a separate Claude Code session): visual pass, on a new branch from `main` (e.g. `visual-2026-10`).** The content and numbers are final; change layout, type and colour freely, but not the wording or numbers without asking Felipe. Known points to look at:
   - `.w-rob` is a **placeholder plum** (light `#F0E7F1/#7A3B8C/#5F4A64/#DCC8DF`, dark `#2B1D30/#DDA8EC/#C9B6CE/#4A3350`, contrast checked ≥ 6:1). Felipe may pick another; keep ≥ 5.3:1 and no navy.
   - The video play button sits top-left over the video; on the AskData demo it covers the app's logo.
   - The success-rate chart (inline SVG in `/robot-learning`): the ACT "55.4%" label crowds the line; on phones the chart scrolls sideways at a fixed min width.
@@ -102,11 +102,11 @@ Owner: Felipe Espinosa Orjuela. The fuller private record lives in the claude.ai
   - removed the hero spectrogram, at Felipe's request: it broke the flow from intro to work;
   - made the bands more compact, moved the rover after the publications, and added View Transitions plus one scroll effect.
   - Felipe approved it and it was merged to `main` (live) on 12 Oct 2026, 01:10.
-- **28 Oct 2026, branch `content-2026-10`:** content update from the claude.ai project (CVs and LinkedIn of 28 Oct): CFM wording, AskData finished, robot-learning page, NER removed. Not merged yet.
+- **28 Oct 2026, branch `content-2026-10`:** content update from the claude.ai project (CVs and LinkedIn of 28 Oct): CFM wording, AskData finished, robot-learning page, NER removed. Felipe approved it and it was merged to `main` (live) on 28 Oct 2026, 22:45.
 
 ## Next
 
-1. **Visual pass on `content-2026-10`** (Felipe, see Current status), then merge after Felipe's OK.
+1. **Visual pass** on a new branch from `main` (Felipe, see Current status), then merge after Felipe's OK.
 2. **CLSE paper:** when it's accepted, link it and update "Under review".
 3. Possibly a short "Writing" or "Notes" section later, but only if there are real posts.
 4. After each content change, check link previews with LinkedIn Post Inspector.
