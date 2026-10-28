@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robot learning from few demonstrations, case study. Felipe Espinosa Orjuela</title>
+<meta name="description" content="SmolVLA fine-tuned against ACT trained without robot pretraining, on 3 simulated LIBERO pick-and-place tasks with 5 to 50 demonstrations. 60 models, 9,000 episodes. With 5 demonstrations per task SmolVLA reached 78% success; ACT with all of them, 55%.">
+<link rel="canonical" href="https://felipe-espinosa.vercel.app/robot-learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Robot learning from few demonstrations">
+<meta property="og:description" content="SmolVLA with 5 demonstrations per task: 78% success. ACT with all of them: 55%. 60 models, 9,000 simulated episodes.">
+<meta property="og:url" content="https://felipe-espinosa.vercel.app/robot-learning">
+<meta property="og:image" content="https://felipe-espinosa.vercel.app/og-robot-learning.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/archivo-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/fonts/newsreader-var.woff" as="font" type="font/woff" crossorigin>
+<script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="cs-top w-rob" style="view-transition-name:rob-band">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">Felipe Espinosa Orjuela</a>
+      <nav class="nav" aria-label="Sections">
+        <a href="/#work" aria-current="page">Work</a>
+        <a href="/#research">Research</a>
+        <a href="/#cv">Experience</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+      <button class="theme-btn" type="button" aria-label="Switch theme">
+        <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <section class="cs-hero wrap" aria-label="Overview">
+    <p class="crumb"><a href="/#work">Selected work</a>, 2026</p>
+    <h1 class="display" style="view-transition-name:rob-title">Robot learning from few demonstrations</h1>
+    <dl class="spec-list">
+      <div><dt>Question</dt><dd>At each number of demonstrations, how does a fine-tuned pretrained vision-language-action model compare with a policy trained from scratch?</dd></div>
+      <div><dt>Setup</dt><dd>LeRobot 0.6.2, LIBERO-Object in simulation (Franka arm), 3 pick-and-place tasks, 5, 10, 20 or all (45&ndash;50) demonstrations per task</dd></div>
+      <div><dt>Models</dt><dd>ACT, 52M parameters, trained without robot pretraining (ImageNet image encoder). SmolVLA, 450M parameters, fine-tuned from lerobot/smolvla_base (action expert only, about 100M trained)</dd></div>
+      <div><dt>Scale and cost</dt><dd>60 trained models, 180 evaluated checkpoints, 9,000 simulated episodes; $31.84 in cloud compute</dd></div>
+    </dl>
+    <p class="links"><a href="https://github.com/Pipe1213/vla-vs-scratch">Code on GitHub</a><a href="https://huggingface.co/collections/Pipe1213/smolvla-and-act-on-libero-object-5-to-50-demos-6adfec8eea235665e9d43137">60 models on Hugging Face</a></p>
+  </section>
+</div>
+
+<main id="main" class="wrap">
+  <section class="listen w-rob" aria-labelledby="res-h">
+    <h2 id="res-h" class="section-title">Result</h2>
+    <p class="prose lead">SmolVLA fine-tuned on <span class="num">5</span> demonstrations per task succeeded <span class="num">78%</span> of the time. ACT trained on all of them, about 47 per task, reached <span class="num">55%</span>. Every SmolVLA training seed with 5 demonstrations beat every ACT seed trained on all of them. The gap shrank from 60 to 32 points as data was added, but it never closed. SmolVLA is also the larger model and cost more to train, so this is about data efficiency, not compute.</p>
+    <figure class="chart">
+      <div class="chart-scroll"><svg viewBox="0 0 880 380" role="img" aria-labelledby="chart-t chart-d">
+<title id="chart-t">Success rate against demonstrations per task</title>
+<desc id="chart-d">SmolVLA fine-tuned: 78.0% with 5 demonstrations, 82.4% with 10, 74.2% with 20, 87.3% with all. ACT from scratch: 17.9%, 34.6%, 33.1%, 55.4%.</desc>
+<g class="grid">
+<line x1="44" x2="690" y1="332.0" y2="332.0"/>
+<line x1="44" x2="690" y1="253.0" y2="253.0"/>
+<line x1="44" x2="690" y1="174.0" y2="174.0"/>
+<line x1="44" x2="690" y1="95.0" y2="95.0"/>
+<line x1="44" x2="690" y1="16.0" y2="16.0"/>
+</g><g class="ax">
+<text x="34" y="336.0" text-anchor="end">0%</text>
+<text x="34" y="257.0" text-anchor="end">25%</text>
+<text x="34" y="178.0" text-anchor="end">50%</text>
+<text x="34" y="99.0" text-anchor="end">75%</text>
+<text x="34" y="20.0" text-anchor="end">100%</text>
+<text x="44.0" y="356" text-anchor="middle">5</text>
+<text x="259.3" y="356" text-anchor="middle">10</text>
+<text x="474.7" y="356" text-anchor="middle">20</text>
+<text x="690.0" y="356" text-anchor="middle">all (45–50)</text>
+<text x="367.0" y="378" text-anchor="middle">Demonstrations per task</text>
+</g>
+<g class="s-vla"><polygon class="band" points="44.0,79.2 259.3,68.0 474.7,90.4 690.0,53.9 690.0,58.1 474.7,104.5 259.3,75.0 44.0,91.8"/>
+<polyline class="ln" points="44.0,85.5 259.3,71.5 474.7,97.5 690.0,56.0"/>
+<circle class="pt" cx="44.0" cy="91.8" r="3.5" opacity=".55"/>
+<circle class="pt" cx="44.0" cy="79.2" r="3.5" opacity=".55"/>
+<circle class="pt" cx="44.0" cy="85.5" r="5.5"/>
+<text class="val" x="54.0" y="73.5" text-anchor="start">78.0%</text>
+<circle class="pt" cx="259.3" cy="75.0" r="3.5" opacity=".55"/>
+<circle class="pt" cx="259.3" cy="68.0" r="3.5" opacity=".55"/>
+<circle class="pt" cx="259.3" cy="71.5" r="5.5"/>
+<text class="val" x="269.3" y="59.5" text-anchor="start">82.4%</text>
+<circle class="pt" cx="474.7" cy="104.5" r="3.5" opacity=".55"/>
+<circle class="pt" cx="474.7" cy="90.4" r="3.5" opacity=".55"/>
+<circle class="pt" cx="474.7" cy="97.5" r="5.5"/>
+<text class="val" x="484.7" y="85.5" text-anchor="start">74.2%</text>
+<circle class="pt" cx="690.0" cy="53.9" r="3.5" opacity=".55"/>
+<circle class="pt" cx="690.0" cy="58.1" r="3.5" opacity=".55"/>
+<circle class="pt" cx="690.0" cy="56.0" r="5.5"/>
+<text class="val" x="680.0" y="44.0" text-anchor="end">87.3%</text>
+<text class="lab" x="706.0" y="60.0">SmolVLA, fine-tuned</text></g>
+<g class="s-act"><polygon class="band" points="44.0,229.5 259.3,161.4 474.7,185.9 690.0,149.4 690.0,164.2 474.7,287.1 259.3,277.9 44.0,299.0"/>
+<polyline class="ln" points="44.0,275.4 259.3,222.7 474.7,227.4 690.0,156.9"/>
+<circle class="pt" cx="44.0" cy="299.0" r="3.5" opacity=".55"/>
+<circle class="pt" cx="44.0" cy="297.6" r="3.5" opacity=".55"/>
+<circle class="pt" cx="44.0" cy="229.5" r="3.5" opacity=".55"/>
+<circle class="pt" cx="44.0" cy="275.4" r="5.5"/>
+<text class="val" x="54.0" y="295.4" text-anchor="start">17.9%</text>
+<circle class="pt" cx="259.3" cy="277.9" r="3.5" opacity=".55"/>
+<circle class="pt" cx="259.3" cy="161.4" r="3.5" opacity=".55"/>
+<circle class="pt" cx="259.3" cy="228.8" r="3.5" opacity=".55"/>
+<circle class="pt" cx="259.3" cy="222.7" r="5.5"/>
+<text class="val" x="269.3" y="242.7" text-anchor="start">34.6%</text>
+<circle class="pt" cx="474.7" cy="209.1" r="3.5" opacity=".55"/>
+<circle class="pt" cx="474.7" cy="185.9" r="3.5" opacity=".55"/>
+<circle class="pt" cx="474.7" cy="287.1" r="3.5" opacity=".55"/>
+<circle class="pt" cx="474.7" cy="227.4" r="5.5"/>
+<text class="val" x="484.7" y="247.4" text-anchor="start">33.1%</text>
+<circle class="pt" cx="690.0" cy="149.4" r="3.5" opacity=".55"/>
+<circle class="pt" cx="690.0" cy="164.2" r="3.5" opacity=".55"/>
+<circle class="pt" cx="690.0" cy="157.1" r="3.5" opacity=".55"/>
+<circle class="pt" cx="690.0" cy="156.9" r="5.5"/>
+<text class="val" x="680.0" y="176.9" text-anchor="end">55.4%</text>
+<text class="lab" x="706.0" y="160.9">ACT, from scratch</text></g>
+</svg></div>
+      <figcaption>Success rate pooled over the three tasks. The line is the mean over training seeds (2 for SmolVLA, 3 for ACT), each small dot is one seed and the shaded band is the range across seeds. One seed point pools 3 tasks, 3 checkpoints and 50 episodes: 450 episodes.</figcaption>
+    </figure>
+  </section>
+
+  <section class="cs-sec" aria-labelledby="tbl-h">
+    <h2 id="tbl-h">Results by number of demonstrations</h2>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th scope="col">Demonstrations per task</th><th scope="col" class="n">SmolVLA, per seed</th><th scope="col" class="n">SmolVLA, mean</th><th scope="col" class="n">ACT, per seed</th><th scope="col" class="n">ACT, mean</th><th scope="col" class="n">Gap (points)</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">5</th><td class="n">76.0 / 80.0</td><td class="n"><strong>78.0</strong></td><td class="n">10.4 / 10.9 / 32.4</td><td class="n"><strong>17.9</strong></td><td class="n">60.1</td></tr>
+          <tr><th scope="row">10</th><td class="n">81.3 / 83.6</td><td class="n"><strong>82.4</strong></td><td class="n">17.1 / 54.0 / 32.7</td><td class="n"><strong>34.6</strong></td><td class="n">47.9</td></tr>
+          <tr><th scope="row">20</th><td class="n">72.0 / 76.4</td><td class="n"><strong>74.2</strong></td><td class="n">38.9 / 46.2 / 14.2</td><td class="n"><strong>33.1</strong></td><td class="n">41.1</td></tr>
+          <tr><th scope="row">all (45&ndash;50)</th><td class="n">88.0 / 86.7</td><td class="n"><strong>87.3</strong></td><td class="n">57.8 / 53.1 / 55.3</td><td class="n"><strong>55.4</strong></td><td class="n">31.9</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-note">Success rates in percent. A run&rsquo;s score is the mean of its last three checkpoints, 50 episodes each per task. With only the final checkpoint of each run, the result is the same: SmolVLA&rsquo;s worst seed with 5 demonstrations (77%) is still above ACT&rsquo;s best seed with all of them (63%).</p>
+  </section>
+
+  <section class="cs-sec" aria-labelledby="stab-h">
+    <h2 id="stab-h">Stability</h2>
+    <p>ACT&rsquo;s results depended a lot on training randomness. If a run&rsquo;s three evaluated checkpoints were equally good, sampling 50 episodes would still give them a standard deviation of 5 to 6 points. ACT&rsquo;s checkpoints had <span class="num">17.8</span>; SmolVLA&rsquo;s had <span class="num">5.3</span>, what sampling alone predicts. A paired test (Cochran&rsquo;s Q, on the same 50 scenes) found significant differences between checkpoints in 30 of 36 ACT runs and in 2 of 24 SmolVLA runs. One ACT run scored 26, 5 and 6 out of 50 at its three checkpoints.</p>
+    <p>At 10 demonstrations, ACT&rsquo;s three seeds went from 17% to 54%, a spread as large as its whole gain from 5 demonstrations to all of them.</p>
+  </section>
+
+  <section class="cs-sec" aria-labelledby="fail-h">
+    <h2 id="fail-h">How the policies fail</h2>
+    <div class="vid-stack">
+      <figure class="vid sim">
+        <video muted loop playsinline preload="none" poster="/assets/video/butter_n10_pair-poster.jpg" width="512" height="256" aria-label="Two simulated robot arms. Left, SmolVLA picks up the butter and places it in the basket. Right, ACT misses the grasp and keeps trying.">
+          <source src="/assets/video/butter_n10_pair.mp4" type="video/mp4">
+        </video>
+        <button class="vid-btn" type="button" data-name="the butter comparison" aria-label="Play the butter comparison"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+        <figcaption>Butter, 10 demonstrations. Left: SmolVLA (seed 2000, checkpoint 4k) picks up the butter and places it. Right: ACT (seed 3000, checkpoint 6k) misses the grasp and keeps trying until the time limit. Quarter speed.</figcaption>
+      </figure>
+      <figure class="vid sim">
+        <video muted loop playsinline preload="none" poster="/assets/video/pudding_n05_retry_vs_recovery_pair-poster.jpg" width="512" height="256" aria-label="Two simulated robot arms. Left, ACT misses the chocolate pudding and keeps trying. Right, SmolVLA misses once, tries again and succeeds.">
+          <source src="/assets/video/pudding_n05_retry_vs_recovery_pair.mp4" type="video/mp4">
+        </video>
+        <button class="vid-btn" type="button" data-name="the chocolate pudding comparison" aria-label="Play the chocolate pudding comparison"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+        <figcaption>Chocolate pudding, 5 demonstrations. Left: ACT (seed 2000, checkpoint 8k) reaches the pudding behind the bottle, misses and keeps trying until the time limit. Right: SmolVLA (seed 1000, checkpoint 4k) misses its first grasp, tries again and succeeds. Quarter speed.</figcaption>
+      </figure>
+    </div>
+    <p>I coded 90 evaluation videos without knowing which method produced them. Almost every failure of both methods started with a missed or dropped grasp. ACT usually tried again after a miss but recovered only once; its typical failure was hovering over the object until the time limit. SmolVLA&rsquo;s failures were mostly a single miss with no second attempt. Both clips were picked at random from the coded videos of each kind.</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th scope="col">Coded videos, blind to method</th><th scope="col" class="n">ACT</th><th scope="col" class="n">SmolVLA</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Videos coded (failures, successes)</th><td class="n">45 (30, 15)</td><td class="n">45 (22, 23)</td></tr>
+          <tr><th scope="row">Failures that began with a missed or dropped grasp</th><td class="n">29 of 30</td><td class="n">19 of 22</td></tr>
+          <tr><th scope="row">After a missed or dropped grasp: tried again</th><td class="n">24 of 31</td><td class="n">7 of 21</td></tr>
+          <tr><th scope="row">After a missed or dropped grasp: still succeeded</th><td class="n">1 of 31</td><td class="n">2 of 21</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="cs-sec" aria-labelledby="task-h">
+    <h2 id="task-h">Per task</h2>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th scope="col">Task (demonstrations available)</th><th scope="col">Method</th><th scope="col" class="n">5</th><th scope="col" class="n">10</th><th scope="col" class="n">20</th><th scope="col" class="n">all</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">BBQ sauce (46)</th><td>SmolVLA</td><td class="n">66.7</td><td class="n">85.7</td><td class="n">58.0</td><td class="n">77.0</td></tr>
+          <tr><th scope="row">BBQ sauce (46)</th><td>ACT</td><td class="n">29.1</td><td class="n">64.0</td><td class="n">46.0</td><td class="n">71.3</td></tr>
+          <tr><th scope="row">Butter (45)</th><td>SmolVLA</td><td class="n">72.7</td><td class="n">95.0</td><td class="n">95.3</td><td class="n">88.0</td></tr>
+          <tr><th scope="row">Butter (45)</th><td>ACT</td><td class="n">9.8</td><td class="n">17.8</td><td class="n">21.1</td><td class="n">44.2</td></tr>
+          <tr><th scope="row">Chocolate pudding (50)</th><td>SmolVLA</td><td class="n">94.7</td><td class="n">66.7</td><td class="n">69.3</td><td class="n">97.0</td></tr>
+          <tr><th scope="row">Chocolate pudding (50)</th><td>ACT</td><td class="n">14.9</td><td class="n">22.0</td><td class="n">32.2</td><td class="n">50.7</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-note">Mean over seeds, success in percent, 150 episodes per seed.</p>
+    <p>SmolVLA&rsquo;s lead is clear over the three tasks together, but task by task it depends on the task. Butter is ACT&rsquo;s hardest: 44% with all 45 demonstrations, against 95% for SmolVLA with 10. On BBQ sauce the two methods were close with all demonstrations. SmolVLA&rsquo;s curves dip in two places (chocolate pudding at 10, BBQ sauce at 20) with both seeds; the cause is still open.</p>
+  </section>
+
+  <section class="cs-sec" aria-labelledby="cost-h">
+    <h2 id="cost-h">Compute and cost</h2>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th scope="col">Work</th><th scope="col">Where</th><th scope="col" class="n">Time</th><th scope="col" class="n">Cost</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">ACT, 36 runs</th><td>Laptop, RTX 4050 6 GB</td><td class="n">14.8 h training</td><td class="n">0</td></tr>
+          <tr><th scope="row">SmolVLA, 24 runs</th><td>Hugging Face Jobs, L4 24 GB</td><td class="n">34.2 h billed</td><td class="n">$27.36</td></tr>
+          <tr><th scope="row">Evaluation, 180 checkpoints, 9,000 episodes</th><td>Laptop, CPU rendering</td><td class="n">54.7 h</td><td class="n">0</td></tr>
+          <tr><th scope="row">Pilots (ACT and SmolVLA)</th><td>Laptop and Hugging Face Jobs</td><td class="n">11.9 h training</td><td class="n">$4.48</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The whole project cost $31.84 in cloud compute. Evaluation was the slowest part: the simulator drew every frame on the CPU.</p>
+  </section>
+
+  <section class="cs-sec" aria-labelledby="lim-h">
+    <h2 id="lim-h">Limits</h2>
+    <ul>
+      <li>Three tasks from one simulated benchmark, one robot, no real hardware.</li>
+      <li>Two different models, not an ablation: SmolVLA and ACT differ in pretraining, but also in size, architecture and language input.</li>
+      <li>Compute is not matched; the question is data efficiency, not training cost.</li>
+      <li>ACT used LeRobot&rsquo;s default settings plus re-planning every 10 actions; a tuned ACT might do better.</li>
+      <li>The second training seed was added after seeing the first seed&rsquo;s results, and applied to every run.</li>
+      <li>The three tasks were chosen among LIBERO-Object tasks the published SmolVLA LIBERO checkpoint already solved.</li>
+      <li>Evaluation settings were chosen on the test scenes of one task (BBQ sauce).</li>
+    </ul>
+  </section>
+
+  <section class="cs-sec" aria-labelledby="next-h">
+    <h2 id="next-h">Next question</h2>
+    <p>How much of the gap comes from SmolVLA&rsquo;s robot pretraining itself? The next step is to fine-tune SmolVLA twice with everything else equal: once from its pretrained action expert and once from a freshly initialised one. After that, training on different subsets of the same size would show whether the dips come from specific demonstrations.</p>
+  </section>
+
+  <p class="note">Code written with AI assistance (Claude); experiment design, runs and analysis by me. Full results, settings and reproduction steps are in the <a href="https://github.com/Pipe1213/vla-vs-scratch">repository README</a>.</p>
+
+  <nav class="cs-next" aria-label="Other case studies">
+    <a href="/#work">All work</a>
+    <a href="/cfm">Next: the LLM agent at CFM</a>
+  </nav>
+</main>
+<footer class="site-footer wrap">
+  <p>Set in Archivo and Newsreader. The spectrograms are computed from my models' own audio. Built by hand, no framework.</p>
+  <p>Felipe Espinosa Orjuela, Paris. Updated October 2026.</p>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

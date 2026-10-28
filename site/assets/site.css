@@ -335,6 +335,8 @@ button { font: inherit; }
 :root[data-theme="dark"] .arch .light-only { display: none; }
 .chart { margin-top: 28px; max-width: 880px; }
 .chart svg { display: block; width: 100%; height: auto; overflow: visible; font-family: var(--sans); }
+.chart .chart-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+@media (max-width: 640px) { .chart .chart-scroll svg { min-width: 620px; } }
 .chart .grid line { stroke: var(--rl); stroke-width: 1; }
 .chart .ax text { fill: var(--t2); font-size: 12px; }
 .chart .ln { fill: none; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }

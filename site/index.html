@@ -49,6 +49,7 @@
         <p class="focus">LLM agents, generative models and evaluation</p>
         <p class="where ui">Paris, France. Authorised to work in France, available now.</p>
         <nav class="index" aria-label="Selected work">
+          <a class="w-rob" href="#robot">Robot learning</a>
           <a class="w-cfm" href="#cfm">LLM agent at CFM</a>
           <a class="w-wal" href="#walloon">Walloon speech synthesis</a>
           <a class="w-ask" href="#askdata">AskData</a>
@@ -66,6 +67,24 @@
     <div class="wrap section-head">
       <h2 id="work-h" class="section-title">Selected work</h2>
     </div>
+
+    <article id="robot" class="band w-rob" style="view-transition-name:rob-band">
+      <div class="wrap split">
+        <div class="txt">
+          <p class="meta">2026, personal project</p>
+          <h3 class="proj-title" style="view-transition-name:rob-title">Robot learning from few demonstrations</h3>
+          <p class="prose">A pretrained vision-language-action model against a policy trained without robot pretraining, on three simulated pick-and-place tasks. I trained 60 models with LeRobot and ran 9,000 evaluation episodes. Fine-tuned on 5 demonstrations per task, SmolVLA succeeded <span class="num">78%</span> of the time; ACT trained on all of them, about 47 per task, reached <span class="num">55%</span>.</p>
+          <p class="links"><a href="/robot-learning">Read the case study</a><a href="https://github.com/Pipe1213/vla-vs-scratch">Code</a><a href="https://huggingface.co/collections/Pipe1213/smolvla-and-act-on-libero-object-5-to-50-demos-6adfec8eea235665e9d43137">Models</a></p>
+        </div>
+        <figure class="fig vid">
+          <video muted loop playsinline preload="none" poster="/assets/video/butter_n10_pair-poster.jpg" width="512" height="256" aria-label="Two simulated robot arms. Left, SmolVLA picks up the butter and places it in the basket. Right, ACT misses the grasp and keeps trying.">
+            <source src="/assets/video/butter_n10_pair.mp4" type="video/mp4">
+          </video>
+          <button class="vid-btn" type="button" data-name="the robot comparison" aria-label="Play the robot comparison"><svg class="i-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.5v9l7.5-4.5z" fill="currentColor"/></svg><svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+          <figcaption>Butter, 10 demonstrations. Left: SmolVLA picks up the butter and places it. Right: ACT misses the grasp and keeps trying until the time limit. Quarter speed.</figcaption>
+        </figure>
+      </div>
+    </article>
 
     <article id="cfm" class="band w-cfm" style="view-transition-name:cfm-band">
       <div class="wrap split">
